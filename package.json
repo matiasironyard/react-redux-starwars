@@ -5,24 +5,19 @@
   "homepage": "https://matiasironyard.github.io/react-redux-swapi",
   "dependencies": {
     "axios": "^0.16.2",
-    "free-google-image-search": "^1.0.0",
     "gh-pages": "^1.0.0",
     "immutability-helper": "^2.3.0",
     "react": "^15.6.1",
     "react-bootstrap": "^0.31.1",
-    "react-bootstrap-dropdown": "^0.3.0",
     "react-dom": "^15.6.1",
-    "react-drop-down": "^1.0.2",
-    "react-dropdown": "^1.2.5",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.2",
     "react-scripts": "1.0.10",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0",
-    "semantic-ui-react": "^0.71.3"
+    "redux-thunk": "^2.2.0"
   },
   "scripts": {
-    "deploy" : "npm run build&&gh-pages -d build",
+    "deploy": "npm run build&&gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
