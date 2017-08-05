@@ -9,7 +9,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reducers from './reducers';
-import thunk from 'redux-thunk';
+import reduxThunk from 'redux-thunk';
 //import Components
 import Explorer from './components/Explorer';
 import People from './containers/People';
@@ -18,12 +18,13 @@ import Films from './containers/Films';
 import Details from './containers/Details';
 import BaseLayout from './components/Layout';
 
-
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore)
-
+const store = createStore(
+    reducers,
+    applyMiddleware(reduxThunk)
+);
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
+  <Provider store={store}>
     <BrowserRouter>
       <BaseLayout>
         <Switch>
@@ -31,7 +32,8 @@ ReactDOM.render(
           <Route path="/films" component={Films}/>
           <Route path="/starships" component={Starships}/>
           <Route path="/people" component={People} />
-          <Route path="/details/:endpoint/:id" component={Details}/>
+          <Route path="/details/:endpoint/:id/:index" component={Details}/>
+          <Route path="/film-endpoint/:id/:index/:title" component={Details}/>
         </Switch>
       </BaseLayout>
     </BrowserRouter>

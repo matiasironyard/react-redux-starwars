@@ -1,16 +1,25 @@
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+REACT IMPORTS
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 import React, {Component} from 'react';
-// Import connect
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+REDUX IMPORTS
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 import {connect} from 'react-redux';
-// Import action
 import {
   setDetails,
   fetchFilms,
-  fetchDetails
+  fetchDetails,
+  fetchReviews,
 } from '../actions/index';
-// Import component
-import FilmsList from '../components/Films';
 // Import bindActionCreators
 import {bindActionCreators} from 'redux';
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+COMPONENT IMPORTS
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+import FilmsList from '../components/Films';
 
 class Films extends Component {
 
@@ -28,6 +37,7 @@ class Films extends Component {
             setDetails={this.props.setDetails}
             endpoint={this.props.match.params.endpoint}
             fetchFilms={this.props.fetchFilms}
+            fetchReviews={this.props.fetchReviews}
             fetchDetails={this.props.fetchDetails}/>
         </div>
       </div>
@@ -50,7 +60,8 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     setDetails: setDetails,
     fetchFilms: fetchFilms,
-    fetchDetails: fetchDetails
+    fetchDetails: fetchDetails,
+    fetchReviews: fetchReviews,
   }, dispatch)
 }
 

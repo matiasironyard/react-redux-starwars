@@ -1,43 +1,61 @@
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+REACT IMPORTS
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import {Nav, NavItem} from 'react-bootstrap';
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+COMPONENT
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
 class PeopleList extends Component {
 
   render() {
-    console.log('REACT VIEW: received state (data and action) from reducer via props. See index.js in "reducers"', this.props)
+    //FILTERS<<<<<<<<<<<<<<<<<<<<<<<<
     let filter = this.props.filter;
     let filterFilms = this.props.filterFilms;
     let filterStarships = this.props.filterStarships;
-    let toggle = this.props.fetchPeople;
-    let data = this.props.people.slice().sort();
+    let reset = this.props.stateReset;
+
+    //SORT DATA<<<<<<<<<<<<<<<<<<<<<
+    let data = this.props.people;
+
+    //RENDER VARIABLES<<<<<<<<<<<<<<<
     let List = data.map((people) => {
-      let count = data.indexOf(people) + 1;
-      let url = people.url;
-      let endpoint = url.substr(url.indexOf("/api/") + 5);
-      let filmList = people.films.map((films) => {
-        let endpoint = films.substr(films.indexOf("/api/") + 5);
-        return <li className="list-group-item" key={films}>
-          <Link to={`/details/${ "endpoint"}/${endpoint}`}>
-            <span onClick={() => this.props.fetchDetails(films)}>{endpoint}</span>
-          </Link>
-        </li>
-      })
-      let starships = people.starships.map((starships) => {
-        let endpoint = starships.substr(starships.indexOf("/api/") + 5);
+      let counter = data.indexOf(people) + 1;
+      let length = data.length;
+      let peopleUrl = people.url;
+      let peopleEndpoint = peopleUrl.substr(peopleUrl.indexOf("/api/") + 5);
+      let homeworldUrl = people.homeworld;
+      let homeworldEndpoint = homeworldUrl.substr(homeworldUrl.indexOf("/api/") + 5);
+
+      let starshipsList = people.starships.map((starships) => {
+        let starshipsEndpoint = starships.substr(starships.indexOf("/api/") + 5);
         return <li className="list-group-item" key={starships}>
-          <Link to={`/details/${ "endpoint"}/${endpoint}`}>
-            <span onClick={() => this.props.fetchDetails(starships)}>
-              {endpoint}
-            </span>
+          <Link to={`/details/${ "endpoint"}/${starshipsEndpoint}`}>
+            <span onClick={() => this.props.fetchDetails(starships)}>{starshipsEndpoint}</span>
           </Link>
         </li>
       })
+
+      let filmList = people.films.map((films) => {
+        let filmsEndpoint = films.substr(films.indexOf("/api/") + 5);
+        return <li className="list-group-item" key={films}>
+          <Link to={`/details/${ "endpoint"}/${filmsEndpoint}`}>
+            <span onClick={() => this.props.fetchDetails(films)}>{filmsEndpoint}</span>
+          </Link>
+        </li>
+      })
+
+      // Image conditional rendering
       let imgUrl;
       if (!people.img) {
-        imgUrl = "url(../images/icon.png)"
+        imgUrl = "url(../images/icon2.png)"
       } else {
         imgUrl = "url(" + people.img + ")"
       }
+      // Style
       let style = {
         backgroundImage: imgUrl,
         backgroundSize: 'cover',
@@ -45,66 +63,69 @@ class PeopleList extends Component {
         height: "200px",
         width: "200px"
       }
+
       return (
-        <div key={people.name} className="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-11 col-md-10 col-md-offset-1 col-xs-11 card">
-          <h2 className="media-heading">
-            {people.name}
-          </h2>
-          <nav className="navbar navbar-inverse">
-            <div className="container-fluid">
-              <div className="navbar-header">
-                <span className="navbar-brand">Filter by shared:
-                </span>
-              </div>
-              <ul className="nav navbar-nav">
-                <li>
-                  <a onClick={() => filter(people.homeworld, data)}>Worlds</a>
-                </li>
-                <li>
-                  <a onClick={() => filterFilms(filmList, data)}>Films</a>
-                </li>
-                <li>
-                  <a onClick={() => filterStarships(starships, data)}>Starships</a>
-                </li>
-                <li>
-                  <a className="active" onClick={() => toggle('https://swapi.co/api/people')}>
-                    View All
-                  </a>
-                </li>
-              </ul>
-              <span className="navbar-brand pull-right">
-                {count}
-                / {this.props.people.length}
-              </span>
-              <i className="fa fa-user-circle-o navbar-brand pull-right" aria-hidden="true"></i>
-            </div>
-          </nav>
-          <div className="col-lg-6">
+        <div key={people.name} className="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 card">
+          {/*>>>>>>>>>>>>>>>>>>>>>>>>>>>
+            FILTER NAV
+            <<<<<<<<<<<<<<<<<<<<<<<<<<<<*/}
+          <Nav bsStyle="pills" style={{
+            "backgroundColor": "black",
+            "marginLeft": -15,
+            "marginRight": -15
+          }}>
+            <NavItem>
+              Sort by:
+            </NavItem>
+            <NavItem onClick={() => filter(people.homeworld, 'homeworld') + this.props.toggleColor('white')}>
+              <i className="fa fa-globe" aria-hidden="true"></i>
+            </NavItem>
+            <NavItem onClick={() => filterFilms(filmList, 'film')}>
+              <i className="fa fa-film" aria-hidden="true"></i>
+            </NavItem>
+            <NavItem onClick={() => filterStarships(starshipsList, 'starship')}>
+              <i className="fa fa-space-shuttle" aria-hidden="true"></i>
+            </NavItem>
+            <NavItem onClick={() => reset('all')}>
+              <i className="fa fa-refresh" aria-hidden="true"></i>
+            </NavItem>
+            <NavItem className="pull-right">
+              <span>Viewing: {counter}
+                / {length}</span>
+            </NavItem>
+
+          </Nav>
+
+          <div className="col-lg-6 col-md-6 col-sm-4 col-xs-12">
+            <h2 className="headings">
+              {people.name}
+            </h2>
             <div className="profile">
               <div className="img-circle profile-pic" style={style} src={people.img} alt=""></div>
               <h4 className="sub-headings col-lg-12">Profile</h4>
               <hr/>
               <dl className="dl-horizontal">
-                <dt>Homeworld</dt>
-                <dd>
-                  {people.homeworld}
-                </dd>
-                <dt>
-                  API
+                <dt className="dt">
+                  API Enpoint
                 </dt>
-                <dd>
-                  {endpoint}
+                <dd className="dd">
+                  {peopleEndpoint}
                 </dd>
-                <dt>Details</dt>
-                <dd>
-                  <Link  to={`/details/${ "endpoint"}/${endpoint}`}>
-                      <button className="btn btn-primary" onClick={() => this.props.fetchDetails(url)}>Details</button>
+                <dt className="dt">Homeworld</dt>
+                <dd className="dd">
+                  {homeworldEndpoint}
+                </dd>
+                <dt className="dt">Details</dt>
+                <dd className="dd">
+                  <Link to={`/details/${ "endpoint"}/${peopleEndpoint}${people.name}`}>
+                    <i className="fa fa-info-circle" aria-hidden="true"></i>
                   </Link>
                 </dd>
               </dl>
             </div>
           </div>
-          <div className="col-lg-3">
+
+          <div className="col-lg-3 col-md-3 col-sm-4 col-xs-12 scroll">
             <h4 className="sub-headings">
               Film Endpoints
             </h4>
@@ -113,26 +134,27 @@ class PeopleList extends Component {
               {filmList}
             </ul>
           </div>
-          <div className="col-lg-3">
+
+          <div className="col-lg-3 col-md-3 col-sm-4 col-xs-12 scroll">
             <h4 className="sub-headings">
               Starship Endpoints
             </h4>
             <hr/>
             <ul className="list-group">
-              {starships}
+              {starshipsList}
             </ul>
           </div>
         </div>
       )
     })
-
     return (
       <div className="row">
         <div className="col-lg-12">
-          <h1 className="heading">People</h1>
+          <h1 className="headings">People</h1>
         </div>
-        <div className="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-11 col-md-12"></div>
-        {List}
+        <div className="row">
+          {List}
+        </div>
       </div>
     )
   }

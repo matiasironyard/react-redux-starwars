@@ -1,51 +1,68 @@
 body {
   background-color: #3F3D34;
-    font-family: Raleway;
+  font-family: Raleway;
 }
-nav{
-  padding-top: 40px;
+
+.navbar {
+  border-radius: 0;
+  padding: 10px;
+  text-transform: uppercase;
 }
-.nav-title{
+
+.nav-wrapper {
+  background-color: rgba(0, 0, 0, 0.51);
+}
+
+.nav-title {
   font-family: Arizonia;
   font-size: 125%;
 }
 
-
-.app-body{
+.app-body {
   background-color: white;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  display: flex;;
+  display: flex;
+  ;
   flex-wrap: wrap;
   justify-content: space-between;
-  height: auto;
 }
 
-.offset{
+.offset {
   position: relative;
   bottom: 80px;
-  box-shadow:  rgba(0, 0, 0, 0.22) -2px 9px 5px 0px;
+  box-shadow: rgba(0, 0, 0, 0.22) -2px 9px 5px 0px;
 }
+
+.scroll {
+  height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.back-btn-col {
+  margin-top: 20px;
+}
+
 .headings {
   font-family: Raleway;
+  text-transform: uppercase;
   font-weight: bold;
 }
+
 .sub-headings {
   font-style: italic;
   color: #9E9E9E;
 }
 
 .fa {
-  font-size: 1.3em;
+  font-size: 1.5em;
 }
 
-.card{
-  padding: 20px;
+.card {
   margin-top: 20px;
   box-shadow: -1px 4px 5px #9E9E9E;
 }
 
-.tiles{
+.tiles {
   margin: 20px;
   text-align: center;
   height: 300px;
@@ -54,78 +71,104 @@ nav{
   text-transform: uppercase;
 }
 
- .btn-explorer{
+.btn-explorer {
   position: relative;
-  bottom:-150px;
+  bottom: -150px;
 }
 
-.people-tile{
-  background-image: url('/images/trooper.jpg');
-  background-size: auto;
+.people-tile {
+  background-image: url('/images/icon.png');
+  background-size: cover;
   background-position: center;
 }
+
 .people-tile:hover .img-description {
   visibility: visible;
   opacity: 1;
 }
 
-.starship-tile{
-  background-image: url('/images/falcon.png');
+.starship-tile {
+  background-image: url('https://cdn2.iconfinder.com/data/icons/star-wars-5/24/Star-destroyer-512.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.film-tile {
+  background-image: url('https://cdn2.iconfinder.com/data/icons/movie-8/500/camera-256.png');
   background-size: auto;
   background-position: center;
 }
 
-.film-tile{
-  background-image: url('/images/films.jpg');
-  background-size: auto;
-  background-position: center;
+.dd {
+  color: #747474;
 }
 
-.back{
+.back {
   margin-top: 30px;
 }
 
-footer{
+.profile-pic {
+  background-image: url('https://maxcdn.icons8.com/Share/icon/ios7/Logos//star_wars1600.png');
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+}
+
+footer {
   text-align: center;
   color: #fff;
   padding-bottom: 20px;
 }
 
-.btn-primary{
-  color: #FFEB3B;
+.btn {
+  border-radius: 0px;
+  margin: 5px;
+}
+
+.btn-primary {
+  color: #337AB7;
   background-color: #000000;
   border-color: #9E9E9E;
 }
-.list-group-item:hover{
-  transform: scale(1.1);
-}
-.thumbnail:hover{
+
+.list-group-item:hover {
   transform: scale(1.05);
 }
-.thumbnail{
+
+.thumbnail:hover {
+  transform: scale(1.05);
+}
+
+.thumbnail {
   box-shadow: 0px 3px 5px rgba(128, 128, 128, 0.43)
 }
+
 .loader {
-    border: 10px solid #f3f3f3;
-    border-top: 10px solid yellow;
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 1s linear infinite;
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid yellow;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 
 /* General styles and layout */
+
 .starwars {
   height: 17em;
   left: 50%;
   position: absolute;
-  top: 53%;
+  top: 45%;
   transform: translate(-50%, -50%);
   width: 34em;
 }
@@ -137,7 +180,6 @@ footer{
 img {
   width: 100%;
 }
-
 
 .byline {
   position: absolute;
@@ -151,6 +193,7 @@ img {
   text-transform: uppercase;
   top: 29%;
 }
+
 
 /*** Media queries for adjusting to different screen sizes ***/
 

@@ -1,16 +1,27 @@
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+REACT IMPORTS
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 import React, {Component} from 'react';
-// Import connect
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+REDUX IMPORTS
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 import {connect} from 'react-redux';
-// Import action
 import {
   setDetails,
   fetchStarships,
   fetchDetails
 } from '../actions/index';
-// Import component
-import StarshipsList from '../components/Starships';
-// Import bindActionCreators
 import {bindActionCreators} from 'redux';
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+COMPONENT IMPORTS
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+import StarshipsList from '../components/Starships';
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+COMPONENT
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
 class Starships extends Component {
 

@@ -1,45 +1,49 @@
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+REACT IMPORTS
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 import React, {Component} from 'react';
-// Import connect
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+REDUX IMPORTS
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 import {connect} from 'react-redux';
-// Import action
 import {
   filterWorlds,
   filterFilms,
   filterStarships,
-  stateToggle,
-  setDetails,
   fetchPeople,
   fetchDetails,
+  toggleColor,
+  stateReset
 } from '../actions/index';
-// Import component
-import PeopleList from '../components/People';
-// Import bindActionCreators
 import {bindActionCreators} from 'redux';
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+COMPONENT IMPORTS
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+import PeopleList from '../components/People';
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+COMPONENT
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
 class People extends Component {
 
-componentWillMount(){
-  this.props.fetchPeople('https://swapi.co/api/people/')
-}
-
-
+  componentWillMount() {
+    // swapi option. returns 10. needs pagination.
+    //  this.props.fetchPeople('https://swapi.co/api/people/')
+    // combined data
+    this.props.fetchPeople('http://www.mocky.io/v2/598339e41000000208a8502d')
+  }
 
   render() {
-    console.log('REACT: Rendering People...', this.props.history)
     return (
       <div className="row">
         <div className="app-body offset col-lg-10 col-lg-offset-1">
           {/*State is now available via props thanks to Redux! <<<<<<<<<<<<<<<<*/}
-          <PeopleList
-            people={this.props.people}
-            homeworld={this.props.homeWorld}
-            filter={this.props.filterWorlds}
-            stateToggle={this.props.stateToggle}
-            filterFilms={this.props.filterFilms}
-            filterStarships={this.props.filterStarships}
-            setDetails={this.props.setDetails}
-            fetchPeople={this.props.fetchPeople}
-            fetchDetails={this.props.fetchDetails}/>
+          <PeopleList people={this.props.people} filter={this.props.filterWorlds} stateReset={this.props.stateReset} filterFilms={this.props.filterFilms} filterStarships={this.props.filterStarships} setDetails={this.props.setDetails} fetchPeople={this.props.fetchPeople} fetchDetails={this.props.fetchDetails}
+            toggleColor = {this.props.toggleColor}
+            iconColor={this.props.iconColor}/>
         </div>
       </div>
     );
@@ -50,9 +54,40 @@ componentWillMount(){
 function mapStateToProps(state) {
   // What is returned will show up as PROPS inside of the PeopleList component.
   // Inside of this function we generally return an object.
+
+  let data;
+  if (state.people.filter.key === "homeworld") {
+    let endpoint = state.people.filter.endpoint;
+    let match = state.people.data.filter((matchedWorlds) => {
+      return matchedWorlds.homeworld === endpoint
+    })
+    data = match;
+  } else if (state.people.filter.key === "film") {
+    let endpoint = state.people.filter.endpoint;
+    let match = state.people.data.filter((matchedFilms) => {
+      let films = matchedFilms.films;
+      return films.filter((item) => {
+        return item;
+      }).length === endpoint.length;
+    });
+    data = match;
+  } else if (state.people.filter.key === "starship") {
+    let endpoint = state.people.filter.endpoint;
+    let match = state.people.data.filter((matchedStarship) => {
+      let starships = matchedStarship.starships;
+      return starships.filter((item) => {
+        return item;
+      }).length === endpoint.length;
+    });
+    data = match;
+  } else if (state.people.filter.key === "all") {
+    data = state.people.data;
+  } else {
+    data = state.people.data;
+  }
   return {
-    people: state.people,
-    setDetails: state.setDetails,
+    people: data,
+    iconColor: state.iconColor.color,
   };
 }
 
@@ -65,11 +100,10 @@ function mapDispatchToProps(dispatch) {
     filterWorlds: filterWorlds,
     filterFilms: filterFilms,
     filterStarships: filterStarships,
-    stateToggle: stateToggle,
-    setDetails: setDetails,
+    stateReset: stateReset,
     fetchPeople: fetchPeople,
     fetchDetails: fetchDetails,
-
+    toggleColor: toggleColor,
   }, dispatch)
 }
 
