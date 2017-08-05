@@ -32,8 +32,6 @@ class People extends Component {
   componentWillMount() {
     // swapi option. returns 10. needs pagination.
     this.props.fetchPeople('https://swapi.co/api/people/')
-    // combined data
-    //this.props.fetchPeople('http://www.mocky.io/v2/598339e41000000208a8502d')
   }
 
   render() {
