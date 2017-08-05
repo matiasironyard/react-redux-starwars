@@ -4,7 +4,7 @@ import './styles/index.css';
 import './styles/App.css';
 import registerServiceWorker from './registerServiceWorker';
 //import React Router
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, HashRouter, Route, Switch} from 'react-router-dom';
 //redux imports
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
@@ -26,7 +26,7 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <HashRouter>
       <BaseLayout>
         <Switch>
           <Route exact path="/" component={Explorer} />
@@ -37,7 +37,7 @@ ReactDOM.render(
           <Route path="/film-endpoint/:id/:index/:title" component={Details}/>
         </Switch>
       </BaseLayout>
-    </BrowserRouter>
+    </HashRouter>
   </Provider>
 
 ,document.getElementById('root'));
