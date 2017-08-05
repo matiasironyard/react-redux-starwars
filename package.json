@@ -1,8 +1,8 @@
 {
   "name": "react-redux-swapi",
   "version": "0.1.0",
-  "private": true,
-  "homepage": "https://github.com/matiasironyard/swapi-explorer-2.git",
+  "private": false,
+  "homepage": "https://matiasironyard.github.io/swapi-explorer-2",
   "dependencies": {
     "axios": "^0.16.2",
     "free-google-image-search": "^1.0.0",
