@@ -2,7 +2,7 @@
   "name": "react-redux-swapi",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://matiasironyard.github.io/react-redux-swapi",
+  "homepage": "https://matiasironyard.github.io/react-redux-starwars/",
   "dependencies": {
     "axios": "^0.16.2",
     "gh-pages": "^1.0.0",
