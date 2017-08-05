@@ -13,6 +13,7 @@ class PeopleList extends Component {
 
   render() {
     //FILTERS<<<<<<<<<<<<<<<<<<<<<<<<
+    console.log('>>>', this.props)
     let filter = this.props.filter;
     let filterFilms = this.props.filterFilms;
     let filterStarships = this.props.filterStarships;
