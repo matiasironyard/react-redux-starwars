@@ -16,41 +16,39 @@ export default class BaseLayout extends Component {
       "boxShadow": "rgba(0, 0, 0, 0.22) -2px 9px 5px 0px"
     }
     return (
-      <div className="container-fluid">
+      <div className="app">
 
-        <nav className="navbar navbar-inverse row">
-          <div className="container-fluid">
-            <div className="navbar-header">
-              <ul className="nav navbar-nav">
-                <li>
-                  <NavLink activeStyle={{
-                    color: "yellow"
-                  }} to="/">
-                    REACT | REDUX | SWAPI Explorer
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink activeClassName="selected" to="/people">People</NavLink>
-                </li>
-                <li>
-                  <NavLink activeClassName="selected" to="/starships">
-                    <span>Starships
-                    </span>
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink activeClassName="selected" to="/films">
-                    <span>Films
-                    </span>
-                  </NavLink>
-                </li>
-              </ul>
-            </div>
+        <nav className="navbar navbar-inverse container-fluid">
+          <div className="navbar-header">
+            <ul className="nav navbar-nav">
+              <li>
+                <NavLink activeStyle={{
+                  color: "yellow"
+                }} to="/">
+                  REACT | REDUX | SWAPI Explorer
+                </NavLink>
+              </li>
+              <li>
+                <NavLink activeClassName="selected" to="/people">People</NavLink>
+              </li>
+              <li>
+                <NavLink activeClassName="selected" to="/starships">
+                  <span>Starships
+                  </span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink activeClassName="selected" to="/films">
+                  <span>Films
+                  </span>
+                </NavLink>
+              </li>
+            </ul>
           </div>
         </nav>
 
-        <div className="row">
-          <div className="col-lg-12 header" style={headerStyle}>
+        <div className="container-fluid">
+          <div className="row header" style={headerStyle}>
             <div className="starwars">
               <img src="//cssanimation.rocks/demo/starwars/images/star.svg" alt="Star"/>
               <img src="//cssanimation.rocks/demo/starwars/images/wars.svg" alt="Wars"/>
@@ -61,11 +59,11 @@ export default class BaseLayout extends Component {
           </div>
         </div>
 
-        <div className="row">
+        <div className="container-fluid">
           {this.props.children}
         </div>
 
-        <footer className="row">
+        <footer className="container-fluid">
           <div className="col-lg-12 col-md-12 col-xs-12">
             <span>
               SWAPI EXPLORER | REACT | REDUX

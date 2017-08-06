@@ -2,6 +2,7 @@
 REACT IMPORTS
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 import React, {Component} from 'react';
+import {Nav, NavItem, Button} from 'react-bootstrap';
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 REDUX IMPORTS
@@ -22,6 +23,7 @@ import {bindActionCreators} from 'redux';
 COMPONENT IMPORTS
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 import PeopleList from '../components/People';
+import NavBar from '../components/Navbar';
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 COMPONENT
@@ -29,20 +31,16 @@ COMPONENT
 
 class People extends Component {
 
-  componentWillMount() {
-    // swapi option. returns 10. needs pagination.
-    this.props.fetchPeople('https://swapi.co/api/people/')
-  }
-
   render() {
     return (
+
       <div className="row">
+        <NavBar next={this.props.next} previous={this.props.previous} fetchPeople={this.props.fetchPeople}/>
         <div className="app-body offset col-lg-10 col-lg-offset-1">
           {/*State is now available via props thanks to Redux! <<<<<<<<<<<<<<<<*/}
-          <PeopleList people={this.props.people} filter={this.props.filterWorlds} stateReset={this.props.stateReset} filterFilms={this.props.filterFilms} filterStarships={this.props.filterStarships} setDetails={this.props.setDetails} fetchPeople={this.props.fetchPeople} fetchDetails={this.props.fetchDetails}
-            toggleColor = {this.props.toggleColor}
-            iconColor={this.props.iconColor}/>
+          <PeopleList people={this.props.people} filter={this.props.filterWorlds} stateReset={this.props.stateReset} filterFilms={this.props.filterFilms} filterStarships={this.props.filterStarships} setDetails={this.props.setDetails} fetchPeople={this.props.fetchPeople} fetchDetails={this.props.fetchDetails} toggleColor={this.props.toggleColor} iconColor={this.props.iconColor} next={this.props.next} previous={this.props.previous}/>
         </div>
+        <NavBar next={this.props.next} previous={this.props.previous} fetchPeople={this.props.fetchPeople}/>
       </div>
     );
   }
@@ -52,7 +50,6 @@ class People extends Component {
 function mapStateToProps(state) {
   // What is returned will show up as PROPS inside of the PeopleList component.
   // Inside of this function we generally return an object.
-
   let data;
   if (state.people.filter.key === "homeworld") {
     let endpoint = state.people.filter.endpoint;
@@ -83,10 +80,7 @@ function mapStateToProps(state) {
   } else {
     data = state.people.data;
   }
-  return {
-    people: data,
-    iconColor: state.iconColor.color,
-  };
+  return {people: data, next: state.people.next, previous: state.people.previous, iconColor: state.iconColor.color};
 }
 
 // Here we map component's action <<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -101,7 +95,7 @@ function mapDispatchToProps(dispatch) {
     stateReset: stateReset,
     fetchPeople: fetchPeople,
     fetchDetails: fetchDetails,
-    toggleColor: toggleColor,
+    toggleColor: toggleColor
   }, dispatch)
 }
 

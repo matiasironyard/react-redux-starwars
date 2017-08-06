@@ -7,6 +7,16 @@ body {
   border-radius: 0;
   padding: 10px;
   text-transform: uppercase;
+  margin-bottom: 0;
+}
+
+.nav{
+  //background-color: #eee;
+  text-align: center;
+}
+
+.apiNav{
+  box-shadow: -1px 4px 5px #181818;
 }
 
 .nav-wrapper {
@@ -21,14 +31,13 @@ body {
 .app-body {
   background-color: white;
   display: flex;
-  ;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
 .offset {
   position: relative;
-  bottom: 80px;
+  //bottom: 30px;
   box-shadow: rgba(0, 0, 0, 0.22) -2px 9px 5px 0px;
 }
 
@@ -77,9 +86,9 @@ body {
 }
 
 .people-tile {
-  background-image: url('/images/icon.png');
+  background-image: url('http://pngimg.com/uploads/stormtrooper/stormtrooper_PNG9.png');
   background-size: cover;
-  background-position: center;
+  background-position: top;
 }
 
 .people-tile:hover .img-description {
@@ -88,13 +97,13 @@ body {
 }
 
 .starship-tile {
-  background-image: url('https://cdn2.iconfinder.com/data/icons/star-wars-5/24/Star-destroyer-512.png');
+  background-image: url('http://www.pngall.com/wp-content/uploads/2016/03/Star-Wars-Ship-PNG.png');
   background-size: cover;
   background-position: center;
 }
 
 .film-tile {
-  background-image: url('https://cdn2.iconfinder.com/data/icons/movie-8/500/camera-256.png');
+  background-image: url('https://vignette3.wikia.nocookie.net/starwars/images/2/24/EPII_AotC_poster.png/revision/latest?cb=20130822173923');
   background-size: auto;
   background-position: center;
 }
@@ -168,7 +177,7 @@ footer {
   height: 17em;
   left: 50%;
   position: absolute;
-  top: 45%;
+  top: 40%;
   transform: translate(-50%, -50%);
   width: 34em;
 }

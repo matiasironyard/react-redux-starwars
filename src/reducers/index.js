@@ -94,7 +94,13 @@ export const fetchPeople = (state = initialState, action) => {
     case ActionTypes.FETCH_SWAPI_PEOPLE:
       return update(state, {
         data: {
-          $set: action.payload
+          $set: action.payload.results,
+        },
+        next: {
+          $set: action.payload.next,
+        },
+        previous: {
+          $set: action.payload.previous,
         }
       });
 

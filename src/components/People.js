@@ -3,13 +3,31 @@ REACT IMPORTS
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {Nav, NavItem} from 'react-bootstrap';
+import {Nav, NavItem, Button} from 'react-bootstrap';
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 COMPONENT
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
 class PeopleList extends Component {
+  constructor(props) {
+    super(props)
+    this.handleNav = this.handleNav.bind(this);
+    this.state = {
+      nav: 'https://swapi.co/api/people/'
+    }
+  }
+
+  componentDidMount() {
+    let self = this;
+    this.props.fetchPeople(this.state.nav)
+  }
+
+  handleNav = (e) => {
+    e.preventDefault();
+    console.log('what', e.target.value)
+    this.props.fetchPeople(e.target.value)
+  };
 
   render() {
     //FILTERS<<<<<<<<<<<<<<<<<<<<<<<<
@@ -94,7 +112,6 @@ class PeopleList extends Component {
               <span>Viewing: {counter}
                 / {length}</span>
             </NavItem>
-
           </Nav>
 
           <div className="col-lg-6 col-md-6 col-sm-4 col-xs-12">
@@ -149,13 +166,9 @@ class PeopleList extends Component {
       )
     })
     return (
-      <div className="row">
-        <div className="col-lg-12">
-          <h1 className="headings">People</h1>
-        </div>
-        <div className="row">
-          {List}
-        </div>
+      <div className="">
+        <h2 className="headings">People</h2>
+        {List}
       </div>
     )
   }

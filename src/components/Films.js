@@ -92,12 +92,9 @@ class FilmsList extends Component {
       )
     })
     return (
-      <div className="row">
-        <div className="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-11">
-          <h1 className="headings">Films</h1>
-          <hr/>
-        </div>
-        {filmList}
+      <div>
+        <h1 className="headings">Films</h1>
+        <hr/> {filmList}
       </div>
     )
   }

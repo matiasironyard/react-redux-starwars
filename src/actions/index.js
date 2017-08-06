@@ -40,7 +40,7 @@ export function fetchDetails(url) {
 export const fetchSwapiPeople = (data) => {
   return {
     type: ActionTypes.FETCH_SWAPI_PEOPLE,
-    payload: data.results
+    payload: data,
   }
 };
 
@@ -49,7 +49,6 @@ export function fetchPeople(url) {
     return Axios.get(url)
       .then(response => {
         dispatch(fetchSwapiPeople(response.data))
-
       })
       .catch(error => {
         throw(error);
