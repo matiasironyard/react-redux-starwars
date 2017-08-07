@@ -89,14 +89,14 @@ class PeopleList extends Component {
             FILTER NAV
             <<<<<<<<<<<<<<<<<<<<<<<<<<<<*/}
           <Nav bsStyle="pills" style={{
-            "backgroundColor": "black",
+            "backgroundColor": "#222222",
             "marginLeft": -15,
             "marginRight": -15
           }}>
             <NavItem>
               Sort by:
             </NavItem>
-            <NavItem onClick={() => filter(people.homeworld, 'homeworld') + this.props.toggleColor('white')}>
+            <NavItem onClick={() => filter(people.homeworld, 'homeworld')}>
               <i className="fa fa-globe" aria-hidden="true"></i>
             </NavItem>
             <NavItem onClick={() => filterFilms(filmList, 'film')}>
@@ -167,7 +167,6 @@ class PeopleList extends Component {
     })
     return (
       <div className="">
-        <h2 className="headings">People</h2>
         {List}
       </div>
     )

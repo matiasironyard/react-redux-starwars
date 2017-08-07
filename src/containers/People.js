@@ -36,7 +36,7 @@ class People extends Component {
 
       <div className="row">
         <NavBar next={this.props.next} previous={this.props.previous} fetchPeople={this.props.fetchPeople}/>
-        <div className="app-body offset col-lg-10 col-lg-offset-1">
+        <div className="app-body  col-lg-10 col-lg-offset-1">
           {/*State is now available via props thanks to Redux! <<<<<<<<<<<<<<<<*/}
           <PeopleList people={this.props.people} filter={this.props.filterWorlds} stateReset={this.props.stateReset} filterFilms={this.props.filterFilms} filterStarships={this.props.filterStarships} setDetails={this.props.setDetails} fetchPeople={this.props.fetchPeople} fetchDetails={this.props.fetchDetails} toggleColor={this.props.toggleColor} iconColor={this.props.iconColor} next={this.props.next} previous={this.props.previous}/>
         </div>

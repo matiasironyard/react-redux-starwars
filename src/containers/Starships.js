@@ -32,7 +32,7 @@ class Starships extends Component {
   render() {
     return (
       <div className="row">
-        <div className="app-body offset col-lg-10 col-lg-offset-1">
+        <div className="app-body  col-lg-10 col-lg-offset-1">
           <StarshipsList
             starships={this.props.starships}
             starshipModel={this.props.starshipModel}

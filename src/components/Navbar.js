@@ -24,14 +24,14 @@ class NavBar extends Component {
       </NavItem>
     }
     return (
-
-          <Navbar inverse className="apiNav col-lg-10 col-lg-offset-1">
-            <Nav>
-              {previous}
-              {next}
-            </Nav>
-          </Navbar>
-
+      <div className="apiNav col-lg-10 col-lg-offset-1">
+        <Navbar inverse className="col-lg-3 col-lg-offset-9">
+          <Nav>
+            {previous}
+            {next}
+          </Nav>
+        </Navbar>
+      </div>
     )
   }
 }

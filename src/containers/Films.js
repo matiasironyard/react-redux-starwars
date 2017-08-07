@@ -30,7 +30,7 @@ class Films extends Component {
   render() {
     return (
       <div className="row">
-        <div className="app-body offset col-lg-10 col-lg-offset-1">
+        <div className="app-body  col-lg-10 col-lg-offset-1">
           <FilmsList
             films={this.props.films}
             filmDirector={this.props.filmDirector}

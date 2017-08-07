@@ -1,63 +1,38 @@
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
+import {Navbar, MenuItem, NavDropdown, Nav, NavItem} from 'react-bootstrap';
 
 export default class BaseLayout extends Component {
 
   render() {
-    // INLINE STYLING
-    let headerStyle = {
-      "textAlign": "center",
-      "height": "35vw",
-      "color": "#fff",
-      "backgroundImage": "url(http://www.bromygod.com/wp-content/uploads/2015/12/4AvKUxn.png)",
-      "backgroundPosition": "center",
-      "backgroundSize": "cover",
-      "backgroundRepeat": "none",
-      "boxShadow": "rgba(0, 0, 0, 0.22) -2px 9px 5px 0px"
-    }
+
     return (
       <div className="app">
-
-        <nav className="navbar navbar-inverse container-fluid">
-          <div className="navbar-header">
-            <ul className="nav navbar-nav">
-              <li>
-                <NavLink activeStyle={{
-                  color: "yellow"
-                }} to="/">
-                  REACT | REDUX | SWAPI Explorer
-                </NavLink>
-              </li>
-              <li>
-                <NavLink activeClassName="selected" to="/people">People</NavLink>
-              </li>
-              <li>
-                <NavLink activeClassName="selected" to="/starships">
-                  <span>Starships
-                  </span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink activeClassName="selected" to="/films">
-                  <span>Films
-                  </span>
-                </NavLink>
-              </li>
-            </ul>
-          </div>
-        </nav>
-
-        <div className="container-fluid">
-          <div className="row header" style={headerStyle}>
-            <div className="starwars">
-              <img src="//cssanimation.rocks/demo/starwars/images/star.svg" alt="Star"/>
-              <img src="//cssanimation.rocks/demo/starwars/images/wars.svg" alt="Wars"/>
-              <h2 className="byline" id="byline">
-                api explorer
-              </h2>
-            </div>
-          </div>
-        </div>
+        <Navbar inverse collapseOnSelect className="navbar">
+          <Navbar.Header>
+            <Navbar.Brand>
+              <NavLink activeStyle={{
+                color: "yellow"
+              }} to="/">
+                REACT | REDUX | SWAPI Explorer
+              </NavLink>
+            </Navbar.Brand>
+            <Navbar.Toggle/>
+          </Navbar.Header>
+          <Navbar.Collapse>
+            <Nav>
+              <NavItem>
+                <NavLink className="nav-links" activeClassName="selected" to="/people">People</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink className="nav-links" activeClassName="selected" to="/starships">Starships</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink className="nav-links" activeClassName="selected" to="/films">Films</NavLink>
+              </NavItem>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
 
         <div className="container-fluid">
           {this.props.children}

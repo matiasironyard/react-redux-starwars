@@ -36,7 +36,7 @@ class FilmsList extends Component {
       })
 
       return (
-        <div key={films.episode_id} className="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-11 card">
+        <div key={films.episode_id} className="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 card">
           <div className="col-lg-6  col-md-6">
             <div className="profile">
               <p className="pull-right">
@@ -93,8 +93,7 @@ class FilmsList extends Component {
     })
     return (
       <div>
-        <h1 className="headings">Films</h1>
-        <hr/> {filmList}
+       {filmList}
       </div>
     )
   }

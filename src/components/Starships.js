@@ -18,7 +18,7 @@ class StarshipsList extends Component {
         </li>
       })
       return (
-        <div key={starships.name} className="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-11 card">
+        <div key={starships.name} className="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 card">
           <div className="col-lg-6">
             <div className="profile">
               <h3 className="headings">
@@ -61,8 +61,7 @@ class StarshipsList extends Component {
     })
     return (
       <div>
-        <h1 className="headings">Starships</h1>
-        <hr/> {List}
+         {List}
       </div>
     )
   }

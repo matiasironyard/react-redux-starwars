@@ -37,7 +37,7 @@ class View extends Component {
       }
 
       return (
-        <div className="col-lg-12 col-md-12 col-sm-12 card">
+        <div className="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 card">
           <img className="img-responsive col-lg-10 col-md-10 col-sm-12 col-lg-offset-1  col-md-offset-1" src={imgUrl} alt=""/>
 
           <div className="col-lg-10 col-md-10 col-sm-12 col-lg-offset-1 col-md-offset-1">

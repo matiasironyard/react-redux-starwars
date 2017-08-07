@@ -33,7 +33,7 @@ class Details extends Component {
   render() {
     return (
       <div className="row">
-        <div className="app-body offset col-l10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-11">
+        <div className="app-body  col-l10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-11">
           <div className="col-sm-12 col-md-12 col-lg-12">
             <h1 className="headings">
               {this.props.details.model || this.props.details.name || this.props.details.title}

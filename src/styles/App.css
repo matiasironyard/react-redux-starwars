@@ -3,6 +3,10 @@ body {
   font-family: Raleway;
 }
 
+.row {
+  margin-top: 20px;
+}
+
 .navbar {
   border-radius: 0;
   padding: 10px;
@@ -10,13 +14,14 @@ body {
   margin-bottom: 0;
 }
 
-.nav{
+.nav {
   //background-color: #eee;
   text-align: center;
 }
 
-.apiNav{
+.apiNav {
   box-shadow: -1px 4px 5px #181818;
+  background-color: #222222;
 }
 
 .nav-wrapper {
@@ -28,6 +33,10 @@ body {
   font-size: 125%;
 }
 
+.navbar-inverse {
+  border-color: #222222;
+}
+
 .app-body {
   background-color: white;
   display: flex;
@@ -35,9 +44,31 @@ body {
   justify-content: space-between;
 }
 
+.explorer {
+  margin-top: -15px;
+}
+
+.explorer-nav {
+  height: 60px;
+  padding-top: 10px;
+  ;
+}
+
+.explorer-nav, .explorer-nav-btn {
+  color: #FDF253;
+  border-color: #FDF253;
+  background-color: #222222;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.nav-links {
+  color: #FDF253
+}
+
 .offset {
-  position: relative;
-  //bottom: 30px;
+  position: relative; //bottom: 150px;
   box-shadow: rgba(0, 0, 0, 0.22) -2px 9px 5px 0px;
 }
 
@@ -45,6 +76,10 @@ body {
   height: 300px;
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+.list-group-item {
+  border-radius: 0px;
 }
 
 .back-btn-col {
@@ -127,6 +162,7 @@ footer {
   text-align: center;
   color: #fff;
   padding-bottom: 20px;
+  margin-top: 30px;
 }
 
 .btn {
@@ -176,8 +212,8 @@ footer {
 .starwars {
   height: 17em;
   left: 50%;
-  position: absolute;
-  top: 40%;
+  position: relative;
+  top: 50%;
   transform: translate(-50%, -50%);
   width: 34em;
 }
