@@ -1,4 +1,5 @@
 export const DETAILS = 'DETAILS';
+export const FETCH_SWAPI_DATA = 'FETCH_SWAPI_DATA';
 export const FILTER_WORLDS = 'FILTER_WORLDS';
 export const FILTER_FILMS = 'FILTER_FILMS';
 export const FILTER_STARSHIPS = 'FILTER_STARSHIPS';

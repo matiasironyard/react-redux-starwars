@@ -29,6 +29,7 @@ export function fetchDetails(url) {
   return (dispatch) => {
     return Axios.get(url)
       .then(response => {
+        console.log('axios', response.data)
         dispatch(setDetails(response.data))
       })
       .catch(error => {
@@ -40,7 +41,7 @@ export function fetchDetails(url) {
 export const fetchSwapiPeople = (data) => {
   return {
     type: ActionTypes.FETCH_SWAPI_PEOPLE,
-    payload: data,
+    payload: data
   }
 };
 
@@ -49,6 +50,7 @@ export function fetchPeople(url) {
     return Axios.get(url)
       .then(response => {
         dispatch(fetchSwapiPeople(response.data))
+
       })
       .catch(error => {
         throw(error);
@@ -89,6 +91,7 @@ export function fetchStarships(url) {
 
     return Axios.get(url)
       .then(response => {
+        console.log('akdfkasfdkjkfj')
         dispatch(fetchSwapiStarships(response.data))
 
       })
@@ -148,6 +151,7 @@ export function fetchReviews(title) {
   return (dispatch) => {
     return Axios.get('https://api.themoviedb.org/3/search/movie?api_key=a874671520b99e6171fd48b467ad6803&language=en-US&query='+ title+'&page=1&include_adult=false')
       .then(response => {
+        console.log('response', response)
         dispatch(reviews(response.data))
       })
       .catch(error => {
