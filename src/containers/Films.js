@@ -49,10 +49,10 @@ class Films extends Component {
 
 // Here we map component's state <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 function mapStateToProps(state) {
-  console.log('films state', state.people.data)
+  console.log('films state', state.people)
   // What is returned will show up as PROPS inside of the PeopleList component.
   // Inside of this function we generally return an object.
-  return {films: state.people.data};
+  return {films: state.data.FilmsData};
 }
 
 // Here we map component's action <<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -61,8 +61,7 @@ function mapDispatchToProps(dispatch) {
   // All of the reducers. (flows through dispatch function -- like a funnel - finding the right reducer for the job).
   // In our return we are binding our action creators to the dispatch function that works behind the scenes for us.
   return bindActionCreators({
-    fetchPeople: fetchPeople,
-    fetchFilms: fetchPeople,
+    fetchFilms: fetchFilms,
     fetchReviews: fetchReviews,
   }, dispatch)
 }

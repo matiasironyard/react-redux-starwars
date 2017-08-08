@@ -48,10 +48,11 @@ class Starships extends Component {
 
 // Here we map component's state <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 function mapStateToProps(state) {
+  console.log('state for sart', state)
   // What is returned will show up as PROPS inside of the PeopleList component.
   // Inside of this function we generally return an object.
   return {
-    starships: state.people.data,
+    starships: state.data.StarshipsData,
   };
 }
 
@@ -61,7 +62,8 @@ function mapDispatchToProps(dispatch) {
   // All of the reducers. (flows through dispatch function -- like a funnel - finding the right reducer for the job).
   // In our return we are binding our action creators to the dispatch function that works behind the scenes for us.
   return bindActionCreators({
-    fetchStarships: fetchPeople,
+    fetchStarships: fetchStarships,
+    fetchDetails: fetchDetails,
   }, dispatch)
 }
 

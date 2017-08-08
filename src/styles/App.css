@@ -8,10 +8,12 @@ body {
 }
 
 .navbar {
+  height: 50px;
   border-radius: 0;
-  padding: 10px;
   text-transform: uppercase;
-  margin-bottom: 0;
+}
+.navbar-nav{
+  margin: 15px;
 }
 
 .nav {
@@ -64,7 +66,13 @@ body {
 }
 
 .nav-links {
-  color: #FDF253
+  position: relative;
+  color: #FDF253;
+  background-color: #222222;
+  padding: 15px 15px;
+  font-size: 18px;
+  line-height: 20px;
+  z-index: 3;
 }
 
 .offset {

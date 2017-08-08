@@ -11,8 +11,32 @@ import Axios from 'axios';
 
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-FETCH ACTIONS
+SET DETAIL ACTION:
+We use this action to view an item's details
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+export const setDetails = (data) => {
+  return {
+    type: ActionTypes.DETAILS,
+    payload: data
+  };
+};
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+FETCH ACTION
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+
+export function fetchDetails(url) {
+  return (dispatch) => {
+    return Axios.get(url)
+      .then(response => {
+        console.log('axios', response.data)
+        dispatch(setDetails(response.data))
+      })
+      .catch(error => {
+        throw(error);
+      });
+  };
+};
 
 export const fetchSwapiPeople = (data) => {
   return {
@@ -46,6 +70,7 @@ export function fetchFilms(url) {
     return Axios.get(url)
       .then(response => {
         dispatch(fetchSwapiFilms(response.data))
+
       })
 
       .catch(error => {
@@ -66,6 +91,7 @@ export function fetchStarships(url) {
 
     return Axios.get(url)
       .then(response => {
+        console.log('akdfkasfdkjkfj')
         dispatch(fetchSwapiStarships(response.data))
 
       })

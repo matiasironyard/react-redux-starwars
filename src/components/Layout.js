@@ -21,15 +21,9 @@ export default class BaseLayout extends Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav>
-              <NavItem>
-                <NavLink className="nav-links" activeClassName="selected" to="/people">People</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink className="nav-links" activeClassName="selected" to="/starships">Starships</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink className="nav-links" activeClassName="selected" to="/films">Films</NavLink>
-              </NavItem>
+              <NavLink className="nav-links" activeClassName="selected" to="/people">People</NavLink>
+              <NavLink className="nav-links" activeClassName="selected" to="/starships">Starships</NavLink>
+              <NavLink className="nav-links" activeClassName="selected" to="/films">Films</NavLink>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

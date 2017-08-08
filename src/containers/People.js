@@ -51,36 +51,36 @@ function mapStateToProps(state) {
   // What is returned will show up as PROPS inside of the PeopleList component.
   // Inside of this function we generally return an object.
   let data;
-  if (state.people.filter.key === "homeworld") {
-    let endpoint = state.people.filter.endpoint;
-    let match = state.people.data.filter((matchedWorlds) => {
+  if (state.data.filter.key === "homeworld") {
+    let endpoint = state.data.filter.endpoint;
+    let match = state.data.PeopleData.filter((matchedWorlds) => {
       return matchedWorlds.homeworld === endpoint
     })
     data = match;
-  } else if (state.people.filter.key === "film") {
-    let endpoint = state.people.filter.endpoint;
-    let match = state.people.data.filter((matchedFilms) => {
+  } else if (state.data.filter.key === "film") {
+    let endpoint = state.data.filter.endpoint;
+    let match = state.data.PeopleData.filter((matchedFilms) => {
       let films = matchedFilms.films;
       return films.filter((item) => {
         return item;
       }).length === endpoint.length;
     });
     data = match;
-  } else if (state.people.filter.key === "starship") {
-    let endpoint = state.people.filter.endpoint;
-    let match = state.people.data.filter((matchedStarship) => {
+  } else if (state.data.filter.key === "starship") {
+    let endpoint = state.data.filter.endpoint;
+    let match = state.data.filter((matchedStarship) => {
       let starships = matchedStarship.starships;
       return starships.filter((item) => {
         return item;
       }).length === endpoint.length;
     });
     data = match;
-  } else if (state.people.filter.key === "all") {
-    data = state.people.data;
+  } else if (state.data.filter.key === "all") {
+    data = state.data.PeopleData;
   } else {
-    data = state.people.data;
+    data = state.data.PeopleData;
   }
-  return {people: data, next: state.people.next, previous: state.people.previous};
+  return {people: data, next: state.data.next, previous: state.data.previous};
 }
 
 // Here we map component's action <<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -92,8 +92,8 @@ function mapDispatchToProps(dispatch) {
     filterWorlds: filterWorlds,
     filterFilms: filterFilms,
     filterStarships: filterStarships,
-    stateReset: stateReset,
     fetchPeople: fetchPeople,
+    fetchDetails: fetchDetails,
 
   }, dispatch)
 }
