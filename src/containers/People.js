@@ -38,7 +38,7 @@ class People extends Component {
         <NavBar next={this.props.next} previous={this.props.previous} fetchPeople={this.props.fetchPeople}/>
         <div className="app-body  col-lg-10 col-lg-offset-1">
           {/*State is now available via props thanks to Redux! <<<<<<<<<<<<<<<<*/}
-          <PeopleList people={this.props.people} filter={this.props.filterWorlds} stateReset={this.props.stateReset} filterFilms={this.props.filterFilms} filterStarships={this.props.filterStarships} setDetails={this.props.setDetails} fetchPeople={this.props.fetchPeople} fetchDetails={this.props.fetchDetails} toggleColor={this.props.toggleColor} iconColor={this.props.iconColor} next={this.props.next} previous={this.props.previous}/>
+          <PeopleList people={this.props.people} filter={this.props.filterWorlds} stateReset={this.props.stateReset} filterFilms={this.props.filterFilms} filterStarships={this.props.filterStarships} setDetails={this.props.setDetails} fetchPeople={this.props.fetchPeople} fetchDetails={this.props.fetchDetails}  next={this.props.next} previous={this.props.previous}/>
         </div>
         <NavBar next={this.props.next} previous={this.props.previous} fetchPeople={this.props.fetchPeople}/>
       </div>
@@ -48,6 +48,7 @@ class People extends Component {
 
 // Here we map component's state <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 function mapStateToProps(state) {
+  console.log('this people', state)
   // What is returned will show up as PROPS inside of the PeopleList component.
   // Inside of this function we generally return an object.
   let data;
@@ -68,7 +69,7 @@ function mapStateToProps(state) {
     data = match;
   } else if (state.data.filter.key === "starship") {
     let endpoint = state.data.filter.endpoint;
-    let match = state.data.filter((matchedStarship) => {
+    let match = state.data.PeopleData.filter((matchedStarship) => {
       let starships = matchedStarship.starships;
       return starships.filter((item) => {
         return item;
@@ -94,6 +95,7 @@ function mapDispatchToProps(dispatch) {
     filterStarships: filterStarships,
     fetchPeople: fetchPeople,
     fetchDetails: fetchDetails,
+    stateReset: stateReset,
 
   }, dispatch)
 }
