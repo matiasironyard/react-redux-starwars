@@ -23,7 +23,29 @@ const initialState = {
       "starships": [],
       "created": "",
       "edited": "",
-      "url": "https://swapi.co/api/people/1/"
+      "url": "https://swapi.co/api/people/1/",
+      "title": "The Galaxy Explodeds",
+      "episode_id": 1000,
+      "opening_crawl": "",
+      "director": "George Lucas",
+      "producer": "Gary Kurtz, Rick McCallum",
+      "release_date": "1977-05-25",
+      "characters": [],
+      "planets": [],
+      "starships": [],
+      "model": "Sentinel-class landing craft",
+      "manufacturer": "Sienar Fleet Systems, Cyngus Spaceworks",
+      "cost_in_credits": "240000",
+      "length": "38",
+      "max_atmosphering_speed": "1000",
+      "crew": "5",
+      "passengers": "75",
+      "cargo_capacity": "180000",
+      "consumables": "1 month",
+      "hyperdrive_rating": "1.0",
+      "MGLT": "70",
+      "starship_class": "landing craft",
+      "pilots": []
     }
   ],
   films: [
@@ -89,18 +111,18 @@ const initialState = {
   ]
 }
 
-export const fetchPeople = (state = initialState, action) => {
+export const getData = (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.FETCH_SWAPI_PEOPLE:
       return update(state, {
         data: {
-          $set: action.payload.results,
+          $set: action.payload.results
         },
         next: {
-          $set: action.payload.next,
+          $set: action.payload.next
         },
         previous: {
-          $set: action.payload.previous,
+          $set: action.payload.previous
         }
       });
 
@@ -132,11 +154,18 @@ export const fetchPeople = (state = initialState, action) => {
         }
       });
 
+    case ActionTypes.FETCH_SWAPI_FILMS:
+      return update(state, {$set: action.payload.results});
+
+    case ActionTypes.FETCH_SWAPI_STARSHIPS:
+      return update(state, {$set: action.payload.results});
+
     default:
       return state;
   }
 };
 
+{/*
 export const fetchFilms = (state = initialState.films, action) => {
   switch (action.type) {
     case ActionTypes.FETCH_SWAPI_FILMS:
@@ -166,6 +195,7 @@ function details(state = initialState, action) {
       return state;
   }
 }
+*/}
 
 export const fetchReviewsData = (state = initialState.reviews, action) => {
   switch (action.type) {
@@ -181,20 +211,11 @@ export const fetchReviewsData = (state = initialState.reviews, action) => {
   }
 };
 
-export const colorChanger = (state = initialState.iconColor, action) => {
-  switch (action.type) {
-      case ActionTypes.TOGGLE_COLOR:
-      return update(state, {
-          color: {
-            $set: action.payload,
-          }
-        });
 
-    default:
-      return state;
-  }
-};
+const rootReducer = combineReducers({
+  people: getData,
+  reviews: fetchReviewsData,
 
-const rootReducer = combineReducers({people: fetchPeople, films: fetchFilms, starships: fetchStarships, details: details, reviews: fetchReviewsData, iconColor: colorChanger});
+});
 
 export default rootReducer;

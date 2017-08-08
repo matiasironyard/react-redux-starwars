@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 class StarshipsList extends Component {
 
   render() {
+    console.log('star', this.props.startships)
     let data = this.props.starships;
     let List = data.map((starships) => {
       let url = starships.url;

@@ -8,6 +8,7 @@ REDUX IMPORTS
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 import {connect} from 'react-redux';
 import {
+  fetchPeople,
   setDetails,
   fetchFilms,
   fetchDetails,
@@ -23,7 +24,7 @@ import FilmsList from '../components/Films';
 
 class Films extends Component {
 
-  componentWillMount(){
+  componentDidMount(){
     this.props.fetchFilms('https://swapi.co/api/films/')
   }
 
@@ -32,6 +33,7 @@ class Films extends Component {
       <div className="row">
         <div className="app-body  col-lg-10 col-lg-offset-1">
           <FilmsList
+            fetchPeople={this.props.fetchPeople}
             films={this.props.films}
             filmDirector={this.props.filmDirector}
             setDetails={this.props.setDetails}
@@ -47,9 +49,10 @@ class Films extends Component {
 
 // Here we map component's state <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 function mapStateToProps(state) {
+  console.log('films state', state.people.data)
   // What is returned will show up as PROPS inside of the PeopleList component.
   // Inside of this function we generally return an object.
-  return {films: state.films, stateExample: state.stateExample};
+  return {films: state.people.data};
 }
 
 // Here we map component's action <<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -58,9 +61,8 @@ function mapDispatchToProps(dispatch) {
   // All of the reducers. (flows through dispatch function -- like a funnel - finding the right reducer for the job).
   // In our return we are binding our action creators to the dispatch function that works behind the scenes for us.
   return bindActionCreators({
-    setDetails: setDetails,
-    fetchFilms: fetchFilms,
-    fetchDetails: fetchDetails,
+    fetchPeople: fetchPeople,
+    fetchFilms: fetchPeople,
     fetchReviews: fetchReviews,
   }, dispatch)
 }

@@ -80,7 +80,7 @@ function mapStateToProps(state) {
   } else {
     data = state.people.data;
   }
-  return {people: data, next: state.people.next, previous: state.people.previous, iconColor: state.iconColor.color};
+  return {people: data, next: state.people.next, previous: state.people.previous};
 }
 
 // Here we map component's action <<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -94,8 +94,7 @@ function mapDispatchToProps(dispatch) {
     filterStarships: filterStarships,
     stateReset: stateReset,
     fetchPeople: fetchPeople,
-    fetchDetails: fetchDetails,
-    toggleColor: toggleColor
+
   }, dispatch)
 }
 
