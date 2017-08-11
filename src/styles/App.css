@@ -12,7 +12,8 @@ body {
   border-radius: 0;
   text-transform: uppercase;
 }
-.navbar-nav{
+
+.navbar-nav {
   margin: 15px;
 }
 
@@ -23,7 +24,8 @@ body {
 
 .apiNav {
   box-shadow: -1px 4px 5px #181818;
-  background-color: #222222;
+  background-color: #808080;
+  color: #222222;
 }
 
 .nav-wrapper {
@@ -66,13 +68,26 @@ body {
 }
 
 .nav-links {
+  font-weight: bold;
+  font-size: 15px;
+  color: #222222;
   position: relative;
-  color: #FDF253;
-  background-color: #222222;
-  padding: 15px 15px;
-  font-size: 18px;
-  line-height: 20px;
-  z-index: 3;
+  z-index: 2;
+  background-color: grey;
+}
+
+.nav-links:hover {
+  background-color: grey;
+}
+
+.filter-col {
+  border-bottom: 1px solid grey;
+  margin-bottom: 15px;
+}
+
+.endpoints {
+  margin: 0;
+  border-radius: 0;
 }
 
 .offset {

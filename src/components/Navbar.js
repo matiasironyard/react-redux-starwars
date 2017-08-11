@@ -4,33 +4,56 @@ REACT IMPORTS
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {Nav, NavItem, Button, Navbar} from 'react-bootstrap';
+import {Pagination, PaginationLink, PaginationItem} from 'reactstrap'
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 COMPONENT
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
 class NavBar extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+      page: 1,
+    }
+    this.handlePrevious=this.handlePrevious.bind(this);
+    this.handleNext=this.handleNext.bind(this);
+  }
+  handlePrevious = (e) => {
+    if(this.state.page <= 1){
+      this.setState({page: this.state.page = 1})
+    } else {
+      this.setState({page: this.state.page -1 })
+    }
+    }
+    handleNext = (e) => {
+      if(this.props.next == null){
+        this.setState({page: this.state.page})
+      } else {
+        this.setState({page: this.state.page + 1 })
+
+      }
+      }
+
   render() {
-    let previous;
-    if (this.props.previous) {
-      previous = <NavItem onClick={() => this.props.fetchPeople(this.props.previous)} value={this.props.previous}>
-        <i className="fa fa-chevron-left" aria-hidden="true"></i>
-      </NavItem>
-    }
-    let next;
-    if (this.props.next) {
-      next = <NavItem onClick={() => this.props.fetchPeople(this.props.next)} value={this.props.previous}>
-        <i className="fa fa-chevron-right" aria-hidden="true"></i>
-      </NavItem>
-    }
+    console.log(this.state)
+
+
     return (
-      <div className="apiNav col-lg-10 col-lg-offset-1">
-        <Navbar inverse className="col-lg-3 col-lg-offset-9">
-          <Nav>
-            {previous}
-            {next}
-          </Nav>
-        </Navbar>
+      <div className="apiNav col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12">
+        <Pagination className="pull-right">
+          <PaginationItem>
+            <PaginationLink previous onClick={() => this.props.fetchPeople(this.props.previous) + this.handlePrevious()} />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink>
+              Page {this.state.page}
+            </PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink next onClick={() => this.props.fetchPeople(this.props.next) + this.handleNext()}/>
+          </PaginationItem>
+        </Pagination>
       </div>
     )
   }
