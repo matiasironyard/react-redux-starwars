@@ -36,11 +36,10 @@ class People extends Component {
 
       <div className="row">
         <NavBar next={this.props.next} previous={this.props.previous} fetchPeople={this.props.fetchPeople}/>
-        <div className="app-body col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12">
+        <div className="app-body col-10 offset-1">
           {/*State is now available via props thanks to Redux! <<<<<<<<<<<<<<<<*/}
-          <PeopleList people={this.props.people} filter={this.props.filterWorlds} stateReset={this.props.stateReset} filterFilms={this.props.filterFilms} filterStarships={this.props.filterStarships} setDetails={this.props.setDetails} fetchPeople={this.props.fetchPeople} fetchDetails={this.props.fetchDetails}  next={this.props.next} previous={this.props.previous}/>
+          <PeopleList people={this.props.people} filter={this.props.filterWorlds} stateReset={this.props.stateReset} filterFilms={this.props.filterFilms} filterStarships={this.props.filterStarships} setDetails={this.props.setDetails} fetchPeople={this.props.fetchPeople} fetchDetails={this.props.fetchDetails} next={this.props.next} previous={this.props.previous}/>
         </div>
-        <NavBar next={this.props.next} previous={this.props.previous} fetchPeople={this.props.fetchPeople}/>
       </div>
     );
   }
@@ -95,8 +94,7 @@ function mapDispatchToProps(dispatch) {
     filterStarships: filterStarships,
     fetchPeople: fetchPeople,
     fetchDetails: fetchDetails,
-    stateReset: stateReset,
-
+    stateReset: stateReset
   }, dispatch)
 }
 

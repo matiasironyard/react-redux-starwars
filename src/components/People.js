@@ -131,11 +131,11 @@ class PeopleList extends Component {
       }
 
       return (
-        <div key={people.name} className="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-xs-10  card">
+        <div key={people.name} className="col-10 offset-1 card">
           {/*>>>>>>>>>>>>>>>>>>>>>>>>>>>
             FILTER NAV
             <<<<<<<<<<<<<<<<<<<<<<<<<<<<*/}
-          <div className="col-lg-12 filter-col">
+          <div className="col-12 filter-col">
             <UncontrolledButtonDropdown className="pull-right">
               <DropdownToggle caret>
                 <i className="fa fa-filter" aria-hidden="true"></i>
@@ -156,15 +156,16 @@ class PeopleList extends Component {
               </DropdownMenu>
             </UncontrolledButtonDropdown>
           </div>
+
           <div className="row">
-            <div className="col-lg-4 col-md-6 col-md-6 col-xs-12">
+            <div className="profile-left col-sm-4">
               <h2 className="headings">
                 {people.name}
               </h2>
               <ImageSearch name={people.name}/>
             </div>
 
-            <div className="col-lg-8 col-md-6 col-sm-6 col-xs-12">
+            <div className="profile-right col-sm-8">
               <div className="profile">
                 <h4 className="sub-headings col-lg-12">Profile</h4>
                 <hr/>

@@ -40,7 +40,7 @@ class NavBar extends Component {
 
 
     return (
-      <div className="apiNav col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12">
+      <div className="apiNav col-10 offset-1">
         <Pagination className="pull-right">
           <PaginationItem>
             <PaginationLink previous onClick={() => this.props.fetchPeople(this.props.previous) + this.handlePrevious()} />

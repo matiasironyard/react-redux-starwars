@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {Button} from 'react-bootstrap';
 
 class Explorer extends Component {
 
@@ -13,37 +12,34 @@ class Explorer extends Component {
       "backgroundPosition": "center",
       "backgroundSize": "cover",
       "backgroundRepeat": "none",
-      "boxShadow": "rgba(0, 0, 0, 0.22) -2px 9px 5px 0px",
+      "boxShadow": "rgba(0, 0, 0, 0.22) -2px 9px 5px 0px"
     }
 
     return (
-      <div className="explorer row">
-        <div className="header" style={headerStyle}>
-          <div className="starwars">
-            <img src="//cssanimation.rocks/demo/starwars/images/star.svg" alt="Star"/>
-            <img src="//cssanimation.rocks/demo/starwars/images/wars.svg" alt="Wars"/>
-            <h2 className="byline" id="byline">
-              api explorer
-            </h2>
-          </div>
-        </div>
+      <div>
+        <div className="explorer row">
+          <div className="header col" style={headerStyle}>
+            <div className="fade"></div>
 
-        <div className="explorer-nav offset col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
-          <Link to="/people/" className="">
-            <Button className="explorer-nav-btn">
-              People
-            </Button>
-          </Link>
-          <Link to="/starships/" className="">
-            <Button className="explorer-nav-btn">
-              Starships
-            </Button>
-          </Link>
-          <Link to="/films/" className="">
-            <Button className="explorer-nav-btn">
-              Films
-            </Button>
-          </Link>
+            <section className="star-wars">
+
+              <div className="crawl">
+
+                <div className="title">
+                  <p>SWAPI EXPLORER</p>
+                  <h1>Powered by React & Redux</h1>
+                </div>
+
+                <p>In a galaxy far away, a lonely coder set out to create a React Redux SWAPI explorer. The end result is still to be seen, but good progress has been made.</p>
+                <p>What is SWAPI?</p>
+                <p>The Star Wars API is the world's first quantified and programmatically-formatted set of Star Wars data. After hours of watching films and trawling through content online, we present to you all the People, Films, Species, Starships, Vehicles and Planets from Star Wars. We've formatted this data in JSON and exposed it to you in a RESTish implementation that allows you to programmatically collect and measure the data.</p>
+                <a href="https://swapi.co/about">swapi.co</a>
+
+              </div>
+
+            </section>
+
+          </div>
         </div>
       </div>
     );
