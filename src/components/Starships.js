@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 class StarshipsList extends Component {
 
   render() {
-    console.log('star', this.props.startships)
     let data = this.props.starships;
     let List = data.map((starships) => {
       let url = starships.url;
@@ -19,7 +18,7 @@ class StarshipsList extends Component {
         </li>
       })
       return (
-        <div key={starships.name} className="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 card">
+        <div key={starships.name} className="col offset-1 card">
           <div className="col-lg-6">
             <div className="profile">
               <h3 className="headings">

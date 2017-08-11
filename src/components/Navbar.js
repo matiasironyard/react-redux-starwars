@@ -3,7 +3,6 @@ REACT IMPORTS
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {Nav, NavItem, Button, Navbar} from 'react-bootstrap';
 import {Pagination, PaginationLink, PaginationItem} from 'reactstrap'
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -36,8 +35,6 @@ class NavBar extends Component {
       }
 
   render() {
-    console.log(this.state)
-
 
     return (
       <div className="apiNav col-10 offset-1">

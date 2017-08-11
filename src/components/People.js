@@ -4,7 +4,6 @@ REACT IMPORTS
 import React, {Component} from 'react';
 import ImageSearch from '../components/Imagesearch';
 import {Link} from 'react-router-dom';
-import {Nav, NavItem, Button} from 'react-bootstrap';
 import {
   Pagination,
   PaginationItem,
@@ -42,13 +41,11 @@ class PeopleList extends Component {
 
   handleNav = (e) => {
     e.preventDefault();
-    console.log('what', e.target.value)
     this.props.fetchPeople(e.target.value)
   };
 
   render() {
     //FILTERS<<<<<<<<<<<<<<<<<<<<<<<<
-    console.log('>>>', this.props)
     let filter = this.props.filter;
     let filterFilms = this.props.filterFilms;
     let filterStarships = this.props.filterStarships;
@@ -104,7 +101,7 @@ class PeopleList extends Component {
             title = "The Force Awakens";
             break;
           default:
-            console.log('default');
+            title = "Star Wars";
         }
 
         return <PaginationItem key={films}>
@@ -114,21 +111,6 @@ class PeopleList extends Component {
         </PaginationItem>
       })
 
-      // Image conditional rendering
-      let imgUrl;
-      if (!people.img) {
-        imgUrl = "url(../images/icon2.png)"
-      } else {
-        imgUrl = "url(" + people.img + ")"
-      }
-      // Style
-      let style = {
-        backgroundImage: imgUrl,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        height: "200px",
-        width: "200px"
-      }
 
       return (
         <div key={people.name} className="col-10 offset-1 card">

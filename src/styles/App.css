@@ -51,9 +51,9 @@ body {
 
 .explorer {
   margin-top: -15px;
-height: 100%;
-background: #000;
-overflow: hidden;
+  height: 100%;
+  background: #000;
+  overflow: hidden;
 }
 
 .explorer-nav {

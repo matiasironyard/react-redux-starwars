@@ -48,7 +48,6 @@ class Starships extends Component {
 
 // Here we map component's state <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 function mapStateToProps(state) {
-  console.log('state for sart', state)
   // What is returned will show up as PROPS inside of the PeopleList component.
   // Inside of this function we generally return an object.
   return {
