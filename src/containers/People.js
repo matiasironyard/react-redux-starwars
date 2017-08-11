@@ -2,7 +2,6 @@
 REACT IMPORTS
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 import React, {Component} from 'react';
-import {Nav, NavItem, Button} from 'react-bootstrap';
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 REDUX IMPORTS
