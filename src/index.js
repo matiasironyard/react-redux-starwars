@@ -6,7 +6,7 @@ import './styles/App.css';
 import './styles/Crawl.css';
 import registerServiceWorker from './registerServiceWorker';
 //import React Router
-import {BrowserRouter, HashRouter, Route, Switch} from 'react-router-dom';
+import {HashRouter, Route, Switch} from 'react-router-dom';
 //redux imports
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';

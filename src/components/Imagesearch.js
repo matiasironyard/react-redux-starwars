@@ -3,12 +3,26 @@ REACT IMPORTS
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 import React, {Component} from 'react';
 import Axios from 'axios';
-import wiki from 'wikijs';
+import  GoogleImages from 'google-images';
+
+
 import placeholder from '../images/icon2.png'; // Tell Webpack this JS file uses this image
+
+const client = new GoogleImages('CSE ID', 'API KEY');
+console.log('c', client)
+
+client.search('Steve Angello')
+    .then(images => {
+      console.log(images)
+
+    });
+
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 COMPONENT
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+
+
 
 class ImageSearch extends Component {
   constructor(props){
@@ -19,11 +33,6 @@ class ImageSearch extends Component {
   }
 
   componentDidMount(){
-    wiki().page(this.props.name)
-    .then(page => page.mainImage())
-    .then((response)=>{
-      this.setState({img: response})
-    });
   }
 
 

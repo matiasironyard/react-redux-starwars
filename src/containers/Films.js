@@ -8,10 +8,7 @@ REDUX IMPORTS
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 import {connect} from 'react-redux';
 import {
-  fetchPeople,
-  setDetails,
   fetchFilms,
-  fetchDetails,
   fetchReviews,
 } from '../actions/index';
 // Import bindActionCreators
@@ -31,7 +28,7 @@ class Films extends Component {
   render() {
     return (
       <div className="row">
-        <div className="app-body  col-lg-10 col-lg-offset-1">
+        <div className="app-body col-10 offset-1">
           <FilmsList
             fetchPeople={this.props.fetchPeople}
             films={this.props.films}

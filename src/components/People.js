@@ -8,7 +8,6 @@ import {
   Pagination,
   PaginationItem,
   PaginationLink,
-  Dropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
@@ -30,7 +29,6 @@ class PeopleList extends Component {
   }
 
   componentDidMount() {
-    let self = this;
     this.props.fetchPeople(this.state.nav)
   }
   toggle() {
@@ -56,8 +54,6 @@ class PeopleList extends Component {
 
     //RENDER VARIABLES<<<<<<<<<<<<<<<
     let List = data.map((people) => {
-      let counter = data.indexOf(people) + 1;
-      let length = data.length;
       let peopleUrl = people.url;
       let peopleEndpoint = peopleUrl.substr(peopleUrl.indexOf("/api/people") + 5);
       let homeworldUrl = people.homeworld;

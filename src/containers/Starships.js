@@ -8,8 +8,6 @@ REDUX IMPORTS
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 import {connect} from 'react-redux';
 import {
-  fetchPeople,
-  setDetails,
   fetchStarships,
   fetchDetails
 } from '../actions/index';
@@ -33,7 +31,7 @@ class Starships extends Component {
   render() {
     return (
       <div className="row">
-        <div className="app-body  col-lg-10 col-lg-offset-1">
+        <div className="app-body col-10 offset-1">
           <StarshipsList
             fetchPeople={this.props.fetchPeople}
             starships={this.props.starships}

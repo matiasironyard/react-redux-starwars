@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 
 class Explorer extends Component {
 
@@ -8,7 +7,7 @@ class Explorer extends Component {
       "textAlign": "center",
       "height": "45vw",
       "color": "#fff",
-      "backgroundImage": "url(http://www.bromygod.com/wp-content/uploads/2015/12/4AvKUxn.png)",
+      "backgroundImage": "url(https://solarsystem.nasa.gov/kids/images/layers/png/background.jpg)",
       "backgroundPosition": "center",
       "backgroundSize": "cover",
       "backgroundRepeat": "none",

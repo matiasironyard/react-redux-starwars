@@ -44,9 +44,7 @@ body {
 .app-body {
   background-color: #ffffff;
   padding: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+
 }
 
 .explorer {
@@ -126,12 +124,18 @@ body {
 }
 
 .fa {
-  font-size: 1.5em;
+  //font-size: 1.5em;
 }
 
 .card {
   margin-top: 20px;
+  padding: 20px;
   box-shadow: -1px 4px 5px #9E9E9E;
+}
+
+.filter-col{
+  background-color: rgb(211, 211, 211);
+box-shadow: 1px 1px 2px 0px rgb(128, 128, 128);
 }
 
 .tiles {

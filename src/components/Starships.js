@@ -18,7 +18,7 @@ class StarshipsList extends Component {
         </li>
       })
       return (
-        <div key={starships.name} className="col offset-1 card">
+        <div key={starships.name} className="col-10 offset-1 card">
           <div className="col-lg-6">
             <div className="profile">
               <h3 className="headings">

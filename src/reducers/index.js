@@ -1,18 +1,18 @@
 import {combineReducers} from 'redux';
 import update from 'immutability-helper';
 import * as ActionTypes from '../actionTypes/actions';
-import peopleDefaultData from '../data/Peopledata';
-import starshipsDefaultData from '../data/Starshipsdata';
-import filmsDefaultData from '../data/Filmsdata';
+import peopledata from '../data/Peopledata';
+import starshipsdata from '../data/Starshipsdata';
+import filmsdata from '../data/Filmsdata';
 
 
 const initialState = {
   filter: {},
   reviews: {},
   iconColor: {},
-  FilmsData: filmsDefaultData(),
-  StarshipsData: starshipsDefaultData(),
-  PeopleData: peopleDefaultData(),
+  FilmsData: filmsdata(),
+  StarshipsData: starshipsdata(),
+  PeopleData: peopledata(),
 }
 
 export const getData = (state = initialState, action) => {
