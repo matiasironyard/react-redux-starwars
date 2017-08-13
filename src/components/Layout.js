@@ -30,13 +30,13 @@ export default class BaseLayout extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink  tag={Link} className="nav-links" activeClassName="selected" to="/people">People</NavLink>
+                <NavLink  tag={Link} className="nav-links"  to="/people">People</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} className="nav-links" activeClassName="selected" to="/starships">Starships</NavLink>
+                <NavLink tag={Link} className="nav-links"  to="/starships">Starships</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} className="nav-links" activeClassName="selected" to="/films">Films</NavLink>
+                <NavLink tag={Link} className="nav-links"  to="/films">Films</NavLink>
               </NavItem>
             </Nav>
           </Collapse>

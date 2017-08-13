@@ -39,11 +39,11 @@ class NavBar extends Component {
     }
   }
   handleHome = (e)=>{
+    console.log('what')
     this.setState({page: 1})
   }
 
   render() {
-    console.log('w', this.props)
 
     return (
       <div className="apiNav col-10 offset-1">
@@ -57,8 +57,7 @@ class NavBar extends Component {
             </PaginationLink>
           </PaginationItem>
           <PaginationItem>
-            <PaginationLink >
-              <i className="fa fa-refresh" aria-hidden="true" onClick={() => this.props.fetchPeople(this.props.home) + this.handleHome()}></i>
+            <PaginationLink onClick={() => this.props.fetchPeople(this.props.home) + this.handleHome()}>Home
             </PaginationLink>
           </PaginationItem>
           <PaginationItem>

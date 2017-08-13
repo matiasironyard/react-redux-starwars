@@ -39,6 +39,7 @@ export function fetchDetails(url) {
 };
 
 export const fetchSwapiPeople = (data) => {
+  console.log('hi', data)
   return {
     type: ActionTypes.FETCH_SWAPI_PEOPLE,
     payload: data

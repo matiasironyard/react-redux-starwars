@@ -3,10 +3,6 @@ body {
   font-family: Raleway;
 }
 
-.row {
-  margin-top: 20px;
-}
-
 .navbar {
   height: 50px;
   border-radius: 0;
@@ -44,7 +40,6 @@ body {
 .app-body {
   background-color: #ffffff;
   padding: 10px;
-
 }
 
 .explorer {
@@ -127,15 +122,26 @@ body {
   //font-size: 1.5em;
 }
 
-.card {
-  margin-top: 20px;
-  padding: 20px;
-  box-shadow: -1px 4px 5px #9E9E9E;
+.fa-info-circle{
+  //font-size: 1.5em;
 }
 
-.filter-col{
+.main-card{
+  box-shadow: 0px 2px 3px #717171;
+}
+
+.card {
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+
+.dl-horizontal{
+  padding-top: 20px;
+}
+
+.filter-col {
   background-color: rgb(211, 211, 211);
-box-shadow: 1px 1px 2px 0px rgb(128, 128, 128);
+  box-shadow: 1px 1px 2px 0px rgb(128, 128, 128);
 }
 
 .tiles {

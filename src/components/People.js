@@ -11,7 +11,11 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  UncontrolledButtonDropdown
+  UncontrolledButtonDropdown,
+  Button,
+  Collapse,
+  Card,
+  CardBlock
 } from 'reactstrap';
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -21,11 +25,13 @@ COMPONENT
 class PeopleList extends Component {
   constructor(props) {
     super(props)
-    this.handleNav = this.handleNav.bind(this);
     this.state = {
-      nav: 'https://swapi.co/api/people/'
+      nav: 'https://swapi.co/api/people/',
+      collapse: false
     }
     this.toggle = this.toggle.bind(this);
+    this.toggleDetails = this.toggleDetails.bind(this);
+    this.handleNav = this.handleNav.bind(this);
   }
 
   componentDidMount() {
@@ -34,6 +40,12 @@ class PeopleList extends Component {
   toggle() {
     this.setState({
       dropdownOpen: !this.state.dropdownOpen
+    });
+  }
+  toggleDetails() {
+
+    this.setState({
+      collapse: !this.state.collapse
     });
   }
 
@@ -58,7 +70,9 @@ class PeopleList extends Component {
       let peopleEndpoint = peopleUrl.substr(peopleUrl.indexOf("/api/people") + 5);
       let homeworldUrl = people.homeworld;
       let homeworldEndpoint = homeworldUrl.substr(homeworldUrl.indexOf("/api/planets") + 5);
+      let collapseTarget = peopleUrl.slice(-2, -1);
 
+      //STARSHIPS<<<<<<<<<<<<<<<<<<<<
       let starshipsList = people.starships.map((starships) => {
         //let starshipsEndpoint = starships.substr(starships.indexOf("/api/") + 5);
         let starshipsEndpoint = starships.slice(-13, -1);
@@ -70,6 +84,7 @@ class PeopleList extends Component {
         </PaginationItem>
       })
 
+      //FILMS<<<<<<<<<<<<<<<<<<<<<<
       let filmList = people.films.map((films) => {
         //let filmsEndpoint = films.substr(films.indexOf("/api/") + 5);
         let filmsEndpoint = films.slice(-2, -1)
@@ -107,47 +122,72 @@ class PeopleList extends Component {
         </PaginationItem>
       })
 
-
       return (
-        <div key={people.name} className="col-10 offset-1 card">
+        <div key={people.name} className="col card main-card">
           {/*>>>>>>>>>>>>>>>>>>>>>>>>>>>
             FILTER NAV
             <<<<<<<<<<<<<<<<<<<<<<<<<<<<*/}
-          <div className="col-12 filter-col">
-            <UncontrolledButtonDropdown className="pull-right">
-              <DropdownToggle caret>
-                <i className="fa fa-filter" aria-hidden="true"></i>
-              </DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem onClick={() => filter(people.homeworld, 'homeworld')}>
-                  <i className="fa fa-globe" aria-hidden="true"></i>
-                </DropdownItem>
-                <DropdownItem onClick={() => filterFilms(filmList, 'film')}>
-                  <i className="fa fa-film" aria-hidden="true"></i>
-                </DropdownItem>
-                <DropdownItem onClick={() => filterStarships(starshipsList, 'starship')}>
-                  <i className="fa fa-space-shuttle" aria-hidden="true"></i>
-                </DropdownItem>
-                <DropdownItem onClick={() => reset('all')}>
-                  <i className="fa fa-refresh" aria-hidden="true"></i>
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledButtonDropdown>
+          <div className="row card-header">
+            <div className="col-12">
+              <UncontrolledButtonDropdown className="pull-right">
+                <DropdownToggle caret>
+                  <i className="fa fa-filter" aria-hidden="true"></i>
+                </DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem onClick={() => filter(people.homeworld, 'homeworld')}>
+                    <i className="fa fa-globe" aria-hidden="true"></i>
+                  </DropdownItem>
+                  <DropdownItem onClick={() => filterFilms(filmList, 'film')}>
+                    <i className="fa fa-film" aria-hidden="true"></i>
+                  </DropdownItem>
+                  <DropdownItem onClick={() => filterStarships(starshipsList, 'starship')}>
+                    <i className="fa fa-space-shuttle" aria-hidden="true"></i>
+                  </DropdownItem>
+                  <DropdownItem onClick={() => reset('all')}>
+                    <i className="fa fa-refresh" aria-hidden="true"></i>
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledButtonDropdown>
+            </div>
           </div>
 
-          <div className="row">
-            <div className="profile-left col-sm-4">
-              <h2 className="headings">
-                {people.name}
-              </h2>
-              <ImageSearch name={people.name}/>
+          <div className="row card-block">
+            <div className="profile-left col-3">
+              <div className="card card-inverse">
+                <ImageSearch className="card-img" name={people.name}/>
+                <div className="card-img-overlay">
+                  <h3 className="card-title">{people.name}</h3>
+                </div>
+              </div>
             </div>
 
-            <div className="profile-right col-sm-8">
+            <div className="profile-right col-sm-8 card">
               <div className="profile">
-                <h4 className="sub-headings col-lg-12">Profile</h4>
-                <hr/>
+                <div className="row">
+                <div className="col-lg-12 card-header">
+                  <h3>
+                    Profile
+                    <a href="">
+                      <i className="pull-right fa fa-info-circle"  data-toggle="collapse" data-target={"#" + collapseTarget} aria-expanded="false" aria-hidden="false" aria-controls="collapseExample">
+                      </i>
+                    </a>
+                  </h3>
+                </div>
+                </div>
                 <dl className="dl-horizontal">
+                  <dt className="dt">Starships Endpoints</dt>
+                  <dd className="dd">
+                    <Pagination className="endpoints">
+                      {starshipsList}
+                    </Pagination>
+                  </dd>
+                  <dt className="dt">Film Endpoints</dt>
+                  <dd className="dd">
+                    <Pagination className="endpoints">
+                      {filmList}
+                    </Pagination>
+                  </dd>
+
                   <dt className="dt">
                     API Endpoint
                   </dt>
@@ -158,23 +198,43 @@ class PeopleList extends Component {
                   <dd className="dd">
                     {homeworldEndpoint}
                   </dd>
-                  <dt className="dt">Starships</dt>
+                  {/*
+                <dt className="dt">Details</dt>
+                <dd className="dd">
+                  <Link to={`/details/${ "endpoint"}/${peopleEndpoint}${people.name}`}>
+                    <i className="fa fa-info-circle" aria-hidden="true"></i>
+                  </Link>
+                </dd>
+                */}
+                </dl>
+              </div>
+              <div className="collapse profile-right col-sm-8" id={collapseTarget}>
+                <dl className="dl-horizontal">
+                  <dt className="dt">
+                    Birth Year
+                  </dt>
                   <dd className="dd">
-                    <Pagination className="endpoints">
-                      {starshipsList}
-                    </Pagination>
+                    {people.birth_year}
                   </dd>
-                  <dt className="dt">Films</dt>
+                  <dt className="dt">Gender</dt>
                   <dd className="dd">
-                    <Pagination className="endpoints">
-                      {filmList}
-                    </Pagination>
+                    {people.gender}
                   </dd>
-                  <dt className="dt">Details</dt>
+                  <dt className="dt">Height</dt>
                   <dd className="dd">
-                    <Link to={`/details/${ "endpoint"}/${peopleEndpoint}${people.name}`}>
-                      <i className="fa fa-info-circle" aria-hidden="true"></i>
-                    </Link>
+                    {people.height}
+                  </dd>
+                  <dt className="dt">Eye Color</dt>
+                  <dd className="dd">
+                    {people.eye_color}
+                  </dd>
+                  <dt className="dt">Hair Color</dt>
+                  <dd className="dd">
+                    {people.hair_color}
+                  </dd>
+                  <dt className="dt">Skin Color</dt>
+                  <dd className="dd">
+                    {people.skin_color}
                   </dd>
                 </dl>
               </div>
@@ -186,7 +246,7 @@ class PeopleList extends Component {
     return (
       <div className="">
         {List}
-      </div>
+      </div >
     )
   }
 }
