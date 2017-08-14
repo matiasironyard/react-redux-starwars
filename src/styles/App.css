@@ -89,7 +89,8 @@ body {
 }
 
 .offset {
-  position: relative; //bottom: 150px;
+  position: relative;
+  bottom: 150px;
   box-shadow: rgba(0, 0, 0, 0.22) -2px 9px 5px 0px;
 }
 
@@ -131,12 +132,15 @@ body {
 }
 
 .card {
-  margin-top: 20px;
-  padding-bottom: 20px;
+  margin: 2px;
 }
 
 .dl-horizontal{
   padding-top: 20px;
+}
+.dd{
+  overflow: auto;
+white-space: nowrap;
 }
 
 .filter-col {

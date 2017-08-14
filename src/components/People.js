@@ -5,6 +5,12 @@ import React, {Component} from 'react';
 import ImageSearch from '../components/Imagesearch';
 import {Link} from 'react-router-dom';
 import {
+  Nav,
+  NavItems,
+  NavDropdown,
+  NavLink,
+  NavItem,
+  UncontrolledNavDropdown,
   Pagination,
   PaginationItem,
   PaginationLink,
@@ -77,11 +83,9 @@ class PeopleList extends Component {
         //let starshipsEndpoint = starships.substr(starships.indexOf("/api/") + 5);
         let starshipsEndpoint = starships.slice(-13, -1);
         let index = starships.slice(-3, -1);
-        return <PaginationItem key={starships}>
-          <PaginationLink tag={Link} to={`/details/${ "endpoint"}/${starshipsEndpoint}`}>
-            <span onClick={() => this.props.fetchDetails(starships)}>{index}</span>
-          </PaginationLink>
-        </PaginationItem>
+        return <DropdownItem key={starships} tag={Link} to={`/details/${ "endpoint"}/${starshipsEndpoint}`}>
+            <a onClick={() => this.props.fetchDetails(starships)}>{index}</a>
+        </DropdownItem>
       })
 
       //FILMS<<<<<<<<<<<<<<<<<<<<<<
@@ -115,22 +119,44 @@ class PeopleList extends Component {
             title = "Star Wars";
         }
 
-        return <PaginationItem key={films}>
-          <PaginationLink tag={Link} to={`/film-endpoint/${ "films"}/${filmsEndpoint}/${title}`}>
+        return <DropdownItem key={films} tag={Link}  to={`/film-endpoint/${ "films"}/${filmsEndpoint}/${title}`}>
             <span onClick={() => this.props.fetchDetails(films)}>{filmsEndpoint}</span>
-          </PaginationLink>
-        </PaginationItem>
+        </DropdownItem >
       })
 
       return (
-        <div key={people.name} className="col card main-card">
+        <div key={people.name} className="col-sm-5 col-xs-12 card main-card">
           {/*>>>>>>>>>>>>>>>>>>>>>>>>>>>
             FILTER NAV
             <<<<<<<<<<<<<<<<<<<<<<<<<<<<*/}
           <div className="row card-header">
-            <div className="col-12">
-              <UncontrolledButtonDropdown className="pull-right">
-                <DropdownToggle caret>
+            <Nav tabs>
+              <NavItem>
+                <a>Endpoints</a>
+              </NavItem>
+              <UncontrolledNavDropdown>
+                <DropdownToggle nav caret>
+                  <i className="fa fa-film" aria-hidden="true"></i>
+                </DropdownToggle>
+                <DropdownMenu>
+                  {filmList}
+                </DropdownMenu>
+              </UncontrolledNavDropdown>
+
+              <UncontrolledNavDropdown>
+                <DropdownToggle nav caret>
+                  <i className="fa fa-space-shuttle" aria-hidden="true"></i>
+                </DropdownToggle>
+                <DropdownMenu>
+                  {starshipsList}
+                </DropdownMenu>
+              </UncontrolledNavDropdown>
+
+              <NavItem>
+                <a>Filter</a>
+              </NavItem>
+              <UncontrolledNavDropdown>
+                <DropdownToggle nav caret>
                   <i className="fa fa-filter" aria-hidden="true"></i>
                 </DropdownToggle>
                 <DropdownMenu>
@@ -147,12 +173,14 @@ class PeopleList extends Component {
                     <i className="fa fa-refresh" aria-hidden="true"></i>
                   </DropdownItem>
                 </DropdownMenu>
-              </UncontrolledButtonDropdown>
-            </div>
+              </UncontrolledNavDropdown>
+
+            </Nav>
           </div>
 
           <div className="row card-block">
-            <div className="profile-left col-3">
+
+            <div className="profile col-12">
               <div className="card card-inverse">
                 <ImageSearch className="card-img" name={people.name}/>
                 <div className="card-img-overlay">
@@ -161,33 +189,20 @@ class PeopleList extends Component {
               </div>
             </div>
 
-            <div className="profile-right col-sm-8 card">
-              <div className="profile">
+            <div className="profile col-12">
+              <div className="profile col-12">
                 <div className="row">
-                <div className="col-lg-12 card-header">
-                  <h3>
-                    Profile
-                    <a href="">
-                      <i className="pull-right fa fa-info-circle"  data-toggle="collapse" data-target={"#" + collapseTarget} aria-expanded="false" aria-hidden="false" aria-controls="collapseExample">
-                      </i>
-                    </a>
-                  </h3>
+                  <div className="col card-header">
+                    <h3>
+                      Profile
+                      <a href="">
+                        <i className="pull-right fa fa-info-circle" data-toggle="collapse" data-target={"#" + collapseTarget} aria-expanded="false" aria-hidden="false" aria-controls="collapseExample"></i>
+                      </a>
+                    </h3>
+                  </div>
                 </div>
-                </div>
-                <dl className="dl-horizontal">
-                  <dt className="dt">Starships Endpoints</dt>
-                  <dd className="dd">
-                    <Pagination className="endpoints">
-                      {starshipsList}
-                    </Pagination>
-                  </dd>
-                  <dt className="dt">Film Endpoints</dt>
-                  <dd className="dd">
-                    <Pagination className="endpoints">
-                      {filmList}
-                    </Pagination>
-                  </dd>
 
+                <dl className="dl-horizontal">
                   <dt className="dt">
                     API Endpoint
                   </dt>
@@ -198,18 +213,11 @@ class PeopleList extends Component {
                   <dd className="dd">
                     {homeworldEndpoint}
                   </dd>
-                  {/*
-                <dt className="dt">Details</dt>
-                <dd className="dd">
-                  <Link to={`/details/${ "endpoint"}/${peopleEndpoint}${people.name}`}>
-                    <i className="fa fa-info-circle" aria-hidden="true"></i>
-                  </Link>
-                </dd>
-                */}
                 </dl>
               </div>
-              <div className="collapse profile-right col-sm-8" id={collapseTarget}>
-                <dl className="dl-horizontal">
+
+              <div className="collapse row" id={collapseTarget}>
+                <dl className="dl-horizontal col">
                   <dt className="dt">
                     Birth Year
                   </dt>
@@ -244,7 +252,7 @@ class PeopleList extends Component {
       )
     })
     return (
-      <div className="">
+      <div className="col offset-lg-1 offset-md-1">
         {List}
       </div >
     )
