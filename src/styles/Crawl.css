@@ -9,7 +9,7 @@ https://css-tricks.com/snippets/css/star-wars-crawl-text/
   /* This is a magic number based on the context in which this snippet is used and effects the perspective */
   height: 100%;
   /* This sets allows us to transform the text on a 3D plane, and is somewhat a magic number */
-  perspective: 400px;
+  perspective: 800px;
   /* The rest is totally up to personal styling preferences */
   color: #feda4a;
   font-family: 'Pathway Gothic One', sans-serif;

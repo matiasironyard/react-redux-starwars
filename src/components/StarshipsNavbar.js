@@ -14,8 +14,7 @@ class NavBar extends Component {
     this.state = {
       page: 1,
       previousDisabled: "disabled",
-      nextDisabled: "",
-
+      nextDisabled: ""
     }
     this.handlePrevious = this.handlePrevious.bind(this);
     this.handleNext = this.handleNext.bind(this);
@@ -26,29 +25,22 @@ class NavBar extends Component {
     if (this.state.page <= 2) {
       this.setState({
         page: this.state.page = 1,
-        previousDisabled: "disabled",
+        previousDisabled: "disabled"
       })
     } else {
       this.props.fetchStarships(this.props.previous)
       this.setState({
-        page: this.state.page - 1,
+        page: this.state.page - 1
       })
     }
   }
   handleNext = (e) => {
-    console.log('hi')
-    if (this.props.next == null && this.props.previous !=null) {
-      this.setState({
-        page: this.state.page,
-        previousDisabled: "",
-        nextDisabled: "disabled"
-      })
+    if (this.props.next == null && this.props.previous != null) {
+      this.setState({page: this.state.page, previousDisabled: "", nextDisabled: "disabled"})
     } else if (this.props.next == null) {
-      this.setState({
-        nextDisabled: ""
-      })
+      this.setState({nextDisabled: ""})
     } else {
-       this.props.fetchStarships(this.props.next)
+      this.props.fetchStarships(this.props.next)
       this.setState({
         page: this.state.page + 1,
         nextDisabled: "",
@@ -56,23 +48,17 @@ class NavBar extends Component {
       })
     }
   }
-  handleHome = (e)=>{
-    console.log('what')
-    this.setState({
-      page: 1,
-      previousDisabled: "hide",
-      nextHiding: "show",
-    })
+  handleHome = (e) => {
+    this.setState({page: 1, previousDisabled: "hide", nextHiding: "show"})
   }
 
   render() {
     let reset = this.props.stateReset;
-    console.log('props', this.props)
 
     return (
       <div className="apiNav col-10 offset-1">
         <Pagination className="pull-right">
-          <PaginationItem className= {this.state.previousDisabled}>
+          <PaginationItem className={this.state.previousDisabled}>
             <PaginationLink previous onClick={() => this.handlePrevious()}/>
           </PaginationItem>
           <PaginationItem>
@@ -84,8 +70,8 @@ class NavBar extends Component {
             <PaginationLink onClick={() => this.props.fetchStarships(this.props.home) + this.handleHome() + reset('all')}>Home
             </PaginationLink>
           </PaginationItem>
-          <PaginationItem  className={this.state.nextDisabled} >
-            <PaginationLink next onClick={() =>  this.handleNext()}/>
+          <PaginationItem className={this.state.nextDisabled}>
+            <PaginationLink next onClick={() => this.handleNext()}/>
           </PaginationItem>
         </Pagination>
       </div>

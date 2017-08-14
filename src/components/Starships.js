@@ -1,40 +1,21 @@
 import React, {Component} from 'react';
 import ImageSearch from '../components/Imagesearch';
 import {Link} from 'react-router-dom';
-import {
-  Nav,
-  NavItems,
-  NavDropdown,
-  NavLink,
-  NavItem,
-  UncontrolledNavDropdown,
-  Pagination,
-  PaginationItem,
-  PaginationLink,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledButtonDropdown,
-  Button,
-  Collapse,
-  Card,
-  CardBlock
-} from 'reactstrap';
+import {Nav, UncontrolledNavDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 
 class StarshipsList extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       nav: 'https://swapi.co/api/starships/'
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.fetchStarships(this.state.nav)
   }
 
   render() {
-    console.log('>>>', this.props)
     let filterFilms = this.props.filterFilms;
     let filterPilots = this.props.filterPilots;
     let reset = this.props.stateReset;
@@ -46,8 +27,8 @@ class StarshipsList extends Component {
       let api = url.substr(url.indexOf("/api/") + 5);
       //let count = data.indexOf(starships) + 1;
       let filmList = starships.films.map((films) => {
-        let filmApi = films.substr(films.indexOf("/api/") + 7);
-        let filmsEndpoint = films.slice(-2,-1);
+        let filmsEndpoint = films.slice(-2, -1);
+        let index = films.split('/').slice(-2)[0];
         let title;
         switch (filmsEndpoint) {
           case "1":
@@ -75,20 +56,19 @@ class StarshipsList extends Component {
             title = "Star Wars";
         }
         return <DropdownItem key={films} tag={Link} to={`/film-endpoint/${ "films"}/${filmsEndpoint}/${title}`}>
-            <span onClick={() => this.props.fetchDetails(films)}>{filmsEndpoint}</span>
+          <span onClick={() => this.props.fetchDetails(films)}>{index}</span>
         </DropdownItem>
       })
-      let pilotList = starships.pilots.map((pilot)=>{
-          let pilotApi = pilot.substring(pilot.indexOf("/api/") + 5);
-          let pilotEndpoint = pilot.slice(-2,-1);
-          return <DropdownItem key={pilot} tag={Link} to={`/details/${ "endpoint"}/${pilotApi}`}>
-              <span onClick={() => this.props.fetchDetails(pilot)}>{pilotEndpoint}</span>
-          </DropdownItem>
-        })
-
+      let pilotList = starships.pilots.map((pilot) => {
+        let pilotApi = pilot.substring(pilot.indexOf("/api/") + 5);
+        let index = pilot.split('/').slice(-2)[0];
+        return <DropdownItem key={pilot} tag={Link} to={`/details/${ "endpoint"}/${pilotApi}`}>
+          <span onClick={() => this.props.fetchDetails(pilot)}>{index}</span>
+        </DropdownItem>
+      })
 
       return (
-        <div key={starships.name} className="col-sm-5 col-xs-12 card main-card">
+        <div key={starships.name} className="col-sm-5 col-xs-12 main-card">
           <div className="row card-header">
             <Nav tabs>
               <UncontrolledNavDropdown>
@@ -125,7 +105,6 @@ class StarshipsList extends Component {
               </UncontrolledNavDropdown>
             </Nav>
           </div>
-
 
           <div className="profile col-12">
             <div className="card card-inverse">
@@ -220,7 +199,7 @@ class StarshipsList extends Component {
       )
     })
     return (
-      <div>
+      <div className="row justify-content-center">
         {List}
       </div>
     )

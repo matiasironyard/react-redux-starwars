@@ -6,33 +6,24 @@ import Axios from 'axios';
 
 import placeholder from '../images/icon2.png'; // Tell Webpack this JS file uses this image
 
-
-
-
-
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 COMPONENT
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
-
-
 class ImageSearch extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       img: placeholder
     }
   }
 
-  componentDidMount(){
-  }
-
+  componentDidMount() {}
 
   render() {
-
     return (
       <div>
-        <img src={this.state.img}  alt="..."/>
+        <img src={this.state.img} alt="..."/>
       </div>
     )
   }

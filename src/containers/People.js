@@ -45,7 +45,6 @@ class People extends Component {
 
 // Here we map component's state <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 function mapStateToProps(state) {
-  console.log('p c', state)
   // What is returned will show up as PROPS inside of the PeopleList component.
   // Inside of this function we generally return an object.
   let data;
@@ -78,9 +77,7 @@ function mapStateToProps(state) {
   } else {
     data = state.data.PeopleData;
   }
-  return {people: data,
-    next: state.data.next,
-    previous: state.data.previous};
+  return {people: data, next: state.data.next, previous: state.data.previous};
 }
 
 // Here we map component's action <<<<<<<<<<<<<<<<<<<<<<<<<<

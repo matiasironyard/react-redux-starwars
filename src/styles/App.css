@@ -1,6 +1,11 @@
 body {
   background-color: #3F3D34;
   font-family: Raleway;
+  font-size: 14px;
+}
+
+.top-margin {
+  margin-top: 15px;
 }
 
 .navbar {
@@ -45,6 +50,11 @@ body {
 .explorer {
   margin-top: -15px;
   height: 100%;
+  background: #000;
+  overflow: hidden;
+}
+
+.films-explorer {
   background: #000;
   overflow: hidden;
 }
@@ -123,24 +133,27 @@ body {
   //font-size: 1.5em;
 }
 
-.fa-info-circle{
+.fa-info-circle {
   //font-size: 1.5em;
 }
 
-.main-card{
+.main-card {
   box-shadow: 0px 2px 3px #717171;
+  margin: 5px;
+  padding-top: 5px;
 }
 
 .card {
   margin: 2px;
 }
 
-.profile-details{
+.profile-details {
   padding-top: 20px;
 }
-.dd{
+
+.dd {
   overflow: auto;
-white-space: nowrap;
+  white-space: nowrap;
 }
 
 .filter-col {

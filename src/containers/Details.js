@@ -2,13 +2,21 @@
 REACT IMPORTS
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 import React, {Component} from 'react';
-
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink
+} from 'reactstrap';
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 REDUX IMPORTS
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 import {connect} from 'react-redux';
-import {fetchDetails,  fetchReviews} from '../actions/index';
+import {fetchDetails, fetchReviews} from '../actions/index';
 import {bindActionCreators} from 'redux';
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -29,31 +37,16 @@ class Details extends Component {
     return this.props.history.goBack();
   };
 
-
   render() {
     return (
-      <div className="row">
-        <div className="app-body  col-l10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-11">
-          <div className="col-sm-12 col-md-12 col-lg-12">
-            <h1 className="headings">
-              {this.props.details.model || this.props.details.name || this.props.details.title}
-            </h1>
-          </div>
-          <View
-            details={this.props.details}
-            reviews={this.props.reviews}
-            fetchDetails={this.props.fetchDetails}
-            fetchReviews={this.props.fetchReviews}
-            id={this.props.match.params.id}
-            index={this.props.match.params.index}
-            title={this.props.match.params.title}/>
-          <div className="col-sm-12 col-md-12 col-lg-12">
-            <button
-              className="btn btn-primary pull-right"
-              onClick={this.handleBack}>
-              <i className="fa fa-chevron-circle-left" aria-hidden="true"></i>
-            </button>
-          </div>
+      <div className="row justify-content-center">
+        <Nav className="col-10 apiNav pull-right">
+          <NavLink onClick={this.handleBack}>
+            <i className="fa fa-chevron-circle-left" aria-hidden="true"></i>
+          </NavLink>
+        </Nav>
+        <div className="app-body  col-10">
+          <View details={this.props.details} reviews={this.props.reviews} fetchDetails={this.props.fetchDetails} fetchReviews={this.props.fetchReviews} id={this.props.match.params.id} index={this.props.match.params.index} title={this.props.match.params.title} back={this.handleBack}/>
         </div>
       </div>
     );
@@ -64,13 +57,7 @@ class Details extends Component {
 function mapStateToProps(state) {
   // What is returned will show up as PROPS inside of the PeopleList component.
   // Inside of this function we generally return an object.
-  return {
-    people: state.people,
-    films: state.films,
-    starships: state.starships,
-    details: state.details,
-    reviews: state.reviews
-  };
+  return {people: state.people, films: state.films, starships: state.starships, details: state.details, reviews: state.reviews};
 }
 
 // Here we map component's action <<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -80,7 +67,7 @@ function mapDispatchToProps(dispatch) {
   // In our return we are binding our action creators to the dispatch function that works behind the scenes for us.
   return bindActionCreators({
     fetchDetails: fetchDetails,
-    fetchReviews: fetchReviews,
+    fetchReviews: fetchReviews
   }, dispatch)
 }
 

@@ -4,25 +4,7 @@ REACT IMPORTS
 import React, {Component} from 'react';
 import ImageSearch from '../components/Imagesearch';
 import {Link} from 'react-router-dom';
-import {
-  Nav,
-  NavItems,
-  NavDropdown,
-  NavLink,
-  NavItem,
-  UncontrolledNavDropdown,
-  Pagination,
-  PaginationItem,
-  PaginationLink,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledButtonDropdown,
-  Button,
-  Collapse,
-  Card,
-  CardBlock
-} from 'reactstrap';
+import {Nav, UncontrolledNavDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 COMPONENT
@@ -80,11 +62,11 @@ class PeopleList extends Component {
 
       //STARSHIPS<<<<<<<<<<<<<<<<<<<<
       let starshipsList = people.starships.map((starships) => {
-        //let starshipsEndpoint = starships.substr(starships.indexOf("/api/") + 5);
-        let starshipsEndpoint = starships.slice(-13, -1);
-        let index = starships.slice(-3, -1);
+        let starshipsEndpoint = starships.substr(starships.indexOf("/api/") + 5);
+        //let starshipsEndpoint = starships.slice(-13, -1);
+        let index = starships.split('/').slice(-2)[0];
         return <DropdownItem key={starships} tag={Link} to={`/details/${ "endpoint"}/${starshipsEndpoint}`}>
-          <a onClick={() => this.props.fetchDetails(starships)}>{index}</a>
+          <span onClick={() => this.props.fetchDetails(starships)}>{index}</span>
         </DropdownItem>
       })
 
@@ -92,6 +74,7 @@ class PeopleList extends Component {
       let filmList = people.films.map((films) => {
         //let filmsEndpoint = films.substr(films.indexOf("/api/") + 5);
         let filmsEndpoint = films.slice(-2, -1)
+        let index = films.split('/').slice(-2)[0];
         let title;
         switch (filmsEndpoint) {
           case "1":
@@ -120,12 +103,12 @@ class PeopleList extends Component {
         }
 
         return <DropdownItem key={films} tag={Link} to={`/film-endpoint/${ "films"}/${filmsEndpoint}/${title}`}>
-          <span onClick={() => this.props.fetchDetails(films)}>{filmsEndpoint}</span>
+          <span onClick={() => this.props.fetchDetails(films)}>{index}</span>
         </DropdownItem >
       })
 
       return (
-        <div key={people.name} className="col-sm-5 col-xs-12 card main-card">
+        <div key={people.name} className="col-sm-5 col-xs-12 main-card">
           {/*>>>>>>>>>>>>>>>>>>>>>>>>>>>
             FILTER NAV
             <<<<<<<<<<<<<<<<<<<<<<<<<<<<*/}
@@ -251,7 +234,7 @@ class PeopleList extends Component {
       )
     })
     return (
-      <div className="col offset-lg-1 offset-md-1">
+      <div className="row justify-content-center">
         {List}
       </div >
     )

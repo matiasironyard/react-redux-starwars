@@ -7,10 +7,7 @@ import React, {Component} from 'react';
 REDUX IMPORTS
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 import {connect} from 'react-redux';
-import {
-  fetchFilms,
-  fetchReviews,
-} from '../actions/index';
+import {fetchFilms, fetchReviews, fetchDetails} from '../actions/index';
 // Import bindActionCreators
 import {bindActionCreators} from 'redux';
 
@@ -21,23 +18,16 @@ import FilmsList from '../components/Films';
 
 class Films extends Component {
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.fetchFilms('https://swapi.co/api/films/')
   }
 
   render() {
+    console.log('w', this.props)
     return (
       <div className="row">
         <div className="app-body col-10 offset-1">
-          <FilmsList
-            fetchPeople={this.props.fetchPeople}
-            films={this.props.films}
-            filmDirector={this.props.filmDirector}
-            setDetails={this.props.setDetails}
-            endpoint={this.props.match.params.endpoint}
-            fetchFilms={this.props.fetchFilms}
-            fetchReviews={this.props.fetchReviews}
-            fetchDetails={this.props.fetchDetails}/>
+          <FilmsList fetchPeople={this.props.fetchPeople} films={this.props.films} filmDirector={this.props.filmDirector} setDetails={this.props.setDetails} endpoint={this.props.match.params.endpoint} fetchFilms={this.props.fetchFilms} fetchReviews={this.props.fetchReviews} reviews={this.props.reviews} fetchDetails={this.props.fetchDetails}/>
         </div>
       </div>
     );
@@ -48,7 +38,7 @@ class Films extends Component {
 function mapStateToProps(state) {
   // What is returned will show up as PROPS inside of the PeopleList component.
   // Inside of this function we generally return an object.
-  return {films: state.data.FilmsData};
+  return {films: state.data.FilmsData, reviews: state.reviews};
 }
 
 // Here we map component's action <<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -59,6 +49,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     fetchFilms: fetchFilms,
     fetchReviews: fetchReviews,
+    fetchDetails: fetchDetails
   }, dispatch)
 }
 
