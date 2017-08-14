@@ -4,7 +4,6 @@ REACT IMPORTS
 import React, {Component} from 'react';
 import Axios from 'axios';
 
-
 import placeholder from '../images/icon2.png'; // Tell Webpack this JS file uses this image
 
 
