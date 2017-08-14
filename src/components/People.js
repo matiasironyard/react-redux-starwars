@@ -108,7 +108,7 @@ class PeopleList extends Component {
       })
 
       return (
-        <div key={people.name} className="col-sm-5 col-xs-12 main-card">
+        <div key={people.name} className="col-lg-5 col-md-5 col-sm-12 col-xs-12 main-card">
           {/*>>>>>>>>>>>>>>>>>>>>>>>>>>>
             FILTER NAV
             <<<<<<<<<<<<<<<<<<<<<<<<<<<<*/}
@@ -154,9 +154,9 @@ class PeopleList extends Component {
             </Nav>
           </div>
 
-          <div className="row card-block">
+          <div className="row">
 
-            <div className="profile col-12">
+            <div className="profile col-fluid">
               <div className="card card-inverse">
                 <ImageSearch className="card-img" name={people.name}/>
                 <div className="card-img-overlay">
@@ -165,8 +165,8 @@ class PeopleList extends Component {
               </div>
             </div>
 
-            <div className="profile-container col-12">
-              <div className="profile-header col-12">
+            <div className="profile-container col">
+              <div className="profile-header">
                 <div className="row">
                   <div className="col card-header">
                     <h3>

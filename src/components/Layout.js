@@ -31,8 +31,7 @@ export default class BaseLayout extends Component {
 
     return (
       <div className="app">
-        <div className="row">
-          <div className="col">
+
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark mainNav">
               <NavLink className="navbar-brand" tag={Link} to="/">SWAPI EXPLORER</NavLink>
               <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,17 +52,20 @@ export default class BaseLayout extends Component {
               </div>
             </nav>
 
-          </div>
-        </div>
+
 
 
 
         <div className="container-fluid">
-          {this.props.children}
+          <div className="row justify-content-center">
+            <div className="app-body col-10">
+              {this.props.children}
+            </div>
+          </div>
         </div>
 
         <footer className="container-fluid">
-          <div className="row">
+          <div className="row justify-content-center">
             <div className="col">
               <span>
                 SWAPI EXPLORER | REACT | REDUX

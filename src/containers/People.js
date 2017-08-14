@@ -32,12 +32,9 @@ class People extends Component {
   render() {
 
     return (
-      <div className="row justify-content-center">
-        <NavBar next={this.props.next} previous={this.props.previous} home={'https://swapi.co/api/people/?page=1'} fetchPeople={this.props.fetchPeople} stateReset={this.props.stateReset}/>
-        <div className="app-body col-10 offset-1">
-          {/*State is now available via props thanks to Redux! <<<<<<<<<<<<<<<<*/}
-          <PeopleList people={this.props.people} filter={this.props.filterWorlds} stateReset={this.props.stateReset} filterFilms={this.props.filterFilms} filterStarships={this.props.filterStarships} setDetails={this.props.setDetails} fetchPeople={this.props.fetchPeople} fetchDetails={this.props.fetchDetails} next={this.props.next} previous={this.props.previous}/>
-        </div>
+      <div className="col-fluid">
+        <NavBar next={this.props.next} previous={this.props.previous} home={'https://swapi.co/api/people/?page=1'} fetchPeople={this.props.fetchPeople} stateReset={this.props.stateReset}/> {/*State is now available via props thanks to Redux! <<<<<<<<<<<<<<<<*/}
+        <PeopleList people={this.props.people} filter={this.props.filterWorlds} stateReset={this.props.stateReset} filterFilms={this.props.filterFilms} filterStarships={this.props.filterStarships} setDetails={this.props.setDetails} fetchPeople={this.props.fetchPeople} fetchDetails={this.props.fetchDetails} next={this.props.next} previous={this.props.previous}/>
       </div>
     );
   }

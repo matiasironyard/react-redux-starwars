@@ -56,7 +56,8 @@ class NavBar extends Component {
     let reset = this.props.stateReset;
 
     return (
-      <div className="apiNav col-10 offset-1">
+      <div className="apiNav row">
+      <div className="col">
         <Pagination className="pull-right">
           <PaginationItem className={this.state.previousDisabled}>
             <PaginationLink previous onClick={() => this.handlePrevious()}/>
@@ -74,6 +75,7 @@ class NavBar extends Component {
             <PaginationLink next onClick={() => this.handleNext()}/>
           </PaginationItem>
         </Pagination>
+      </div>
       </div>
     )
   }
