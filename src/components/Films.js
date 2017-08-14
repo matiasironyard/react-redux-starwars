@@ -44,7 +44,7 @@ class FilmsList extends Component {
       let starshipsList = films.starships.map((starships) => {
         let starshipsEndpoint = starships.substr(starships.indexOf("/api/") + 5);
         let index = starships.split('/').slice(-2)[0];
-        return <DropdownItem className="list-group-item" key={starships} tag={Link} to={`/details/${ "endpoint"}/${starshipsEndpoint}`}>
+        return <DropdownItem key={starships} tag={Link} to={`/details/${ "endpoint"}/${starshipsEndpoint}`}>
           <span onClick={() => this.props.fetchDetails(starships)}>{index}</span>
         </DropdownItem>
       })
