@@ -30,10 +30,10 @@ COMPONENT
 class People extends Component {
 
   render() {
-    return (
 
+    return (
       <div className="row">
-        <NavBar next={this.props.next} previous={this.props.previous} home={'https://swapi.co/api/people/?page=1'} fetchPeople={this.props.fetchPeople}/>
+        <NavBar next={this.props.next} previous={this.props.previous} home={'https://swapi.co/api/people/?page=1'} fetchPeople={this.props.fetchPeople} stateReset={this.props.stateReset}/>
         <div className="app-body col-10 offset-1">
           {/*State is now available via props thanks to Redux! <<<<<<<<<<<<<<<<*/}
           <PeopleList people={this.props.people} filter={this.props.filterWorlds} stateReset={this.props.stateReset} filterFilms={this.props.filterFilms} filterStarships={this.props.filterStarships} setDetails={this.props.setDetails} fetchPeople={this.props.fetchPeople} fetchDetails={this.props.fetchDetails} next={this.props.next} previous={this.props.previous}/>
@@ -45,6 +45,7 @@ class People extends Component {
 
 // Here we map component's state <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 function mapStateToProps(state) {
+  console.log('p c', state)
   // What is returned will show up as PROPS inside of the PeopleList component.
   // Inside of this function we generally return an object.
   let data;
@@ -77,7 +78,9 @@ function mapStateToProps(state) {
   } else {
     data = state.data.PeopleData;
   }
-  return {people: data, next: state.data.next, previous: state.data.previous};
+  return {people: data,
+    next: state.data.next,
+    previous: state.data.previous};
 }
 
 // Here we map component's action <<<<<<<<<<<<<<<<<<<<<<<<<<

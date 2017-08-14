@@ -29,7 +29,6 @@ export function fetchDetails(url) {
   return (dispatch) => {
     return Axios.get(url)
       .then(response => {
-        console.log('axios', response.data)
         dispatch(setDetails(response.data))
       })
       .catch(error => {
@@ -39,7 +38,6 @@ export function fetchDetails(url) {
 };
 
 export const fetchSwapiPeople = (data) => {
-  console.log('hi', data)
   return {
     type: ActionTypes.FETCH_SWAPI_PEOPLE,
     payload: data
@@ -50,6 +48,7 @@ export function fetchPeople(url) {
   return (dispatch) => {
     return Axios.get(url)
       .then(response => {
+        console.log('response', response)
         dispatch(fetchSwapiPeople(response.data))
 
       })
@@ -136,6 +135,16 @@ export const filterStarships = (endpoint, key) => {
   })
   return {
     type: ActionTypes.FILTER_STARSHIPS,
+    payload: {endpoint, key}
+  };
+};
+
+export const filterPilots = (endpoint, key) => {
+  endpoint.map((endpoint)=>{
+    return endpoint.key
+  })
+  return {
+    type: ActionTypes.FILTER_PILOTS,
     payload: {endpoint, key}
   };
 };

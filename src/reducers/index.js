@@ -51,6 +51,13 @@ export const getData = (state = initialState, action) => {
         }
       });
 
+      case ActionTypes.FILTER_PILOTS:
+        return update(state, {
+          filter: {
+            $set: action.payload
+          }
+        });
+
     case ActionTypes.RESET:
       return update(state, {
         filter: {

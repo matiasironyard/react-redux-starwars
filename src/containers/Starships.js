@@ -9,14 +9,19 @@ REDUX IMPORTS
 import {connect} from 'react-redux';
 import {
   fetchStarships,
-  fetchDetails
+  fetchDetails,
+  filterFilms,
+  filterPilots,
+  stateReset
 } from '../actions/index';
+
 import {bindActionCreators} from 'redux';
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 COMPONENT IMPORTS
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 import StarshipsList from '../components/Starships';
+import NavBar from '../components/StarshipsNavbar';
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 COMPONENT
@@ -24,19 +29,20 @@ COMPONENT
 
 class Starships extends Component {
 
-  componentDidMount(){
-    this.props.fetchStarships('https://swapi.co/api/starships/')
-  }
-
   render() {
+    console.log('s container', this.props)
     return (
       <div className="row">
+        <NavBar next={this.props.next} previous={this.props.previous} home={'https://swapi.co/api/starships/?page=1'} fetchStarships={this.props.fetchStarships} stateReset={this.props.stateReset}/>
         <div className="app-body col-10 offset-1">
           <StarshipsList
-            fetchPeople={this.props.fetchPeople}
+            fetchStarships={this.props.fetchStarships}
             starships={this.props.starships}
+            filterFilms={this.props.filterFilms}
+            stateReset={this.props.stateReset}
             starshipModel={this.props.starshipModel}
             setDetails={this.props.setDetails}
+            filterPilots={this.props.filterPilots}
             fetchDetails={this.props.fetchDetails}/>
         </div>
       </div>
@@ -46,10 +52,38 @@ class Starships extends Component {
 
 // Here we map component's state <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 function mapStateToProps(state) {
+  console.log('s c', state)
   // What is returned will show up as PROPS inside of the PeopleList component.
   // Inside of this function we generally return an object.
+  let data;
+  if(state.data.filter.key === "film"){
+    let endpoint = state.data.filter.endpoint;
+    let match = state.data.StarshipsData.filter((matchedFilms)=>{
+      let films = matchedFilms.films;
+      return films.filter((item)=>{
+        return item;
+      }).length === endpoint.length;
+    });
+    data = match;
+  } else if (state.data.filter.key === "pilot"){
+    let endpoint = state.data.filter.endpoint;
+    let match = state.data.StarshipsData.filter((matchedPilots)=>{
+      let pilots = matchedPilots.pilots;
+      return pilots.filter((item)=>{
+        return item;
+      }).length == endpoint.length
+    })
+    data = match;
+  } else if (state.data.filter.key === "all"){
+    data = state.data.StarshipsData;
+  } else {
+    data = state.data.StarshipsData;
+    console.log('data', data)
+  }
   return {
-    starships: state.data.StarshipsData,
+    starships: data,
+    next: state.data.next,
+    previous: state.data.previous
   };
 }
 
@@ -60,7 +94,10 @@ function mapDispatchToProps(dispatch) {
   // In our return we are binding our action creators to the dispatch function that works behind the scenes for us.
   return bindActionCreators({
     fetchStarships: fetchStarships,
+    filterFilms: filterFilms,
+    filterPilots: filterPilots,
     fetchDetails: fetchDetails,
+    stateReset: stateReset
   }, dispatch)
 }
 

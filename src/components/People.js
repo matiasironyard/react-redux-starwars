@@ -84,7 +84,7 @@ class PeopleList extends Component {
         let starshipsEndpoint = starships.slice(-13, -1);
         let index = starships.slice(-3, -1);
         return <DropdownItem key={starships} tag={Link} to={`/details/${ "endpoint"}/${starshipsEndpoint}`}>
-            <a onClick={() => this.props.fetchDetails(starships)}>{index}</a>
+          <a onClick={() => this.props.fetchDetails(starships)}>{index}</a>
         </DropdownItem>
       })
 
@@ -119,8 +119,8 @@ class PeopleList extends Component {
             title = "Star Wars";
         }
 
-        return <DropdownItem key={films} tag={Link}  to={`/film-endpoint/${ "films"}/${filmsEndpoint}/${title}`}>
-            <span onClick={() => this.props.fetchDetails(films)}>{filmsEndpoint}</span>
+        return <DropdownItem key={films} tag={Link} to={`/film-endpoint/${ "films"}/${filmsEndpoint}/${title}`}>
+          <span onClick={() => this.props.fetchDetails(films)}>{filmsEndpoint}</span>
         </DropdownItem >
       })
 
@@ -131,9 +131,6 @@ class PeopleList extends Component {
             <<<<<<<<<<<<<<<<<<<<<<<<<<<<*/}
           <div className="row card-header">
             <Nav tabs>
-              <NavItem>
-                <a>Endpoints</a>
-              </NavItem>
               <UncontrolledNavDropdown>
                 <DropdownToggle nav caret>
                   <i className="fa fa-film" aria-hidden="true"></i>
@@ -152,9 +149,6 @@ class PeopleList extends Component {
                 </DropdownMenu>
               </UncontrolledNavDropdown>
 
-              <NavItem>
-                <a>Filter</a>
-              </NavItem>
               <UncontrolledNavDropdown>
                 <DropdownToggle nav caret>
                   <i className="fa fa-filter" aria-hidden="true"></i>
@@ -174,7 +168,6 @@ class PeopleList extends Component {
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledNavDropdown>
-
             </Nav>
           </div>
 
@@ -189,8 +182,8 @@ class PeopleList extends Component {
               </div>
             </div>
 
-            <div className="profile col-12">
-              <div className="profile col-12">
+            <div className="profile-container col-12">
+              <div className="profile-header col-12">
                 <div className="row">
                   <div className="col card-header">
                     <h3>
@@ -201,50 +194,56 @@ class PeopleList extends Component {
                     </h3>
                   </div>
                 </div>
+                <div className="profile-details">
+                  <dl className="dl-horizontal">
+                    <dt className="dt">
+                      API Endpoint
+                    </dt>
+                    <dd className="dd">
+                      {peopleEndpoint}
+                    </dd>
+                    <dt className="dt">Homeworld Endpoint</dt>
+                    <dd className="dd">
+                      {homeworldEndpoint}
+                    </dd>
+                  </dl>
+                </div>
 
-                <dl className="dl-horizontal">
-                  <dt className="dt">
-                    API Endpoint
-                  </dt>
-                  <dd className="dd">
-                    {peopleEndpoint}
-                  </dd>
-                  <dt className="dt">Homeworld Endpoint</dt>
-                  <dd className="dd">
-                    {homeworldEndpoint}
-                  </dd>
-                </dl>
-              </div>
+                <div className="collapse" id={collapseTarget}>
+                  <dl className="dl-horizontal">
+                    <dt className="dt">
+                      Birth Year
+                    </dt>
+                    <dd className="dd">
+                      {people.birth_year}
+                    </dd>
+                    <dt className="dt">Gender</dt>
+                    <dd className="dd">
+                      {people.gender}
+                    </dd>
+                    <dt className="dt">Height</dt>
+                    <dd className="dd">
+                      {people.height}
+                    </dd>
+                    <dt className="dt">Mass</dt>
+                    <dd className="dd">
+                      {people.mass}
+                    </dd>
+                    <dt className="dt">Eye Color</dt>
+                    <dd className="dd">
+                      {people.eye_color}
+                    </dd>
+                    <dt className="dt">Hair Color</dt>
+                    <dd className="dd">
+                      {people.hair_color}
+                    </dd>
+                    <dt className="dt">Skin Color</dt>
+                    <dd className="dd">
+                      {people.skin_color}
+                    </dd>
+                  </dl>
+                </div>
 
-              <div className="collapse row" id={collapseTarget}>
-                <dl className="dl-horizontal col">
-                  <dt className="dt">
-                    Birth Year
-                  </dt>
-                  <dd className="dd">
-                    {people.birth_year}
-                  </dd>
-                  <dt className="dt">Gender</dt>
-                  <dd className="dd">
-                    {people.gender}
-                  </dd>
-                  <dt className="dt">Height</dt>
-                  <dd className="dd">
-                    {people.height}
-                  </dd>
-                  <dt className="dt">Eye Color</dt>
-                  <dd className="dd">
-                    {people.eye_color}
-                  </dd>
-                  <dt className="dt">Hair Color</dt>
-                  <dd className="dd">
-                    {people.hair_color}
-                  </dd>
-                  <dt className="dt">Skin Color</dt>
-                  <dd className="dd">
-                    {people.skin_color}
-                  </dd>
-                </dl>
               </div>
             </div>
           </div>
