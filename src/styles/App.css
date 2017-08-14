@@ -8,22 +8,15 @@ body {
   margin-top: 15px;
 }
 
-.navbar {
-  height: 50px;
-  border-radius: 0;
-  text-transform: uppercase;
-}
-
-.navbar-nav {
-  margin: 15px;
-}
-
-.nav {
-  //background-color: #eee;
-  text-align: center;
+.mainNav {
+  box-shadow: -1px 4px 5px #181818;
+  background-color: #808080;
+  color: #222222;
 }
 
 .apiNav {
+  margin-top: 30px;
+  padding-top: 15px;
   box-shadow: -1px 4px 5px #181818;
   background-color: #808080;
   color: #222222;
@@ -44,6 +37,7 @@ body {
 
 .app-body {
   background-color: #ffffff;
+  margin-top: 30px;
   padding: 10px;
 }
 

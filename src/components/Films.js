@@ -75,10 +75,12 @@ class FilmsList extends Component {
           </div>
 
           <div className="row card-block">
-            <div className="card card-inverse">
-              <ImageSearch className="card-img" title={films.title}/>
-              <div className="card-img-overlay">
-                <h3 className="card-title">{films.title}</h3>
+            <div className="profile col-12">
+              <div className="card card-inverse">
+                <ImageSearch className="card-img" title={films.title}/>
+                <div className="card-img-overlay">
+                  <h3 className="card-title">{films.title}</h3>
+                </div>
               </div>
             </div>
           </div>

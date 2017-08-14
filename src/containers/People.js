@@ -32,7 +32,7 @@ class People extends Component {
   render() {
 
     return (
-      <div className="row">
+      <div className="row justify-content-center">
         <NavBar next={this.props.next} previous={this.props.previous} home={'https://swapi.co/api/people/?page=1'} fetchPeople={this.props.fetchPeople} stateReset={this.props.stateReset}/>
         <div className="app-body col-10 offset-1">
           {/*State is now available via props thanks to Redux! <<<<<<<<<<<<<<<<*/}

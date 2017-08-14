@@ -33,29 +33,30 @@ export default class BaseLayout extends Component {
       <div className="app">
         <div className="row">
           <div className="col">
-            <Navbar color="faded" className="apiNav" light toggleable>
-              <NavbarToggler right onClick={this.toggle}/>
-              <Collapse isOpen={this.state.isOpen} navbar>
-                <Nav className="ml-auto" navbar>
-                  <NavItem>
-                    <NavLink tag={Link} to="/" className="nav-links">
-                      Home
-                    </NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink tag={Link} className="nav-links" to="/people">People</NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink tag={Link} className="nav-links" to="/starships">Starships</NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink tag={Link} className="nav-links" to="/films">Films</NavLink>
-                  </NavItem>
-                </Nav>
-              </Collapse>
-            </Navbar>
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark mainNav">
+              <NavLink className="navbar-brand" tag={Link} to="/">SWAPI EXPLORER</NavLink>
+              <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+              </button>
+              <div className="collapse navbar-collapse" id="navbarNav">
+                <ul className="navbar-nav">
+                  <li className="nav-item active">
+                      <NavLink tag={Link}   to="/people">People</NavLink>
+                  </li>
+                  <li className="nav-item active">
+                      <NavLink tag={Link}  to="/starships">Starships</NavLink>
+                  </li>
+                  <li className="nav-item active">
+                      <NavLink tag={Link}  to="/films">Films</NavLink>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+
           </div>
         </div>
+
+
 
         <div className="container-fluid">
           {this.props.children}

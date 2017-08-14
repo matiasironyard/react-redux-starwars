@@ -25,7 +25,7 @@ class Films extends Component {
   render() {
     console.log('w', this.props)
     return (
-      <div className="row">
+      <div className="row justify-content-center">
         <div className="app-body col-10 offset-1">
           <FilmsList fetchPeople={this.props.fetchPeople} films={this.props.films} filmDirector={this.props.filmDirector} setDetails={this.props.setDetails} endpoint={this.props.match.params.endpoint} fetchFilms={this.props.fetchFilms} fetchReviews={this.props.fetchReviews} reviews={this.props.reviews} fetchDetails={this.props.fetchDetails}/>
         </div>
