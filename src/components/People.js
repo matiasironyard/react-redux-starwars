@@ -54,11 +54,13 @@ class PeopleList extends Component {
 
     //RENDER VARIABLES<<<<<<<<<<<<<<<
     let List = data.map((people) => {
+      console.log(Object.keys(people))
       let peopleUrl = people.url;
       let peopleEndpoint = peopleUrl.substr(peopleUrl.indexOf("/api/people") + 5);
       let homeworldUrl = people.homeworld;
       let homeworldEndpoint = homeworldUrl.substr(homeworldUrl.indexOf("/api/planets") + 5);
       let collapseTarget = peopleUrl.slice(-2, -1);
+      let hello = <p>{Object.keys(people)} {Object.entries(people)}</p>
 
       //STARSHIPS<<<<<<<<<<<<<<<<<<<<
       let starshipsList = people.starships.map((starships) => {

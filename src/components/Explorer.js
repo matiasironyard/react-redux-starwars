@@ -5,7 +5,6 @@ class Explorer extends Component {
   render() {
     let headerStyle = {
       "textAlign": "center",
-      "height": "45vw",
       "color": "#fff",
       "backgroundColor": "#000",
       "backgroundImage": "url(https://solarsystem.nasa.gov/kids/images/layers/png/background.jpg)",

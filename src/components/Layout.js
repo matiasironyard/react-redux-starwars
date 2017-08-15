@@ -31,7 +31,6 @@ export default class BaseLayout extends Component {
 
     return (
       <div className="app">
-
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark mainNav">
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
@@ -54,9 +53,10 @@ export default class BaseLayout extends Component {
           </div>
         </nav>
 
-        <div className="content">
+
+        <main className="row no-gutters">
             {this.props.children}
-        </div>
+        </main>
 
         <footer>
           <span>
