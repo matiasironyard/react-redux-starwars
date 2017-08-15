@@ -177,6 +177,7 @@ class PeopleList extends Component {
                     </h3>
                   </div>
                 </div>
+
                 <div className="profile-details">
                   <dl className="dl-horizontal">
                     <dt className="dt">

@@ -50,7 +50,7 @@ class FilmsList extends Component {
       })
 
       return (
-        <div key={films.episode_id} className="col-sm-5 main-card">
+        <div key={films.episode_id} className="col-lg-5 col-md-5 col-sm-12 col-xs-12 main-card">
 
           <div className="row card-header">
             <Nav tabs>
@@ -74,19 +74,17 @@ class FilmsList extends Component {
             </Nav>
           </div>
 
-          <div className="row card-block">
-            <div className="profile col-12">
-              <div className="card card-inverse">
-                <ImageSearch className="card-img" title={films.title}/>
-                <div className="card-img-overlay">
-                  <h3 className="card-title">{films.title}</h3>
-                </div>
+          <div className="profile col-fluid">
+            <div className="card card-inverse">
+              <ImageSearch className="card-img" name={films.title}/>
+              <div className="card-img-overlay">
+                <h3 className="card-title">{films.title}</h3>
               </div>
             </div>
           </div>
 
-          <div className="profile-container col-12">
-            <div className="profile-header col-12">
+          <div className="profile-container col">
+            <div className="profile-header">
               <div className="row">
                 <div className="col card-header">
                   <h3>
@@ -113,7 +111,6 @@ class FilmsList extends Component {
                 {films.episode_id}
               </dd>
             </dl>
-
           </div>
 
           <div className="collapse" id={collapseTarget}>
@@ -131,17 +128,12 @@ class FilmsList extends Component {
                 {films.producer}
               </dd>
             </dl>
-            <div className="films-explorer row">
-              <div className="header col" style={headerStyle}>
-                <div className="fade"></div>
-                <section className="star-wars">
-                  <div className="crawl">
-                    <div className="title">
-                      <p>{films.title}</p>
-                    </div>
-                    <p>{films.opening_crawl}</p>
-                  </div>
-                </section>
+            <div className="card">
+              <div className="card-header">
+                Opening Crawl
+              </div>
+              <div className="card-body">
+                {films.opening_crawl}
               </div>
             </div>
           </div>

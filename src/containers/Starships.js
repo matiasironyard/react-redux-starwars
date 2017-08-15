@@ -25,11 +25,9 @@ class Starships extends Component {
 
   render() {
     return (
-      <div className="row justify-content-center">
+      <div className="col-fluid">
         <NavBar next={this.props.next} previous={this.props.previous} home={'https://swapi.co/api/starships/?page=1'} fetchStarships={this.props.fetchStarships} stateReset={this.props.stateReset}/>
-        <div className="app-body col-10 offset-1">
-          <StarshipsList fetchStarships={this.props.fetchStarships} starships={this.props.starships} filterFilms={this.props.filterFilms} stateReset={this.props.stateReset} starshipModel={this.props.starshipModel} setDetails={this.props.setDetails} filterPilots={this.props.filterPilots} fetchDetails={this.props.fetchDetails}/>
-        </div>
+        <StarshipsList fetchStarships={this.props.fetchStarships} starships={this.props.starships} filterFilms={this.props.filterFilms} stateReset={this.props.stateReset} starshipModel={this.props.starshipModel} setDetails={this.props.setDetails} filterPilots={this.props.filterPilots} fetchDetails={this.props.fetchDetails}/>
       </div>
     );
   }

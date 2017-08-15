@@ -40,11 +40,11 @@ class Details extends Component {
   render() {
     return (
       <div className="row justify-content-center">
-        <Nav className="col-10 apiNav pull-right">
+        {/*<Nav className="col-10 apiNav pull-right">
           <NavLink onClick={this.handleBack}>
             <i className="fa fa-chevron-circle-left" aria-hidden="true"></i>
           </NavLink>
-        </Nav>
+        </Nav>*/}
         <div className="app-body  col-10">
           <View details={this.props.details} reviews={this.props.reviews} fetchDetails={this.props.fetchDetails} fetchReviews={this.props.fetchReviews} id={this.props.match.params.id} index={this.props.match.params.index} title={this.props.match.params.title} back={this.handleBack}/>
         </div>
