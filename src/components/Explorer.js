@@ -17,7 +17,7 @@ class Explorer extends Component {
 
     return (
       <div style={headerStyle}>
-        <div className="explorer row justify-content-center">
+        <div className="explorer row justify-content-center no-gutters">
           <div className="header col-fluid">
             <div className="fade"></div>
 

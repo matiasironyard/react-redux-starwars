@@ -72,7 +72,7 @@ class StarshipsList extends Component {
           {/*>>>>>>>>>>>>>>>>>>>>>>>>>>>
             FILTER NAV
             <<<<<<<<<<<<<<<<<<<<<<<<<<<<*/}
-          <div className="row card-header">
+          <div className="card-header">
             <Nav tabs>
               <UncontrolledNavDropdown>
                 <DropdownToggle nav caret>
@@ -111,7 +111,7 @@ class StarshipsList extends Component {
             </Nav>
           </div>
 
-          <div className="row">
+          <div className="">
 
             <div className="profile col-fluid">
               <div className="card card-inverse">
@@ -207,7 +207,7 @@ class StarshipsList extends Component {
       )
     })
     return (
-      <div className="row justify-content-center">
+      <div className="row justify-content-center no-gutters">
         {List}
       </div>
     )

@@ -51,7 +51,7 @@ class FilmsList extends Component {
 
       return (
         <div key={films.episode_id} className="col-lg-5 col-md-5 col-sm-12 col-xs-12 main-card">
-          <div className="row card-header">
+          <div className="card-header">
             <Nav tabs>
               <UncontrolledNavDropdown>
                 <DropdownToggle nav caret>
@@ -73,7 +73,8 @@ class FilmsList extends Component {
             </Nav>
           </div>
 
-          <div className="row">
+          <div className="">
+            
             <div className="profile col-fluid">
               <div className="card card-inverse">
                 <ImageSearch className="card-img" name={films.title}/>
@@ -141,7 +142,7 @@ class FilmsList extends Component {
       )
     })
     return (
-      <div className="row justify-content-center">
+      <div className="row justify-content-center no-gutters">
         {filmList}
       </div>
     )

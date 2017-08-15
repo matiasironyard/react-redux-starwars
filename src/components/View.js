@@ -90,7 +90,7 @@ class View extends Component {
     } else if (id === 'people') {
       let character = this.props.details;
       return (
-        <div className="row justify-content-center">
+        <div className="row justify-content-center no-gutters">
           <div className="col-10 main-card">
             <div className="profile">
               <div className="col">

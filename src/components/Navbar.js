@@ -80,7 +80,7 @@ class NavBar extends Component {
 
 
     return (
-      <div className="apiNav row">
+      <div className="apiNav row no-gutters">
       <div className="col">
         {pagination}
       </div>

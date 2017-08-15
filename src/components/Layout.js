@@ -54,20 +54,15 @@ export default class BaseLayout extends Component {
           </div>
         </nav>
 
-        <div className="row justify-content-center">
-          <div className="col">
+        <div className="content">
             {this.props.children}
-          </div>
         </div>
 
-        <footer className="row justify-content-center">
-          <div className="col">
-            <span>
-              SWAPI EXPLORER | REACT | REDUX
-            </span>
-          </div>
+        <footer>
+          <span>
+            SWAPI EXPLORER | REACT | REDUX
+          </span>
         </footer>
-
       </div>
     );
   }
