@@ -6,17 +6,18 @@ class Explorer extends Component {
     let headerStyle = {
       "textAlign": "center",
       "color": "#fff",
-      "backgroundColor": "#000",
-      "backgroundImage": "url(https://solarsystem.nasa.gov/kids/images/layers/png/background.jpg)",
-      "backgroundPosition": "center",
+      "width": "100%",
+      "backgroundImage": "url(https://images6.alphacoders.com/703/703337.jpg)",
+      "backgroundPosition": "left",
       "backgroundSize": "cover",
-      "backgroundRepeat": "none",
-      "boxShadow": "rgba(0, 0, 0, 0.22) -2px 9px 5px 0px"
+      "backgroundRepeat": "repeat-x",
+      "boxShadow": "rgba(0, 0, 0, 0.22) -2px 9px 5px 0px",
+      "animation": "animatedBackground 40s linear infinite"
     }
 
     return (
       <div style={headerStyle}>
-        <div className="explorer row justify-content-center no-gutters">
+        <div className= "explorer row justify-content-center no-gutters">
           <div className="header col-fluid">
             <div className="fade"></div>
 
