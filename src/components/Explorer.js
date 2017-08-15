@@ -17,18 +17,21 @@ class Explorer extends Component {
     return (
       <div>
         <div className="explorer row justify-content-center">
-          <div className="header col app-body" style={headerStyle}>
+          <div className="header col-fluid" style={headerStyle}>
             <div className="fade"></div>
+
             <section className="star-wars">
               <div className="crawl">
                 <div className="title">
-                  <p>SWAPI EXPLORER</p>
-                  <h1>Powered by React & Redux</h1>
+                  <p>Episode IV</p>
+                  <h1>A New Hope</h1>
                 </div>
-                <p>In a galaxy far away, a lonely coder set out to create a React Redux SWAPI explorer. The end result is still to be seen, but good progress has been made.</p>
-                <p>What is SWAPI?</p>
-                <p>The Star Wars API is the world's first quantified and programmatically-formatted set of Star Wars data. After hours of watching films and trawling through content online, we present to you all the People, Films, Species, Starships, Vehicles and Planets from Star Wars. We've formatted this data in JSON and exposed it to you in a RESTish implementation that allows you to programmatically collect and measure the data.</p>
-                <a href="https://swapi.co/about">swapi.co</a>
+
+                <p>It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.</p>
+
+                <p>During the battle, Rebel spies managed to steal secret plans to the Empire’s ultimate weapon, the DEATH STAR, an armored space station with enough power to destroy an entire planet.</p>
+
+                <p>Pursued by the Empire’s sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy….</p>
               </div>
             </section>
 

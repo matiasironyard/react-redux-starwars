@@ -15,8 +15,16 @@ import {bindActionCreators} from 'redux';
 COMPONENT IMPORTS
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 import FilmsList from '../components/Films';
+import NavBar from '../components/Navbar';
 
 class Films extends Component {
+  constructor(props) {
+    super(props);
+    this.handleBack = this.handleBack.bind(this)
+  };
+  handleBack() {
+    return this.props.history.goBack();
+  };
 
   componentDidMount() {
     this.props.fetchFilms('https://swapi.co/api/films/')
@@ -26,6 +34,7 @@ class Films extends Component {
 
     return (
       <div className="col-fluid">
+        <NavBar back={this.handleBack}/>
         <FilmsList fetchPeople={this.props.fetchPeople} films={this.props.films} filmDirector={this.props.filmDirector} setDetails={this.props.setDetails} endpoint={this.props.match.params.endpoint} fetchFilms={this.props.fetchFilms} fetchReviews={this.props.fetchReviews} reviews={this.props.reviews} fetchDetails={this.props.fetchDetails}/>
       </div>
     );

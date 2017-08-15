@@ -21,14 +21,14 @@ class NavBar extends Component {
     this.handleHome = this.handleHome.bind(this);
   }
   handlePrevious = (e) => {
-    this.props.fetchPeople(this.props.previous)
+    this.props.fetch(this.props.previous)
     if (this.state.page <= 2) {
       this.setState({
         page: this.state.page = 1,
         previousDisabled: "disabled"
       })
     } else {
-      this.props.fetchPeople(this.props.previous)
+      this.props.fetch(this.props.previous)
       this.setState({
         page: this.state.page - 1
       })
@@ -40,7 +40,7 @@ class NavBar extends Component {
     } else if (this.props.next == null) {
       this.setState({nextDisabled: ""})
     } else {
-      this.props.fetchPeople(this.props.next)
+      this.props.fetch(this.props.next)
       this.setState({
         page: this.state.page + 1,
         nextDisabled: "",
@@ -53,28 +53,36 @@ class NavBar extends Component {
   }
 
   render() {
+    console.log('nav', this.props)
     let reset = this.props.stateReset;
+    let pagination = null;
+    if(!this.props.home){
+      pagination = <button type="button" className="btn btn-outline-dark pull-right" onClick={this.props.back}>Back</button>
+    } else {
+      pagination = <Pagination className="pull-right pagination">
+        <PaginationItem className={this.state.previousDisabled}>
+          <PaginationLink previous onClick={() => this.handlePrevious()}/>
+        </PaginationItem>
+        <PaginationItem disabled>
+          <PaginationLink>
+            {this.state.page}
+          </PaginationLink>
+        </PaginationItem>
+        <PaginationItem className={this.state.nextDisabled}>
+          <PaginationLink next onClick={() => this.handleNext()}/>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationLink onClick={() => this.props.fetch(this.props.home) + this.handleHome() + reset('all')}>Home
+          </PaginationLink>
+        </PaginationItem>
+      </Pagination>
+    }
+
 
     return (
       <div className="apiNav row">
       <div className="col">
-        <Pagination className="pull-right">
-          <PaginationItem className={this.state.previousDisabled}>
-            <PaginationLink previous onClick={() => this.handlePrevious()}/>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink>
-              {this.state.page}
-            </PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink onClick={() => this.props.fetchPeople(this.props.home) + this.handleHome() + reset('all')}>Home
-            </PaginationLink>
-          </PaginationItem>
-          <PaginationItem className={this.state.nextDisabled}>
-            <PaginationLink next onClick={() => this.handleNext()}/>
-          </PaginationItem>
-        </Pagination>
+        {pagination}
       </div>
       </div>
     )

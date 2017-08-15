@@ -51,7 +51,6 @@ class FilmsList extends Component {
 
       return (
         <div key={films.episode_id} className="col-lg-5 col-md-5 col-sm-12 col-xs-12 main-card">
-
           <div className="row card-header">
             <Nav tabs>
               <UncontrolledNavDropdown>
@@ -74,101 +73,70 @@ class FilmsList extends Component {
             </Nav>
           </div>
 
-          <div className="profile col-fluid">
-            <div className="card card-inverse">
-              <ImageSearch className="card-img" name={films.title}/>
-              <div className="card-img-overlay">
-                <h3 className="card-title">{films.title}</h3>
+          <div className="row">
+            <div className="profile col-fluid">
+              <div className="card card-inverse">
+                <ImageSearch className="card-img" name={films.title}/>
+                <div className="card-img-overlay">
+                  <h3 className="card-title">{films.title}</h3>
+                </div>
               </div>
             </div>
-          </div>
+            <div className="profile-container col">
+              <div className="profile-header">
+                <div className="row">
+                  <div className="col card-header">
+                    <h3>
+                      Profile
+                      <a href="">
+                        <i className="pull-right fa fa-info-circle" data-toggle="collapse" data-target={"#" + collapseTarget} aria-expanded="false" aria-hidden="false" aria-controls="collapseExample"></i>
+                      </a>
+                    </h3>
+                  </div>
+                </div>
 
-          <div className="profile-container col">
-            <div className="profile-header">
-              <div className="row">
-                <div className="col card-header">
-                  <h3>
-                    Profile
-                    <a href="">
-                      <i className="pull-right fa fa-info-circle" data-toggle="collapse" data-target={"#" + collapseTarget} aria-expanded="false" aria-hidden="false" aria-controls="collapseExample"></i>
-                    </a>
-                  </h3>
+                <div className="profile-detail">
+                  <dl className="dl-horizontal">
+                    <dt className="dt">
+                      Director
+                    </dt>
+                    <dd className="dd">
+                      {films.director}
+                    </dd>
+                    <dt className="dt">Episode</dt>
+                    <dd className="dd">
+                      {films.episode_id}
+                    </dd>
+                  </dl>
+                </div>
+                <div className="collapse" id={collapseTarget}>
+                  <dl className="dl-horizontal">
+                    <dt className="dt">Producer</dt>
+                    <dd className="dd">
+                      {films.producer}
+                    </dd>
+                    <dt className="dt">Release Datae</dt>
+                    <dd className="dd">
+                      {films.release_date}
+                    </dd>
+                    <dt className="dt">Producer</dt>
+                    <dd className="dd">
+                      {films.producer}
+                    </dd>
+                  </dl>
+                  <div className="card">
+                    <div className="card-header">
+                      Opening Crawl
+                    </div>
+                    <div className="card-body">
+                      {films.opening_crawl}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="profile-detail">
-            <dl className="dl-horizontal">
-              <dt className="dt">
-                Director
-              </dt>
-              <dd className="dd">
-                {films.director}
-              </dd>
-              <dt className="dt">Episode</dt>
-              <dd className="dd">
-                {films.episode_id}
-              </dd>
-            </dl>
-          </div>
-
-          <div className="collapse" id={collapseTarget}>
-            <dl className="dl-horizontal">
-              <dt className="dt">Producer</dt>
-              <dd className="dd">
-                {films.producer}
-              </dd>
-              <dt className="dt">Release Datae</dt>
-              <dd className="dd">
-                {films.release_date}
-              </dd>
-              <dt className="dt">Producer</dt>
-              <dd className="dd">
-                {films.producer}
-              </dd>
-            </dl>
-            <div className="card">
-              <div className="card-header">
-                Opening Crawl
-              </div>
-              <div className="card-body">
-                {films.opening_crawl}
-              </div>
-            </div>
-          </div>
-
-          {/*<div className="col-lg-6  col-md-6">
-            <div className="profile">
-              <p className="pull-right">
-                <i className="fa fa-film" aria-hidden="true"/> {counter}
-              </p>
-              <h3 className="headings">
-                {films.title}
-              </h3>
-              <h4 className="badge">
-                API Endpoint: {apiEndpoint}
-              </h4>
-              <hr/>
-              <h4 className="sub-headings">Profile</h4>
-              <dl className="dl-horizontal">
-                <dt className="dt">Director</dt>
-                <dd className="dd">
-                  {films.director}
-                </dd>
-                <dt className="dt">Episode</dt>
-                <dd className="dd">
-                  {films.episode_id}
-                </dd>
-                <dt>Details</dt>
-                <dd>
-                  <Link to={`/film-endpoint/${apiEndpoint}${films.title}`}>
-                    <i className="fa fa-info-circle" aria-hidden="true"></i>
-                  </Link>
-                </dd>
-              </dl>
-            </div>
-          </div>*/}
         </div>
       )
     })

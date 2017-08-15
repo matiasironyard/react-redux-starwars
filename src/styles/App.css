@@ -16,6 +16,7 @@ body {
 
 .apiNav {
   padding-top: 15px;
+  padding-bottom: 15px;
   margin-bottom: 15px;
   box-shadow: -1px 4px 5px #181818;
   background-color: #808080;
@@ -35,9 +36,13 @@ body {
   border-color: #222222;
 }
 
+.pagination{
+  margin: 0 auto;
+}
+
 .app-body {
   background-color: #ffffff;
-  margin-top: 30px;
+  padding-bottom: 30px;
 }
 
 .explorer {

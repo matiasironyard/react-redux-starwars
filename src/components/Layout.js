@@ -58,7 +58,7 @@ export default class BaseLayout extends Component {
 
         <div className="container-fluid">
           <div className="row justify-content-center">
-            <div className="app-body col-10">
+            <div className="app-body col">
               {this.props.children}
             </div>
           </div>

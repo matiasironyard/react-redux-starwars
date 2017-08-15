@@ -91,7 +91,6 @@ export function fetchStarships(url) {
 
     return Axios.get(url)
       .then(response => {
-        console.log('akdfkasfdkjkfj')
         dispatch(fetchSwapiStarships(response.data))
 
       })
