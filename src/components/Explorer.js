@@ -7,6 +7,7 @@ class Explorer extends Component {
       "textAlign": "center",
       "height": "45vw",
       "color": "#fff",
+      "backgroundColor": "#000",
       "backgroundImage": "url(https://solarsystem.nasa.gov/kids/images/layers/png/background.jpg)",
       "backgroundPosition": "center",
       "backgroundSize": "cover",
@@ -15,23 +16,26 @@ class Explorer extends Component {
     }
 
     return (
-      <div>
+      <div style={headerStyle}>
         <div className="explorer row justify-content-center">
-          <div className="header col-fluid" style={headerStyle}>
+          <div className="header col-fluid">
             <div className="fade"></div>
 
             <section className="star-wars">
               <div className="crawl">
                 <div className="title">
-                  <p>Episode IV</p>
-                  <h1>A New Hope</h1>
+                  <p>SWAPI EXPLORER</p>
+                  <h1>Powered by React and Redux</h1>
                 </div>
 
                 <p>It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.</p>
 
-                <p>During the battle, Rebel spies managed to steal secret plans to the Empire’s ultimate weapon, the DEATH STAR, an armored space station with enough power to destroy an entire planet.</p>
+                <p>During the battle, a Rebel coder stumbled upon an awesome database,
+                  <a href="https://swapi.co">Swapi</a>, and he decided to create an app for it, powered by the awesome force of React and Redux.
+                </p>
 
-                <p>Pursued by the Empire’s sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy….</p>
+                <p>Pursued by his passion for coding, this developer aims to create a great and clean user experience. Focusing on a minimalistic design, coupled with intuitive design and data filters, this Rebel coder hopes to create a key tool in the demise of the evil Galactic Empire.
+                </p>
               </div>
             </section>
 
