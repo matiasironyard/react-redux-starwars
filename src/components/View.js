@@ -13,7 +13,6 @@ class View extends Component {
 
   render() {
     let id = this.props.id;
-    console.log('ddd', this.props)
     if (id === 'films') {
       let film = this.props.details;
       let reviews,

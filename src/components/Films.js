@@ -12,27 +12,11 @@ COMPONENT
 class FilmsList extends Component {
 
   render() {
-    console.log('this', this.props)
-    let headerStyle = {
-      "textAlign": "center",
-      "height": "45vw",
-      "color": "#fff",
-      "backgroundImage": "url(https://solarsystem.nasa.gov/kids/images/layers/png/background.jpg)",
-      "backgroundPosition": "center",
-      "backgroundSize": "cover",
-      "backgroundRepeat": "none",
-      "boxShadow": "rgba(0, 0, 0, 0.22) -2px 9px 5px 0px"
-    }
 
     let data = this.props.films;
     let filmList = data.map((films) => {
-      let counter = data.indexOf(films) + 1;
-      let filmUrl = films.url;
       let title = films.title;
       let collapseTarget = title.split(' ').slice(-1)[0];
-      let apiEndpoint = filmUrl.substr(filmUrl.indexOf("/api/") + 5);
-      //let endpointId = filmUrl.substr(filmUrl.lastIndexOf('s/*') - 1, 1);
-
       let peopleList = films.characters.map((people) => {
         let peopleApi = people.substr(people.indexOf("/api/") + 5);
         let index = people.split('/').slice(-2)[0]
@@ -74,7 +58,7 @@ class FilmsList extends Component {
           </div>
 
           <div className="">
-            
+
             <div className="profile col-fluid">
               <div className="card card-inverse">
                 <ImageSearch className="card-img" name={films.title}/>

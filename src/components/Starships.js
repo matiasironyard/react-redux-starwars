@@ -21,6 +21,8 @@ class StarshipsList extends Component {
     let reset = this.props.stateReset;
 
     let data = this.props.starships;
+
+
     let List = data.map((starships) => {
       let url = starships.url;
       let collapseTarget = starships.name.split(" ").slice(-1);
@@ -66,6 +68,7 @@ class StarshipsList extends Component {
           <span onClick={() => this.props.fetchDetails(pilot)}>{index}</span>
         </DropdownItem>
       })
+
 
       return (
         <div key={starships.name} className="col-lg-5 col-md-5 col-sm-12 col-xs-12 main-card">

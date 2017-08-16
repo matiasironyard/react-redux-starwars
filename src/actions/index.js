@@ -48,7 +48,6 @@ export function fetchPeople(url) {
   return (dispatch) => {
     return Axios.get(url)
       .then(response => {
-        console.log('response', response)
         dispatch(fetchSwapiPeople(response.data))
 
       })
@@ -160,7 +159,6 @@ export function fetchReviews(title) {
   return (dispatch) => {
     return Axios.get('https://api.themoviedb.org/3/search/movie?api_key=a874671520b99e6171fd48b467ad6803&language=en-US&query='+ title+'&page=1&include_adult=false')
       .then(response => {
-        console.log('response', response)
         dispatch(reviews(response.data))
       })
       .catch(error => {

@@ -24,13 +24,14 @@ class NavBar extends Component {
     this.props.fetch(this.props.previous)
     if (this.state.page <= 2) {
       this.setState({
-        page: this.state.page = 1,
+        page: 1,
         previousDisabled: "disabled"
       })
     } else {
       this.props.fetch(this.props.previous)
+      let decrement = this.state.page -1;
       this.setState({
-        page: this.state.page - 1
+        page:  decrement,
       })
     }
   }
@@ -41,8 +42,9 @@ class NavBar extends Component {
       this.setState({nextDisabled: ""})
     } else {
       this.props.fetch(this.props.next)
+      let increment = this.state.page + 1;
       this.setState({
-        page: this.state.page + 1,
+        page: increment,
         nextDisabled: "",
         previousDisabled: ""
       })
@@ -53,7 +55,6 @@ class NavBar extends Component {
   }
 
   render() {
-    console.log('nav', this.props)
     let reset = this.props.stateReset;
     let pagination = null;
     if(!this.props.home){
