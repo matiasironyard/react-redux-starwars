@@ -9,7 +9,7 @@
 
 - [Techs](#techs)
 
-- [What is Swapi?](#What is swapi?)
+- [Swapi](#swapi)
 
 
 ## Description
@@ -31,7 +31,7 @@ Reactstrap
 
 ___
 
-## What is Swapi?
+## Swapi?
 
 The Star Wars API is the world's first quantified and programmatically-formatted set of Star Wars data.
 
