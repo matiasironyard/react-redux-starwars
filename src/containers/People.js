@@ -11,6 +11,8 @@ import {
   filterWorlds,
   filterFilms,
   filterStarships,
+  filterVehicles,
+  filterSpecies,
   fetchPeople,
   fetchDetails,
   stateReset
@@ -30,12 +32,11 @@ COMPONENT
 class People extends Component {
 
   render() {
-
     return (
       <div className="col-fluid app-body">
         <NavBar next={this.props.next} previous={this.props.previous} home={'https://swapi.co/api/people/?page=1'} fetch={this.props.fetchPeople} stateReset={this.props.stateReset}/>
         {/*State is now available via props thanks to Redux! <<<<<<<<<<<<<<<<*/}
-        <PeopleList people={this.props.people} filter={this.props.filterWorlds} stateReset={this.props.stateReset} filterFilms={this.props.filterFilms} filterStarships={this.props.filterStarships} setDetails={this.props.setDetails} fetchPeople={this.props.fetchPeople} fetchDetails={this.props.fetchDetails} next={this.props.next} previous={this.props.previous}/>
+        <PeopleList people={this.props.people} filter={this.props.filterWorlds} stateReset={this.props.stateReset} filterFilms={this.props.filterFilms} filterStarships={this.props.filterStarships} filterSpecies={this.props.filterSpecies} filterVehicles={this.props.filterVehicles} setDetails={this.props.setDetails} fetchPeople={this.props.fetchPeople} fetchDetails={this.props.fetchDetails} next={this.props.next} previous={this.props.previous}/>
       </div>
     );
   }
@@ -50,7 +51,7 @@ function mapStateToProps(state) {
     let endpoint = state.data.filter.endpoint;
     let match = state.data.PeopleData.filter((matchedWorlds) => {
       return matchedWorlds.homeworld === endpoint
-    })
+    });
     data = match;
   } else if (state.data.filter.key === "film") {
     let endpoint = state.data.filter.endpoint;
@@ -59,6 +60,21 @@ function mapStateToProps(state) {
       return films.filter((item) => {
         return item;
       }).length === endpoint.length;
+    });
+    data = match;
+  } else if (state.data.filter.key === "vehicles") {
+    let endpoint = state.data.filter.endpoint;
+    let match = state.data.PeopleData.filter((matchedVehicles) => {
+      let vehicles = matchedVehicles.vehicles;
+      return vehicles.filter((item) => {
+        return item;
+      }).length === endpoint.length;
+    });
+    data = match;
+  } else if (state.data.filter.key === "species") {
+    let endpoint = state.data.filter.endpoint[0];
+    let match = state.data.PeopleData.filter((matchedSpecies) => {
+      return matchedSpecies.species[0] === endpoint
     });
     data = match;
   } else if (state.data.filter.key === "starship") {
@@ -87,6 +103,8 @@ function mapDispatchToProps(dispatch) {
     filterWorlds: filterWorlds,
     filterFilms: filterFilms,
     filterStarships: filterStarships,
+    filterSpecies: filterSpecies,
+    filterVehicles: filterWorlds,
     fetchPeople: fetchPeople,
     fetchDetails: fetchDetails,
     stateReset: stateReset

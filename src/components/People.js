@@ -6,6 +6,11 @@ import ImageSearch from '../components/Imagesearch';
 import {Link} from 'react-router-dom';
 import {Nav, UncontrolledNavDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 
+import PlanetsModule from '../components/Planets-module';
+import VehiclesModule from '../components/Vehicles-module';
+import SpeciesModule from '../components/Species-module';
+import StarshipsModule from '../components/Starships-module';
+
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 COMPONENT
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -47,27 +52,50 @@ class PeopleList extends Component {
     let filter = this.props.filter;
     let filterFilms = this.props.filterFilms;
     let filterStarships = this.props.filterStarships;
+    let filterSpecies = this.props.filterSpecies;
+    let filterVehicles = this.props.filterVehicles;
     let reset = this.props.stateReset;
 
-    //SORT DATA<<<<<<<<<<<<<<<<<<<<<
+    //SET DATA<<<<<<<<<<<<<<<<<<<<<
     let data = this.props.people;
 
     //RENDER VARIABLES<<<<<<<<<<<<<<<
-    let List = data.map((people) => {
+    let Data = data.map((people) => {
       let peopleUrl = people.url;
       let peopleEndpoint = peopleUrl.substr(peopleUrl.indexOf("/api/people") + 5);
       let homeworldUrl = people.homeworld;
       let homeworldEndpoint = homeworldUrl.substr(homeworldUrl.indexOf("/api/planets") + 5);
       let collapseTarget = peopleUrl.slice(-2, -1);
 
+      //HOMEWORLDS<<<<<<<<<<<<<<<<
+
+        let homeworld = <PlanetsModule homeworld ={people.homeworld}/>
+
+      //SPECIES<<<<<<<<<<<<<<<<<<<<<<
+
+      let species = people.species.map((species)=>{
+          let speciesEndpoint = species.substr(species.indexOf("/api/")+5);
+          let index = species.split('/').slice(-2)[0]
+          let key = Math.random()
+          return <SpeciesModule key={key} speciesEndpoint={speciesEndpoint} index={index}/>
+      })
+
+     //VEHICLES<<<<<<<<<<<<<<<<<<<<<<
+
+      let vehicles = people.vehicles.map((vehicles)=>{
+        let vehiclesEndpoint = vehicles.substr(vehicles.indexOf("/api/") + 5);
+        let index = vehicles.split('/').slice(-2)[0];
+        let key = Math.random();
+        return <VehiclesModule key={key} vehiclesEndpoint ={vehiclesEndpoint} index = {index}/>
+      })
+
       //STARSHIPS<<<<<<<<<<<<<<<<<<<<
+
       let starshipsList = people.starships.map((starships) => {
         let starshipsEndpoint = starships.substr(starships.indexOf("/api/") + 5);
-        //let starshipsEndpoint = starships.slice(-13, -1);
         let index = starships.split('/').slice(-2)[0];
-        return <DropdownItem key={starships} tag={Link} to={`/details/${ "endpoint"}/${starshipsEndpoint}`}>
-          <span onClick={() => this.props.fetchDetails(starships)}>{index}</span>
-        </DropdownItem>
+        let key = Math.random();
+        return <StarshipsModule key={key} starshipsEndpoint={starshipsEndpoint} index={index} starships={starships}/>
       })
 
       //FILMS<<<<<<<<<<<<<<<<<<<<<<
@@ -114,6 +142,16 @@ class PeopleList extends Component {
             <<<<<<<<<<<<<<<<<<<<<<<<<<<<*/}
           <div className="card-header">
             <Nav tabs>
+
+              <UncontrolledNavDropdown>
+                <DropdownToggle nav caret>
+                  <i className="fa fa-globe" aria-hidden="true"></i>
+                </DropdownToggle>
+                <DropdownMenu>
+                  {homeworld}
+                </DropdownMenu>
+              </UncontrolledNavDropdown>
+
               <UncontrolledNavDropdown>
                 <DropdownToggle nav caret>
                   <i className="fa fa-film" aria-hidden="true"></i>
@@ -134,6 +172,25 @@ class PeopleList extends Component {
 
               <UncontrolledNavDropdown>
                 <DropdownToggle nav caret>
+                  <i className="fa fa-users" aria-hidden="true"></i>
+                </DropdownToggle>
+                <DropdownMenu>
+                  {species}
+                </DropdownMenu>
+              </UncontrolledNavDropdown>
+
+              <UncontrolledNavDropdown>
+                <DropdownToggle nav caret>
+                  <i className="fa fa-fighter-jet" aria-hidden="true"></i>
+                </DropdownToggle>
+                <DropdownMenu>
+                  {vehicles}
+                </DropdownMenu>
+              </UncontrolledNavDropdown>
+
+
+              <UncontrolledNavDropdown>
+                <DropdownToggle nav caret>
                   <i className="fa fa-filter" aria-hidden="true"></i>
                 </DropdownToggle>
                 <DropdownMenu>
@@ -145,6 +202,12 @@ class PeopleList extends Component {
                   </DropdownItem>
                   <DropdownItem onClick={() => filterStarships(starshipsList, 'starship')}>
                     <i className="fa fa-space-shuttle" aria-hidden="true"></i>
+                  </DropdownItem>
+                  <DropdownItem onClick={() => filterSpecies(people.species, 'species')}>
+                    <i className="fa fa-users" aria-hidden="true"></i>
+                  </DropdownItem>
+                  <DropdownItem onClick={() => filterVehicles(people.vehicles, 'vehicles')}>
+                    <i className="fa fa-fighter-jet" aria-hidden="true"></i>
                   </DropdownItem>
                   <DropdownItem onClick={() => reset('all')}>
                     <i className="fa fa-refresh" aria-hidden="true"></i>
@@ -236,7 +299,7 @@ class PeopleList extends Component {
     })
     return (
       <div className="row justify-content-center no-gutters">
-        {List}
+        {Data}
       </div >
     )
   }

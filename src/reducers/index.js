@@ -5,14 +5,13 @@ import peopledata from '../data/Peopledata';
 import starshipsdata from '../data/Starshipsdata';
 import filmsdata from '../data/Filmsdata';
 
-
 const initialState = {
   filter: {},
   reviews: {},
   iconColor: {},
   FilmsData: filmsdata(),
   StarshipsData: starshipsdata(),
-  PeopleData: peopledata(),
+  PeopleData: peopledata()
 }
 
 export const getData = (state = initialState, action) => {
@@ -51,12 +50,26 @@ export const getData = (state = initialState, action) => {
         }
       });
 
-      case ActionTypes.FILTER_PILOTS:
-        return update(state, {
-          filter: {
-            $set: action.payload
-          }
-        });
+    case ActionTypes.FILTER_PILOTS:
+      return update(state, {
+        filter: {
+          $set: action.payload
+        }
+      });
+
+    case ActionTypes.FILTER_SPECIES:
+      return update(state, {
+        filter: {
+          $set: action.payload
+        }
+      });
+
+    case ActionTypes.FILTER_VEHICLES:
+      return update(state, {
+        filter: {
+          $set: action.payload
+        }
+      });
 
     case ActionTypes.RESET:
       return update(state, {
@@ -66,7 +79,6 @@ export const getData = (state = initialState, action) => {
       });
 
     case ActionTypes.FETCH_SWAPI_FILMS:
-    console.log('films reducer', action)
       return update(state, {
         FilmsData: {
           $set: action.payload.results

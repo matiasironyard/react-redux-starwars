@@ -37,7 +37,7 @@ class View extends Component {
       }
 
       return (
-        <div className="row justify-content-center">
+        <div className="row justify-content-center no-gutters">
           <div className="col-10 main-card">
             <img className="img-responsive col" src={imgUrl} alt=""/>
 

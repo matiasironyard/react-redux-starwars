@@ -30,7 +30,7 @@ class Details extends Component {
 
   render() {
     return (
-      <div className="app-body">
+      <div className="app-body col">
         <View details={this.props.details} reviews={this.props.reviews} fetchDetails={this.props.fetchDetails} fetchReviews={this.props.fetchReviews} id={this.props.match.params.id} index={this.props.match.params.index} title={this.props.match.params.title} back={this.handleBack}/>
       </div>
     );

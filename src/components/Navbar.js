@@ -73,7 +73,12 @@ class NavBar extends Component {
           <PaginationLink next onClick={() => this.handleNext()}/>
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink onClick={() => this.props.fetch(this.props.home) + this.handleHome() + reset('all')}>Home
+          <PaginationLink onClick={() => this.props.fetch(this.props.home) + this.handleHome()}>Home
+          </PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationLink onClick={() => reset('all')}>
+            <i className="fa fa-refresh" aria-hidden="true"></i>
           </PaginationLink>
         </PaginationItem>
       </Pagination>

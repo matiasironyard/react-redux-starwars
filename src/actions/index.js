@@ -147,6 +147,26 @@ export const filterPilots = (endpoint, key) => {
   };
 };
 
+export const filterSpecies = (endpoint, key) => {
+  endpoint.map((endpoint)=>{
+    return endpoint.key
+  })
+  return {
+    type: ActionTypes.FILTER_SPECIES,
+    payload: {endpoint, key}
+  };
+};
+
+export const filterVehicles = (endpoint, key) => {
+  endpoint.map((endpoint)=>{
+    return endpoint.key
+  })
+  return {
+    type: ActionTypes.FILTER_VEHICLES,
+    payload: {endpoint, key}
+  };
+};
+
 
 export const reviews = (data) => {
   return {
