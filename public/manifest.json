@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Swapi Explorer",
+  "name": "React Redux Swapi",
   "icons": [
     {
       "src": "favicon.ico",
