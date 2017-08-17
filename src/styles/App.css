@@ -47,8 +47,17 @@ body {
 }
 
 .app-body {
+  padding: 0px 15px 30px 15px;
   background-color: #ffffff;
   margin-bottom: 30px;
+}
+
+.card-header{
+  color: #222;
+}
+
+.instructions{
+  margin: 20px 0 20px 0;
 }
 
 .explorer {
@@ -56,6 +65,10 @@ body {
   padding-bottom: 50px;
   height: 60vw;
   overflow: hidden;
+}
+
+.card {
+  color: #222;
 }
 
 .films-explorer {
@@ -96,17 +109,11 @@ body {
   margin-bottom: 15px;
 }
 
-.endpoints {
-  margin: 0;
-  border-radius: 0;
-  flex-wrap: wrap;
+.exp-col{
+  padding: 25px;
 }
 
-.offset {
-  position: relative;
-  bottom: 150px;
-  box-shadow: rgba(0, 0, 0, 0.22) -2px 9px 5px 0px;
-}
+
 
 .scroll {
   height: 300px;
@@ -114,8 +121,8 @@ body {
   overflow-x: hidden;
 }
 
-.list-group-item {
-  border-radius: 0px;
+.btn-primary{
+  background-color: #444;
 }
 
 .back-btn-col {
@@ -143,12 +150,12 @@ body {
 
 .main-card {
   box-shadow: 0px 2px 3px #717171;
+  padding: 10px;
   margin: 5px;
-  padding: 25px;
 }
 
 .card {
-  margin: 2px;
+  margin: 5px;
 }
 
 .profile-details {

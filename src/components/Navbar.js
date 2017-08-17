@@ -66,7 +66,12 @@ class NavBar extends Component {
         </PaginationItem>
         <PaginationItem disabled>
           <PaginationLink>
-            {this.state.page}
+            Page {this.state.page}
+          </PaginationLink>
+        </PaginationItem>
+        <PaginationItem disabled>
+          <PaginationLink>
+            {this.props.counter} / 10
           </PaginationLink>
         </PaginationItem>
         <PaginationItem className={this.state.nextDisabled}>

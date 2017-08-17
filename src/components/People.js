@@ -6,6 +6,7 @@ import ImageSearch from '../components/Imagesearch';
 import {Link} from 'react-router-dom';
 import {Nav, UncontrolledNavDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 
+
 import PlanetsModule from '../components/Planets-module';
 import VehiclesModule from '../components/Vehicles-module';
 import SpeciesModule from '../components/Species-module';
@@ -30,13 +31,14 @@ class PeopleList extends Component {
   componentDidMount() {
     this.props.fetchPeople(this.state.nav)
   }
+
   toggle() {
     this.setState({
       dropdownOpen: !this.state.dropdownOpen
     });
   }
-  toggleDetails() {
 
+  toggleDetails() {
     this.setState({
       collapse: !this.state.collapse
     });
@@ -69,24 +71,24 @@ class PeopleList extends Component {
 
       //HOMEWORLDS<<<<<<<<<<<<<<<<
 
-        let homeworld = <PlanetsModule homeworld ={people.homeworld}/>
+      let homeworld = <PlanetsModule homeworld ={people.homeworld}/>
 
       //SPECIES<<<<<<<<<<<<<<<<<<<<<<
 
-      let species = people.species.map((species)=>{
-          let speciesEndpoint = species.substr(species.indexOf("/api/")+5);
-          let index = species.split('/').slice(-2)[0]
-          let key = Math.random()
-          return <SpeciesModule key={key} speciesEndpoint={speciesEndpoint} index={index}/>
+      let species = people.species.map((species) => {
+        let speciesEndpoint = species.substr(species.indexOf("/api/") + 5);
+        let index = species.split('/').slice(-2)[0]
+        let key = Math.random()
+        return <SpeciesModule key={key} speciesEndpoint={speciesEndpoint} index={index}/>
       })
 
-     //VEHICLES<<<<<<<<<<<<<<<<<<<<<<
+      //VEHICLES<<<<<<<<<<<<<<<<<<<<<<
 
-      let vehicles = people.vehicles.map((vehicles)=>{
+      let vehicles = people.vehicles.map((vehicles) => {
         let vehiclesEndpoint = vehicles.substr(vehicles.indexOf("/api/") + 5);
         let index = vehicles.split('/').slice(-2)[0];
         let key = Math.random();
-        return <VehiclesModule key={key} vehiclesEndpoint ={vehiclesEndpoint} index = {index}/>
+        return <VehiclesModule key={key} vehiclesEndpoint ={vehiclesEndpoint} index={index}/>
       })
 
       //STARSHIPS<<<<<<<<<<<<<<<<<<<<
@@ -144,7 +146,7 @@ class PeopleList extends Component {
             <Nav tabs>
 
               <UncontrolledNavDropdown>
-                <DropdownToggle nav caret>
+                <DropdownToggle nav caret >
                   <i className="fa fa-globe" aria-hidden="true"></i>
                 </DropdownToggle>
                 <DropdownMenu>
@@ -188,7 +190,6 @@ class PeopleList extends Component {
                 </DropdownMenu>
               </UncontrolledNavDropdown>
 
-
               <UncontrolledNavDropdown>
                 <DropdownToggle nav caret>
                   <i className="fa fa-filter" aria-hidden="true"></i>
@@ -217,90 +218,88 @@ class PeopleList extends Component {
             </Nav>
           </div>
 
-          <div className="">
-
-            <div className="profile col-fluid">
-              <div className="card card-inverse">
-                <ImageSearch className="card-img" name={people.name}/>
-                <div className="card-img-overlay">
-                  <h3 className="card-title">{people.name}</h3>
-                </div>
-              </div>
-            </div>
-
-            <div className="profile-container col">
-              <div className="profile-header">
-                <div className="row">
-                  <div className="col card-header">
-                    <h3>
-                      Profile
-                      <a href="">
-                        <i className="pull-right fa fa-info-circle" data-toggle="collapse" data-target={"#" + collapseTarget} aria-expanded="false" aria-hidden="false" aria-controls="collapseExample"></i>
-                      </a>
-                    </h3>
-                  </div>
-                </div>
-
-                <div className="profile-details">
-                  <dl className="dl-horizontal">
-                    <dt className="dt">
-                      API Endpoint
-                    </dt>
-                    <dd className="dd">
-                      {peopleEndpoint}
-                    </dd>
-                    <dt className="dt">Homeworld Endpoint</dt>
-                    <dd className="dd">
-                      {homeworldEndpoint}
-                    </dd>
-                  </dl>
-                </div>
-
-                <div className="collapse" id={collapseTarget}>
-                  <dl className="dl-horizontal">
-                    <dt className="dt">
-                      Birth Year
-                    </dt>
-                    <dd className="dd">
-                      {people.birth_year}
-                    </dd>
-                    <dt className="dt">Gender</dt>
-                    <dd className="dd">
-                      {people.gender}
-                    </dd>
-                    <dt className="dt">Height</dt>
-                    <dd className="dd">
-                      {people.height}
-                    </dd>
-                    <dt className="dt">Mass</dt>
-                    <dd className="dd">
-                      {people.mass}
-                    </dd>
-                    <dt className="dt">Eye Color</dt>
-                    <dd className="dd">
-                      {people.eye_color}
-                    </dd>
-                    <dt className="dt">Hair Color</dt>
-                    <dd className="dd">
-                      {people.hair_color}
-                    </dd>
-                    <dt className="dt">Skin Color</dt>
-                    <dd className="dd">
-                      {people.skin_color}
-                    </dd>
-                  </dl>
-                </div>
-
+          <div className="profile col-fluid">
+            <div className="card card-inverse">
+              <ImageSearch className="card-img" name={people.name}/>
+              <div className="card-img-overlay">
+                <h3 className="card-title">{people.name}</h3>
               </div>
             </div>
           </div>
+
+          <div className="profile-container col">
+            <div className="profile-header">
+              <div className="row">
+                <div className="col card-header">
+                  <h3>
+                    Profile
+                    <a href="">
+                      <i className="pull-right fa fa-info-circle" data-toggle="collapse" data-target={"#" + collapseTarget} aria-expanded="false" aria-hidden="false" aria-controls="collapseExample"></i>
+                    </a>
+                  </h3>
+                </div>
+              </div>
+
+              <div className="profile-details">
+                <dl className="dl-horizontal">
+                  <dt className="dt">
+                    API Endpoint
+                  </dt>
+                  <dd className="dd">
+                    {peopleEndpoint}
+                  </dd>
+                  <dt className="dt">Homeworld Endpoint</dt>
+                  <dd className="dd">
+                    {homeworldEndpoint}
+                  </dd>
+                </dl>
+              </div>
+
+              <div className="collapse" id={collapseTarget}>
+                <dl className="dl-horizontal">
+                  <dt className="dt">
+                    Birth Year
+                  </dt>
+                  <dd className="dd">
+                    {people.birth_year}
+                  </dd>
+                  <dt className="dt">Gender</dt>
+                  <dd className="dd">
+                    {people.gender}
+                  </dd>
+                  <dt className="dt">Height</dt>
+                  <dd className="dd">
+                    {people.height}
+                  </dd>
+                  <dt className="dt">Mass</dt>
+                  <dd className="dd">
+                    {people.mass}
+                  </dd>
+                  <dt className="dt">Eye Color</dt>
+                  <dd className="dd">
+                    {people.eye_color}
+                  </dd>
+                  <dt className="dt">Hair Color</dt>
+                  <dd className="dd">
+                    {people.hair_color}
+                  </dd>
+                  <dt className="dt">Skin Color</dt>
+                  <dd className="dd">
+                    {people.skin_color}
+                  </dd>
+                </dl>
+              </div>
+
+            </div>
+          </div>
+
         </div>
       )
     })
     return (
       <div className="row justify-content-center no-gutters">
         {Data}
-      </div >
+      </div>
     )
   }
 }
