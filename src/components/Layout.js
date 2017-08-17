@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {
-  Navbar,
-  NavLink
-} from 'reactstrap';
+import {Navbar, NavLink} from 'reactstrap';
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -48,16 +45,20 @@ export default class BaseLayout extends Component {
           </div>
         </nav>
 
-
         <main className="row no-gutters">
-            {this.props.children}
+          {this.props.children}
         </main>
 
-        <footer>
-          <span>
-            SWAPI EXPLORER | REACT | REDUX
-          </span>
-        </footer>
+        <div className="row justify-content-center no-gutters">
+          <ul className="nav">
+            <li className="nav-item">
+              <a className="nav-link disabled" href="#">SWAPI EXPLORER | REACT | REDUX</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="https://www.matiasmariani.io" target="_blank">By Matias Mariani</a>
+            </li>
+          </ul>
+        </div>
       </div>
     );
   }
