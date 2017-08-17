@@ -11,6 +11,7 @@ import PlanetsModule from '../components/Planets-module';
 import VehiclesModule from '../components/Vehicles-module';
 import SpeciesModule from '../components/Species-module';
 import StarshipsModule from '../components/Starships-module';
+import FilterBar from '../components/Filter-bar';
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 COMPONENT
@@ -50,13 +51,6 @@ class PeopleList extends Component {
   };
 
   render() {
-    //FILTERS<<<<<<<<<<<<<<<<<<<<<<<<
-    let filter = this.props.filter;
-    let filterFilms = this.props.filterFilms;
-    let filterStarships = this.props.filterStarships;
-    let filterSpecies = this.props.filterSpecies;
-    let filterVehicles = this.props.filterVehicles;
-    let reset = this.props.stateReset;
 
     //SET DATA<<<<<<<<<<<<<<<<<<<<<
     let data = this.props.people;
@@ -143,80 +137,9 @@ class PeopleList extends Component {
             FILTER NAV
             <<<<<<<<<<<<<<<<<<<<<<<<<<<<*/}
           <div className="card-header">
-            <Nav tabs>
-
-              <UncontrolledNavDropdown>
-                <DropdownToggle nav caret >
-                  <i className="fa fa-globe" aria-hidden="true"></i>
-                </DropdownToggle>
-                <DropdownMenu>
-                  {homeworld}
-                </DropdownMenu>
-              </UncontrolledNavDropdown>
-
-              <UncontrolledNavDropdown>
-                <DropdownToggle nav caret>
-                  <i className="fa fa-film" aria-hidden="true"></i>
-                </DropdownToggle>
-                <DropdownMenu>
-                  {filmList}
-                </DropdownMenu>
-              </UncontrolledNavDropdown>
-
-              <UncontrolledNavDropdown>
-                <DropdownToggle nav caret>
-                  <i className="fa fa-space-shuttle" aria-hidden="true"></i>
-                </DropdownToggle>
-                <DropdownMenu>
-                  {starshipsList}
-                </DropdownMenu>
-              </UncontrolledNavDropdown>
-
-              <UncontrolledNavDropdown>
-                <DropdownToggle nav caret>
-                  <i className="fa fa-users" aria-hidden="true"></i>
-                </DropdownToggle>
-                <DropdownMenu>
-                  {species}
-                </DropdownMenu>
-              </UncontrolledNavDropdown>
-
-              <UncontrolledNavDropdown>
-                <DropdownToggle nav caret>
-                  <i className="fa fa-fighter-jet" aria-hidden="true"></i>
-                </DropdownToggle>
-                <DropdownMenu>
-                  {vehicles}
-                </DropdownMenu>
-              </UncontrolledNavDropdown>
-
-              <UncontrolledNavDropdown>
-                <DropdownToggle nav caret>
-                  <i className="fa fa-filter" aria-hidden="true"></i>
-                </DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem onClick={() => filter(people.homeworld, 'homeworld')}>
-                    <i className="fa fa-globe" aria-hidden="true"></i>
-                  </DropdownItem>
-                  <DropdownItem onClick={() => filterFilms(filmList, 'film')}>
-                    <i className="fa fa-film" aria-hidden="true"></i>
-                  </DropdownItem>
-                  <DropdownItem onClick={() => filterStarships(starshipsList, 'starship')}>
-                    <i className="fa fa-space-shuttle" aria-hidden="true"></i>
-                  </DropdownItem>
-                  <DropdownItem onClick={() => filterSpecies(people.species, 'species')}>
-                    <i className="fa fa-users" aria-hidden="true"></i>
-                  </DropdownItem>
-                  <DropdownItem onClick={() => filterVehicles(people.vehicles, 'vehicles')}>
-                    <i className="fa fa-fighter-jet" aria-hidden="true"></i>
-                  </DropdownItem>
-                  <DropdownItem onClick={() => reset('all')}>
-                    <i className="fa fa-refresh" aria-hidden="true"></i>
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledNavDropdown>
-            </Nav>
+            <FilterBar homeworld={people.homeworld} films={people.films} starships={people.starships} species={people.species} vehicles={people.vehicles} filterWorld={this.props.filter} filterFilms={this.props.filterFilms} filterStarships={this.props.filterStarships} filterVehicles={this.props.filterVehicles} filterSpecies={this.props.filterSpecies} stateReset={this.props.stateReset}/>
           </div>
+
 
           <div className="profile col-fluid">
             <div className="card card-inverse">

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ImageSearch from '../components/Imagesearch';
 import {Link} from 'react-router-dom';
 import {Nav, UncontrolledNavDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
+import FilterBar from '../components/Filter-bar';
 
 class StarshipsList extends Component {
   constructor(props) {
@@ -76,42 +77,10 @@ class StarshipsList extends Component {
             FILTER NAV
             <<<<<<<<<<<<<<<<<<<<<<<<<<<<*/}
           <div className="card-header">
-            <Nav tabs>
-              <UncontrolledNavDropdown>
-                <DropdownToggle nav caret>
-                  <i className="fa fa-film" aria-hidden="true"></i>
-                </DropdownToggle>
-                <DropdownMenu>
-                  {filmList}
-                </DropdownMenu>
-              </UncontrolledNavDropdown>
+            <div className="card-header">
+              <FilterBar films={starships.films} filterFilms={this.props.filterFilms} people={this.props.pilots} stateReset={this.props.stateReset} filterPeople={this.props.filterPilots}/>
+            </div>
 
-              <UncontrolledNavDropdown>
-                <DropdownToggle nav caret>
-                  <i className="fa fa-user" aria-hidden="true"></i>
-                </DropdownToggle>
-                <DropdownMenu>
-                  {pilotList}
-                </DropdownMenu>
-              </UncontrolledNavDropdown>
-
-              <UncontrolledNavDropdown>
-                <DropdownToggle nav caret>
-                  <i className="fa fa-filter" aria-hidden="true"></i>
-                </DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem onClick={() => filterFilms(filmList, 'film')}>
-                    <i className="fa fa-film" aria-hidden="true"></i>
-                  </DropdownItem>
-                  <DropdownItem onClick={() => filterPilots(pilotList, 'pilot')}>
-                    <i className="fa fa-user" aria-hidden="true"></i>
-                  </DropdownItem>
-                  <DropdownItem onClick={() => reset('all')}>
-                    <i className="fa fa-refresh" aria-hidden="true"></i>
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledNavDropdown>
-            </Nav>
           </div>
 
           <div className="">

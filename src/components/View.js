@@ -48,10 +48,6 @@ class View extends Component {
               <hr/>
               <h4 className="sub-headings">Details</h4>
               <dl className="dl-horizontal">
-                <dt className="dt">Opening</dt>
-                <dd className="dd">
-                  {film.opening_crawl}
-                </dd>
                 <dt className="dt">Director</dt>
                 <dd className="dd">
                   {film.director}
@@ -82,6 +78,14 @@ class View extends Component {
                   {voteCount}
                 </dd>
               </dl>
+            </div>
+            <div className="card">
+              <div className="card-header">
+                Opening Crawl
+              </div>
+              <div className="card-body">
+                <p>{film.opening_crawl}</p>
+              </div>
             </div>
           </div>
         </div>

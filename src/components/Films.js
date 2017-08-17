@@ -104,10 +104,6 @@ class FilmsList extends Component {
                     <dd className="dd">
                       {films.release_date}
                     </dd>
-                    <dt className="dt">Producer</dt>
-                    <dd className="dd">
-                      {films.producer}
-                    </dd>
                   </dl>
                   <div className="card">
                     <div className="card-header">
