@@ -45,7 +45,7 @@ export default class BaseLayout extends Component {
           </div>
         </nav>
 
-        <main className="row no-gutters">
+        <main className="row justify-content-center no-gutters">
           {this.props.children}
         </main>
 

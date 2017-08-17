@@ -33,7 +33,7 @@ class Films extends Component {
   render() {
 
     return (
-      <div className="col-fluid app-body">
+      <div className="col app-body">
         <NavBar back={this.handleBack}/>
         <FilmsList fetchPeople={this.props.fetchPeople} films={this.props.films} filmDirector={this.props.filmDirector} setDetails={this.props.setDetails} endpoint={this.props.match.params.endpoint} fetchFilms={this.props.fetchFilms} fetchReviews={this.props.fetchReviews} reviews={this.props.reviews} fetchDetails={this.props.fetchDetails}/>
       </div>

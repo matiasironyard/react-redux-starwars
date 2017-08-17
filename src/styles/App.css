@@ -55,6 +55,7 @@ body {
 
 .card-header{
   color: #222;
+  padding: 0 15px 0 15px;
 }
 
 .instructions{
@@ -151,7 +152,7 @@ body {
 
 .main-card {
   box-shadow: 0px 2px 3px #717171;
-  padding: 10px;
+  padding: 0 15px 0 15px;
   margin: 5px;
 }
 

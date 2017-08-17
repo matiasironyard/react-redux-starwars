@@ -4,6 +4,7 @@ REACT IMPORTS
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import ImageSearch from '../components/Imagesearch';
+import FilterBar from '../components/Filter-bar';
 import {Nav, UncontrolledNavDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -15,8 +16,14 @@ class FilmsList extends Component {
 
     let data = this.props.films;
     let filmList = data.map((films) => {
+      let people = films.characters;
+      let planets = films.planets;
+      let species = films.species;
+      let starships = films.starships;
+      let vehicles = films.vehicles;
       let title = films.title;
       let collapseTarget = title.split(' ').slice(-1)[0];
+
       let peopleList = films.characters.map((people) => {
         let peopleApi = people.substr(people.indexOf("/api/") + 5);
         let index = people.split('/').slice(-2)[0]
@@ -36,25 +43,7 @@ class FilmsList extends Component {
       return (
         <div key={films.episode_id} className="col-lg-5 col-md-5 col-sm-12 col-xs-12 main-card">
           <div className="card-header">
-            <Nav tabs>
-              <UncontrolledNavDropdown>
-                <DropdownToggle nav caret>
-                  <i className="fa fa-user" aria-hidden="true"></i>
-                </DropdownToggle>
-                <DropdownMenu>
-                  {peopleList}
-                </DropdownMenu>
-              </UncontrolledNavDropdown>
-
-              <UncontrolledNavDropdown>
-                <DropdownToggle nav caret>
-                  <i className="fa fa-space-shuttle" aria-hidden="true"></i>
-                </DropdownToggle>
-                <DropdownMenu>
-                  {starshipsList}
-                </DropdownMenu>
-              </UncontrolledNavDropdown>
-            </Nav>
+            <FilterBar people={people} planets={planets} filterWorld={this.props.filter} filterFilms={this.props.filterFilms} filterStarships={this.props.filterStarships} filterVehicles={this.props.filterVehicles} filterSpecies={this.props.filterSpecies} stateReset={this.props.stateReset}/>
           </div>
 
           <div className="">

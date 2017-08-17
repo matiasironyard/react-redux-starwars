@@ -23,52 +23,11 @@ class StarshipsList extends Component {
 
     let data = this.props.starships;
 
-
     let List = data.map((starships) => {
       let url = starships.url;
       let collapseTarget = starships.name.split(" ").slice(-1);
       let api = url.substr(url.indexOf("/api/") + 5);
       //let count = data.indexOf(starships) + 1;
-      let filmList = starships.films.map((films) => {
-        let filmsEndpoint = films.slice(-2, -1);
-        let index = films.split('/').slice(-2)[0];
-        let title;
-        switch (filmsEndpoint) {
-          case "1":
-            title = "star wars a new hope";
-            break;
-          case "2":
-            title = "The Empire Strikes Back";
-            break;
-          case "3":
-            title = "Return of the Jedi";
-            break;
-          case "4":
-            title = "The Phantom Menace";
-            break;
-          case "5":
-            title = "Attack of the Clones";
-            break;
-          case "6":
-            title = "Revenge of the Sith";
-            break;
-          case "7":
-            title = "The Force Awakens";
-            break;
-          default:
-            title = "Star Wars";
-        }
-        return <DropdownItem key={films} tag={Link} to={`/film-endpoint/${ "films"}/${filmsEndpoint}/${title}`}>
-          <span onClick={() => this.props.fetchDetails(films)}>{index}</span>
-        </DropdownItem>
-      })
-      let pilotList = starships.pilots.map((pilot) => {
-        let pilotApi = pilot.substring(pilot.indexOf("/api/") + 5);
-        let index = pilot.split('/').slice(-2)[0];
-        return <DropdownItem key={pilot} tag={Link} to={`/details/${ "endpoint"}/${pilotApi}`}>
-          <span onClick={() => this.props.fetchDetails(pilot)}>{index}</span>
-        </DropdownItem>
-      })
 
 
       return (
@@ -76,12 +35,11 @@ class StarshipsList extends Component {
           {/*>>>>>>>>>>>>>>>>>>>>>>>>>>>
             FILTER NAV
             <<<<<<<<<<<<<<<<<<<<<<<<<<<<*/}
-          <div className="card-header">
-            <div className="card-header">
-              <FilterBar films={starships.films} filterFilms={this.props.filterFilms} people={this.props.pilots} stateReset={this.props.stateReset} filterPeople={this.props.filterPilots}/>
-            </div>
 
+          <div className="card-header">
+            <FilterBar films={starships.films} filterFilms={this.props.filterFilms} people={starships.pilots} stateReset={this.props.stateReset} filterPilots={this.props.filterPilots}/>
           </div>
+
 
           <div className="">
 

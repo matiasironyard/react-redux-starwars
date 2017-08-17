@@ -26,7 +26,6 @@ class PeopleList extends Component {
     }
     this.toggle = this.toggle.bind(this);
     this.toggleDetails = this.toggleDetails.bind(this);
-    this.handleNav = this.handleNav.bind(this);
   }
 
   componentDidMount() {
@@ -45,10 +44,6 @@ class PeopleList extends Component {
     });
   }
 
-  handleNav = (e) => {
-    e.preventDefault();
-    this.props.fetchPeople(e.target.value)
-  };
 
   render() {
 
@@ -63,74 +58,6 @@ class PeopleList extends Component {
       let homeworldEndpoint = homeworldUrl.substr(homeworldUrl.indexOf("/api/planets") + 5);
       let collapseTarget = peopleUrl.slice(-2, -1);
 
-      //HOMEWORLDS<<<<<<<<<<<<<<<<
-
-      let homeworld = <PlanetsModule homeworld ={people.homeworld}/>
-
-      //SPECIES<<<<<<<<<<<<<<<<<<<<<<
-
-      let species = people.species.map((species) => {
-        let speciesEndpoint = species.substr(species.indexOf("/api/") + 5);
-        let index = species.split('/').slice(-2)[0]
-        let key = Math.random()
-        return <SpeciesModule key={key} speciesEndpoint={speciesEndpoint} index={index}/>
-      })
-
-      //VEHICLES<<<<<<<<<<<<<<<<<<<<<<
-
-      let vehicles = people.vehicles.map((vehicles) => {
-        let vehiclesEndpoint = vehicles.substr(vehicles.indexOf("/api/") + 5);
-        let index = vehicles.split('/').slice(-2)[0];
-        let key = Math.random();
-        return <VehiclesModule key={key} vehiclesEndpoint ={vehiclesEndpoint} index={index}/>
-      })
-
-      //STARSHIPS<<<<<<<<<<<<<<<<<<<<
-
-      let starshipsList = people.starships.map((starships) => {
-        let starshipsEndpoint = starships.substr(starships.indexOf("/api/") + 5);
-        let index = starships.split('/').slice(-2)[0];
-        let key = Math.random();
-        return <StarshipsModule key={key} starshipsEndpoint={starshipsEndpoint} index={index} starships={starships}/>
-      })
-
-      //FILMS<<<<<<<<<<<<<<<<<<<<<<
-      let filmList = people.films.map((films) => {
-        //let filmsEndpoint = films.substr(films.indexOf("/api/") + 5);
-        let filmsEndpoint = films.slice(-2, -1)
-        let index = films.split('/').slice(-2)[0];
-        let title;
-        switch (filmsEndpoint) {
-          case "1":
-            title = "star wars a new hope";
-            break;
-          case "2":
-            title = "The Empire Strikes Back";
-            break;
-          case "3":
-            title = "Return of the Jedi";
-            break;
-          case "4":
-            title = "The Phantom Menace";
-            break;
-          case "5":
-            title = "Attack of the Clones";
-            break;
-          case "6":
-            title = "Revenge of the Sith";
-            break;
-          case "7":
-            title = "The Force Awakens";
-            break;
-          default:
-            title = "Star Wars";
-        }
-
-        return <DropdownItem key={films} tag={Link} to={`/film-endpoint/${ "films"}/${filmsEndpoint}/${title}`}>
-          <span onClick={() => this.props.fetchDetails(films)}>{index}</span>
-        </DropdownItem >
-      })
-
       return (
         <div key={people.name} className="col-lg-5 col-md-5 col-sm-12 col-xs-12 main-card">
           {/*>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -139,7 +66,6 @@ class PeopleList extends Component {
           <div className="card-header">
             <FilterBar homeworld={people.homeworld} films={people.films} starships={people.starships} species={people.species} vehicles={people.vehicles} filterWorld={this.props.filter} filterFilms={this.props.filterFilms} filterStarships={this.props.filterStarships} filterVehicles={this.props.filterVehicles} filterSpecies={this.props.filterSpecies} stateReset={this.props.stateReset}/>
           </div>
-
 
           <div className="profile col-fluid">
             <div className="card card-inverse">
