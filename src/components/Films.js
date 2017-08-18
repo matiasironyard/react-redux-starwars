@@ -43,7 +43,7 @@ class FilmsList extends Component {
       return (
         <div key={films.episode_id} className="col-lg-5 col-md-5 col-sm-12 col-xs-12 main-card">
           <div className="card-header">
-            <FilterBar people={people} planets={planets} filterWorld={this.props.filter} filterFilms={this.props.filterFilms} filterStarships={this.props.filterStarships} filterVehicles={this.props.filterVehicles} filterSpecies={this.props.filterSpecies} stateReset={this.props.stateReset}/>
+            <FilterBar people={people} planets={planets} species={species} starships={starships} vehicles={vehicles} filterWorld={this.props.filter} filterStarships={this.props.filterStarships} filterVehicles={this.props.filterVehicles} filterSpecies={this.props.filterSpecies} stateReset={this.props.stateReset}/>
           </div>
 
           <div className="">

@@ -58,7 +58,9 @@ class NavBar extends Component {
     let reset = this.props.stateReset;
     let pagination = null;
     if(!this.props.home){
-      pagination = <button type="button" className="btn btn-outline-dark pull-right" onClick={this.props.back}>Back</button>
+      pagination = <div>
+        <button type="button" className="btn btn-outline-dark pull-right" onClick={this.props.back}>Back</button>
+        <button type="button" className="btn btn-outline-dark pull-right" onClick={() => reset('all')}>  <i className="fa fa-refresh" aria-hidden="true"></i></button></div>
     } else {
       pagination = <Pagination className="pull-right pagination">
         <PaginationItem className={this.state.previousDisabled}>

@@ -7,7 +7,17 @@ import React, {Component} from 'react';
 REDUX IMPORTS
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 import {connect} from 'react-redux';
-import {fetchFilms, fetchReviews, fetchDetails} from '../actions/index';
+import {
+fetchFilms,
+fetchReviews,
+fetchDetails,
+filterWorlds,
+filterFilms,
+filterStarships,
+filterVehicles,
+filterSpecies,
+fetchPeople,
+stateReset} from '../actions/index';
 // Import bindActionCreators
 import {bindActionCreators} from 'redux';
 
@@ -34,8 +44,8 @@ class Films extends Component {
 
     return (
       <div className="col app-body">
-        <NavBar back={this.handleBack}/>
-        <FilmsList fetchPeople={this.props.fetchPeople} films={this.props.films} filmDirector={this.props.filmDirector} setDetails={this.props.setDetails} endpoint={this.props.match.params.endpoint} fetchFilms={this.props.fetchFilms} fetchReviews={this.props.fetchReviews} reviews={this.props.reviews} fetchDetails={this.props.fetchDetails}/>
+        <NavBar back={this.handleBack} stateReset={this.props.stateReset}  />
+        <FilmsList fetchPeople={this.props.fetchPeople} films={this.props.films} filmDirector={this.props.filmDirector} setDetails={this.props.setDetails} endpoint={this.props.match.params.endpoint} fetchFilms={this.props.fetchFilms} fetchReviews={this.props.fetchReviews} reviews={this.props.reviews} fetchDetails={this.props.fetchDetails} filter={this.props.filterWorlds} stateReset={this.props.stateReset} filterFilms={this.props.filterFilms} filterStarships={this.props.filterStarships} filterSpecies={this.props.filterSpecies} filterVehicles={this.props.filterVehicles}/>
       </div>
     );
   }
@@ -45,7 +55,53 @@ class Films extends Component {
 function mapStateToProps(state) {
   // What is returned will show up as PROPS inside of the PeopleList component.
   // Inside of this function we generally return an object.
-  return {films: state.data.FilmsData, reviews: state.reviews};
+  let data;
+  if (state.data.filter.key === "homeworld") {
+    let endpoint = state.data.filter.endpoint;
+    let match = state.data.FilmsData.filter((matchedWorlds) => {
+      return matchedWorlds.homeworld === endpoint
+    });
+    data = match;
+  } else if (state.data.filter.key === "film") {
+    let endpoint = state.data.filter.endpoint;
+    let match = state.data.FilmsData.filter((matchedFilms) => {
+      let films = matchedFilms.films;
+      return films.filter((item) => {
+        return item;
+      }).length === endpoint.length;
+    });
+    data = match;
+  } else if (state.data.filter.key === "vehicles") {
+    let endpoint = state.data.filter.endpoint;
+    let match = state.data.FilmsData.filter((matchedVehicles) => {
+      let vehicles = matchedVehicles.vehicles;
+      return vehicles.filter((item) => {
+        return item;
+      }).length === endpoint.length;
+    });
+    data = match;
+  } else if (state.data.filter.key === "species") {
+    let endpoint = state.data.filter.endpoint[0];
+    let match = state.data.FilmsData.filter((matchedSpecies) => {
+      return matchedSpecies.species[0] === endpoint
+    });
+    data = match;
+  } else if (state.data.filter.key === "starship") {
+    let endpoint = state.data.filter.endpoint;
+
+    let match = state.data.FilmsData.filter((matchedStarship) => {
+      let starships = matchedStarship.starships;
+      return starships.filter((item) => {
+        return item;
+      }).length == endpoint.length;
+    });
+    data = match;
+  } else if (state.data.filter.key === "all") {
+    data = state.data.FilmsData;
+  } else {
+    data = state.data.FilmsData;
+  }
+  return {films: data,  reviews: state.reviews};
 }
 
 // Here we map component's action <<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -56,7 +112,13 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     fetchFilms: fetchFilms,
     fetchReviews: fetchReviews,
-    fetchDetails: fetchDetails
+    fetchDetails: fetchDetails,
+    filterWorlds: filterWorlds,
+    filterFilms: filterFilms,
+    filterStarships: filterStarships,
+    filterSpecies: filterSpecies,
+    filterVehicles: filterWorlds,
+    stateReset: stateReset
   }, dispatch)
 }
 

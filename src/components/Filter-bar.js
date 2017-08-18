@@ -23,7 +23,6 @@ COMPONENT
 class FilterBar extends Component {
 
   render() {
-    console.log(this.props)
     //LOGIC<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
     //PEOPLE<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -47,7 +46,6 @@ class FilterBar extends Component {
     //FILMS<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     let films = this.props.films;
 
-    console.log('props', this.props)
 
     return (
  //homeworld films species starships vehicles
