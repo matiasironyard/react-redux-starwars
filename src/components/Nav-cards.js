@@ -4,14 +4,9 @@ REACT IMPORTS
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {
-  Nav,
   NavLink,
-  UncontrolledNavDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
 } from 'reactstrap';
-import ReactTooltip from 'react-tooltip';
+
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 COMPONENT

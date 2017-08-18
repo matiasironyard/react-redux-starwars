@@ -52,10 +52,10 @@ export default class BaseLayout extends Component {
         <div className="row justify-content-center no-gutters">
           <ul className="nav">
             <li className="nav-item">
-              <a className="nav-link disabled" href="#">SWAPI EXPLORER | REACT | REDUX</a>
+              <a className="nav-link disabled" href="">SWAPI EXPLORER | REACT | REDUX</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="https://www.matiasmariani.io" target="_blank">By Matias Mariani</a>
+              <a className="nav-link" href="https://www.matiasmariani.io" target="_blank" rel="noopener noreferrer">By Matias Mariani</a>
             </li>
           </ul>
         </div>

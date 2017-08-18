@@ -1,16 +1,8 @@
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 REACT IMPORTS
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
 import ImageSearch from '../components/Imagesearch';
-import {Link} from 'react-router-dom';
-import {Nav, UncontrolledNavDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
-
-
-import PlanetsModule from '../components/Planets-module';
-import VehiclesModule from '../components/Vehicles-module';
-import SpeciesModule from '../components/Species-module';
-import StarshipsModule from '../components/Starships-module';
 import FilterBar from '../components/Filter-bar';
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

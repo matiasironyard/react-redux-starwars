@@ -24,7 +24,7 @@ class About extends Component {
               <p>I implemented a second API in order to retrieve movie posters when viewing the 'details' page for the movies.</p>
             </div>
             <div className="card-footer text-muted">
-              <a href="https://github.com/matiasironyard/react-redux-starwars" target="_blank">Read Me</a>
+              <a href="https://github.com/matiasironyard/react-redux-starwars" target="_blank" rel="noopener noreferrer">Read Me</a>
             </div>
           </div>
         </div>

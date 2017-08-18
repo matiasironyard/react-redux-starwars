@@ -93,7 +93,7 @@ function mapStateToProps(state) {
       let starships = matchedStarship.starships;
       return starships.filter((item) => {
         return item;
-      }).length == endpoint.length;
+      }).length === endpoint.length;
     });
     data = match;
   } else if (state.data.filter.key === "all") {

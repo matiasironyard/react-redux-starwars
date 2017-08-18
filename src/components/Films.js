@@ -2,10 +2,8 @@
 REACT IMPORTS
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 import ImageSearch from '../components/Imagesearch';
 import FilterBar from '../components/Filter-bar';
-import {Nav, UncontrolledNavDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 COMPONENT
@@ -24,21 +22,6 @@ class FilmsList extends Component {
       let title = films.title;
       let collapseTarget = title.split(' ').slice(-1)[0];
 
-      let peopleList = films.characters.map((people) => {
-        let peopleApi = people.substr(people.indexOf("/api/") + 5);
-        let index = people.split('/').slice(-2)[0]
-        return <DropdownItem key={people} tag={Link} to={`/details/${ "endpoint"}/${peopleApi}`}>
-          <span onClick={() => this.props.fetchDetails(people)}>{index}</span>
-        </DropdownItem>
-      })
-
-      let starshipsList = films.starships.map((starships) => {
-        let starshipsEndpoint = starships.substr(starships.indexOf("/api/") + 5);
-        let index = starships.split('/').slice(-2)[0];
-        return <DropdownItem key={starships} tag={Link} to={`/details/${ "endpoint"}/${starshipsEndpoint}`}>
-          <span onClick={() => this.props.fetchDetails(starships)}>{index}</span>
-        </DropdownItem>
-      })
 
       return (
         <div key={films.episode_id} className="col-lg-5 col-md-5 col-sm-12 col-xs-12 main-card">

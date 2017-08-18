@@ -11,7 +11,6 @@ import {
   filterWorlds,
   filterFilms,
   filterStarships,
-  filterVehicles,
   filterSpecies,
   fetchPeople,
   fetchDetails,

@@ -5,16 +5,7 @@ import React, {Component} from 'react';
 import {Nav, UncontrolledNavDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 import {Link} from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
-import {
-  filterWorlds,
-  filterFilms,
-  filterStarships,
-  filterVehicles,
-  filterSpecies,
-  fetchPeople,
-  fetchDetails,
-  stateReset
-} from '../actions/index';
+
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 COMPONENT

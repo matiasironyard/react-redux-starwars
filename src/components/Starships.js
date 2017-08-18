@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import ImageSearch from '../components/Imagesearch';
-import {Link} from 'react-router-dom';
-import {Nav, UncontrolledNavDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 import FilterBar from '../components/Filter-bar';
 
 class StarshipsList extends Component {
@@ -37,7 +35,7 @@ class StarshipsList extends Component {
             <<<<<<<<<<<<<<<<<<<<<<<<<<<<*/}
 
           <div className="card-header">
-            <FilterBar films={starships.films} filterFilms={this.props.filterFilms} people={starships.pilots} stateReset={this.props.stateReset} filterPilots={this.props.filterPilots}/>
+            <FilterBar films={starships.films} filterFilms={filterFilms} people={starships.pilots} stateReset={reset} filterPilots={filterPilots}/>
           </div>
 
 

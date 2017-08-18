@@ -2,9 +2,8 @@
 REACT IMPORTS
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 import React, {Component} from 'react';
-import ImageSearch from '../components/Imagesearch';
 import {Link} from 'react-router-dom';
-import {Nav, UncontrolledNavDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
+import {DropdownItem} from 'reactstrap';
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 COMPONENT

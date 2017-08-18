@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Nav, UncontrolledNavDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 import FilterBar from '../components/Filter-bar-sample';
 import NavCards from '../components/Nav-cards';
 import About from '../components/About';
