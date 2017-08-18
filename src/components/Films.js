@@ -63,7 +63,7 @@ class FilmsList extends Component {
                     <h3>
                       Profile
                       <a href="">
-                        <i className="pull-right fa fa-info-circle" data-toggle="collapse" data-target={"#" + collapseTarget} aria-expanded="false" aria-hidden="false" aria-controls="collapseExample"></i>
+                        <i className="pull-right fa fa-angle-double-down" data-toggle="collapse" data-target={"#" + collapseTarget} aria-expanded="false" aria-hidden="false" aria-controls="collapseExample"></i>
                       </a>
                     </h3>
                   </div>

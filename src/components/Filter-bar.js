@@ -231,73 +231,82 @@ class FilterBar extends Component {
           ):(<span></span>)}
 
           <UncontrolledNavDropdown>
-            <DropdownToggle nav caret>
+            <DropdownToggle nav caret data-tip data-for='filter'>
+              <ReactTooltip id='filter' type='info' effect='solid'>
+                <span>Filter</span>
+              </ReactTooltip>
               <i className="fa fa-filter" aria-hidden="true"></i>
             </DropdownToggle>
             <DropdownMenu>
               {this.props.filterWorld ? (
                 <DropdownItem onClick={() => this.props.filterWorld(this.props.homeworld, 'homeworld')}>
                   <i className="fa fa-globe" aria-hidden="true"></i>
-                  <span>Homeworld</span>
+                  <span> Homeworld</span>
                 </DropdownItem>
               ):(
                 <DropdownItem disabled>
                   <i className="fa fa-globe" aria-hidden="true"></i>
+                  <span> Homeworld</span>
                 </DropdownItem>
               )}
               {this.props.filterFilms ? (
                 <DropdownItem onClick={() => this.props.filterFilms(this.props.films, 'film')}>
                   <i className="fa fa-film" aria-hidden="true"></i>
-                  <span>Films</span>
+                  <span> Films</span>
                 </DropdownItem>
               ):(
                 <DropdownItem disabled>
                   <i className="fa fa-film" aria-hidden="true"></i>
+                  <span> Films</span>
                 </DropdownItem>
               )}
               {this.props.filterStarships ? (
                 <DropdownItem onClick={() => this.props.filterStarships(this.props.starships, 'starship')}>
                   <i className="fa fa-space-shuttle" aria-hidden="true"></i>
-                  <span>Starships</span>
+                  <span> Starships</span>
                 </DropdownItem>
               ): (
                 <DropdownItem disabled>
                   <i className="fa fa-space-shuttle" aria-hidden="true"></i>
+                  <span> Starships</span>
                 </DropdownItem>
               )}
               {this.props.filterPeople? (
                 <DropdownItem onClick={() => this.props.filterPeople(this.props.people, 'people')}>
                   <i className="fa fa-users" aria-hidden="true"></i>
-                  <span>People</span>
+                  <span> People</span>
                 </DropdownItem>
               ):(
                 <DropdownItem disabled>
                   <i className="fa fa-users" aria-hidden="true"></i>
+                  <span> People</span>
                 </DropdownItem>
               )}
               {this.props.filterPilots ? (
                 <DropdownItem onClick={() => this.props.filterPilots(this.props.people, 'pilot')}>
                   <i className="fa fa-users" aria-hidden="true"></i>
-                  <span>Pilots</span>
+                  <span> Pilots</span>
                 </DropdownItem>
               ):(
                 <DropdownItem disabled>
                   <i className="fa fa-users" aria-hidden="true"></i>
+                  <span> Pilots</span>
                 </DropdownItem>
               )}
               {this.props.filterVehicles ? (
                 <DropdownItem onClick={() => this.props.filterVehicles(this.props.vehicles, 'vehicles')}>
                   <i className="fa fa-fighter-jet" aria-hidden="true"></i>
-                  <span>Vehicles</span>
+                  <span> Vehicles</span>
                 </DropdownItem>
               ):(
                 <DropdownItem disabled>
                   <i className="fa fa-fighter-jet" aria-hidden="true"></i>
+                  <span> Vehicles</span>
                 </DropdownItem>
               )}
               <DropdownItem onClick={() => this.props.stateReset('all')}>
                 <i className="fa fa-refresh" aria-hidden="true"></i>
-                <span>Reset</span>
+                <span> Reset</span>
               </DropdownItem>
             </DropdownMenu>
           </UncontrolledNavDropdown>

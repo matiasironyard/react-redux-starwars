@@ -1,7 +1,7 @@
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 REACT IMPORTS
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import ImageSearch from '../components/Imagesearch';
 import {Link} from 'react-router-dom';
 import {Nav, UncontrolledNavDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
@@ -50,6 +50,7 @@ class PeopleList extends Component {
     //SET DATA<<<<<<<<<<<<<<<<<<<<<
     let data = this.props.people;
 
+
     //RENDER VARIABLES<<<<<<<<<<<<<<<
     let Data = data.map((people) => {
       let peopleUrl = people.url;
@@ -68,8 +69,8 @@ class PeopleList extends Component {
           </div>
 
           <div className="profile col-fluid">
-            <div className="card card-inverse">
-              <ImageSearch className="card-img" name={people.name}/>
+            <div className="card bg-dark text-white">
+              <ImageSearch  name={people.name}/>
               <div className="card-img-overlay">
                 <h3 className="card-title">{people.name}</h3>
               </div>
@@ -83,7 +84,7 @@ class PeopleList extends Component {
                   <h3>
                     Profile
                     <a href="">
-                      <i className="pull-right fa fa-info-circle" data-toggle="collapse" data-target={"#" + collapseTarget} aria-expanded="false" aria-hidden="false" aria-controls="collapseExample"></i>
+                      <i className="pull-right fa fa-angle-double-down" data-toggle="collapse" data-target={"#" + collapseTarget} aria-expanded="false" aria-hidden="false" aria-controls="collapseExample"></i>
                     </a>
                   </h3>
                 </div>

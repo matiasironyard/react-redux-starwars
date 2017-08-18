@@ -45,7 +45,7 @@ class StarshipsList extends Component {
 
             <div className="profile col-fluid">
               <div className="card card-inverse">
-                <ImageSearch className="card-img" name={starships.name}/>
+                <ImageSearch className="card-img" name={starships.name} getImage={false}/>
                 <div className="card-img-overlay">
                   <h3 className="card-title">{starships.name}</h3>
                 </div>
@@ -59,7 +59,7 @@ class StarshipsList extends Component {
                     <h3>
                       Profile
                       <a href="">
-                        <i className="pull-right fa fa-info-circle" data-toggle="collapse" data-target={"#" + collapseTarget} aria-expanded="false" aria-hidden="false" aria-controls="collapseExample"></i>
+                        <i className="pull-right fa fa-angle-double-down" data-toggle="collapse" data-target={"#" + collapseTarget} aria-expanded="false" aria-hidden="false" aria-controls="collapseExample"></i>
                       </a>
                     </h3>
                   </div>

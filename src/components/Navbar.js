@@ -56,46 +56,44 @@ class NavBar extends Component {
 
   render() {
     let reset = this.props.stateReset;
-    let pagination = null;
-    if(!this.props.home){
-      pagination = <div>
-        <button type="button" className="btn btn-outline-dark pull-right" onClick={this.props.back}>Back</button>
-        <button type="button" className="btn btn-outline-dark pull-right" onClick={() => reset('all')}>  <i className="fa fa-refresh" aria-hidden="true"></i></button></div>
-    } else {
-      pagination = <Pagination className="pull-right pagination">
-        <PaginationItem className={this.state.previousDisabled}>
-          <PaginationLink previous onClick={() => this.handlePrevious()}/>
-        </PaginationItem>
-        <PaginationItem disabled>
-          <PaginationLink>
-            Page {this.state.page}
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem disabled>
-          <PaginationLink>
-            {this.props.counter} / 10
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem className={this.state.nextDisabled}>
-          <PaginationLink next onClick={() => this.handleNext()}/>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink onClick={() => this.props.fetch(this.props.home) + this.handleHome()}>Home
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink onClick={() => reset('all')}>
-            <i className="fa fa-refresh" aria-hidden="true"></i>
-          </PaginationLink>
-        </PaginationItem>
-      </Pagination>
-    }
-
 
     return (
       <div className="apiNav row no-gutters">
       <div className="col">
-        {pagination}
+        {this.props.home ? (
+          <Pagination className="pagination justify-content-center">
+            <PaginationItem className={this.state.previousDisabled}>
+              <PaginationLink previous onClick={() => this.handlePrevious()}/>
+            </PaginationItem>
+            <PaginationItem disabled>
+              <PaginationLink>
+                Page {this.state.page}
+              </PaginationLink>
+            </PaginationItem>
+            <PaginationItem disabled>
+              <PaginationLink>
+                {this.props.counter} / 10
+              </PaginationLink>
+            </PaginationItem>
+            <PaginationItem className={this.state.nextDisabled}>
+              <PaginationLink next onClick={() => this.handleNext()}/>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink onClick={() => this.props.fetch(this.props.home) + this.handleHome()}>Home
+              </PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink onClick={() => reset('all')}>
+                <i className="fa fa-refresh" aria-hidden="true"></i>
+              </PaginationLink>
+            </PaginationItem>
+          </Pagination>
+        ):(
+          <div>
+            <button type="button" className="btn btn-outline-dark pull-right" onClick={this.props.back}>Back</button>
+            <button type="button" className="btn btn-outline-dark pull-right" onClick={() => reset('all')}>  <i className="fa fa-refresh" aria-hidden="true"></i></button>
+          </div>
+        )}
       </div>
       </div>
     )
