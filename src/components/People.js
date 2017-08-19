@@ -51,6 +51,8 @@ class PeopleList extends Component {
       let homeworldEndpoint = homeworldUrl.substr(homeworldUrl.indexOf("/api/planets") + 5);
       let collapseTarget = peopleUrl.slice(-2, -1);
 
+      console.log(this.props)
+
       return (
         <div key={people.name} className="col-lg-5 col-md-5 col-sm-12 col-xs-12 main-card">
           {/*>>>>>>>>>>>>>>>>>>>>>>>>>>>

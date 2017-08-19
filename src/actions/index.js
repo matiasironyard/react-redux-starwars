@@ -37,10 +37,10 @@ export function fetchDetails(url) {
   };
 };
 
-export const fetchSwapiPeople = (data) => {
+export const fetchSwapiPeople = (data, loading) => {
   return {
     type: ActionTypes.FETCH_SWAPI_PEOPLE,
-    payload: data
+    payload: {data, loading: false}
   }
 };
 
@@ -49,7 +49,6 @@ export function fetchPeople(url) {
     return Axios.get(url)
       .then(response => {
         dispatch(fetchSwapiPeople(response.data))
-
       })
       .catch(error => {
         throw(error);
@@ -60,7 +59,7 @@ export function fetchPeople(url) {
 export const fetchSwapiFilms = (data) => {
   return {
     type: ActionTypes.FETCH_SWAPI_FILMS,
-    payload: data
+    payload: {data, loading: false}
   }
 };
 
@@ -81,7 +80,7 @@ export function fetchFilms(url) {
 export const fetchSwapiStarships = (data) => {
   return {
     type: ActionTypes.FETCH_SWAPI_STARSHIPS,
-    payload: data
+    payload: {data, loading: false}
   }
 };
 
@@ -99,6 +98,47 @@ export function fetchStarships(url) {
   };
 };
 
+export const fetchSwapiVehicles = (data) => {
+  return {
+    type: ActionTypes.FETCH_SWAPI_VEHICLES, loading: true,
+    payload: {data, loading: false}
+  }
+};
+
+export function fetchVehicles(url) {
+  return (dispatch) => {
+
+    return Axios.get(url)
+      .then(response => {
+        dispatch(fetchSwapiVehicles(response.data))
+
+      })
+      .catch(error => {
+        throw(error);
+      });
+  };
+};
+
+export const fetchSwapiSpecies = (data) => {
+  return {
+    type: ActionTypes.FETCH_SWAPI_SPECIES, loading: true,
+    payload: {data, loading: false}
+  }
+};
+
+export function fetchSpecies(url) {
+  return (dispatch) => {
+
+    return Axios.get(url)
+      .then(response => {
+        dispatch(fetchSwapiSpecies(response.data))
+
+      })
+      .catch(error => {
+        throw(error);
+      });
+  };
+};
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 FILTER ACTIONS:
 We use this actions to filter state based on selection.

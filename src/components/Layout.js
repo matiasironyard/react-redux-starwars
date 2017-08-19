@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import {Navbar, NavLink} from 'reactstrap';
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.css';
+import logo from '../images/Star_Wars_Yellow_Logo.svg';
 
 export default class BaseLayout extends Component {
   constructor(props) {
@@ -30,7 +31,9 @@ export default class BaseLayout extends Component {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item active">
-                <NavLink className="navbar-brand" tag={Link} to="/">Home</NavLink>
+                <NavLink className="navbar-brand" tag={Link} to="/">
+                  <img src={logo} style={{width: "70", height: "30"}} alt=""/>
+                </NavLink>
               </li>
               <li className="nav-item active">
                 <NavLink tag={Link} to="/people">People</NavLink>

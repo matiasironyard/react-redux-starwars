@@ -3,6 +3,9 @@ import FilterBar from '../components/Filter-bar-sample';
 import NavCards from '../components/Nav-cards';
 import About from '../components/About';
 
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+
+
 
 class Explorer extends Component {
 

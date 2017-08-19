@@ -33,7 +33,7 @@ class About extends Component {
             Project Progress
           </div>
           <div className="progress top-margin">
-            <div className="progress-bar" role="progressbar" style={{width: "60%"}} aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
+            <div className="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style={{width: "60%"}}>60%</div>
           </div>
         </div>
       </div>

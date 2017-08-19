@@ -44,7 +44,7 @@ class Films extends Component {
 
     return (
       <div className="col app-body">
-        <NavBar back={this.handleBack} stateReset={this.props.stateReset}  />
+        <NavBar back={this.handleBack} stateReset={this.props.stateReset} loading={this.props.loading}/>
         <FilmsList fetchPeople={this.props.fetchPeople} films={this.props.films} filmDirector={this.props.filmDirector} setDetails={this.props.setDetails} endpoint={this.props.match.params.endpoint} fetchFilms={this.props.fetchFilms} fetchReviews={this.props.fetchReviews} reviews={this.props.reviews} fetchDetails={this.props.fetchDetails} filter={this.props.filterWorlds} stateReset={this.props.stateReset} filterFilms={this.props.filterFilms} filterStarships={this.props.filterStarships} filterSpecies={this.props.filterSpecies} filterVehicles={this.props.filterVehicles}/>
       </div>
     );
@@ -101,7 +101,7 @@ function mapStateToProps(state) {
   } else {
     data = state.data.FilmsData;
   }
-  return {films: data,  reviews: state.reviews};
+  return {films: data.sort(),  reviews: state.reviews, loading: state.data.loading};
 }
 
 // Here we map component's action <<<<<<<<<<<<<<<<<<<<<<<<<<

@@ -8,24 +8,28 @@ import filmsdata from '../data/Filmsdata';
 const initialState = {
   filter: {},
   reviews: {},
-  iconColor: {},
   FilmsData: filmsdata(),
   StarshipsData: starshipsdata(),
-  PeopleData: peopledata()
+  PeopleData: peopledata(),
+  loading: true
 }
 
-export const getData = (state = initialState, action) => {
+export const Data = (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.FETCH_SWAPI_PEOPLE:
       return update(state, {
         PeopleData: {
-          $set: action.payload.results
+          $set: action.payload.data.results.sort(function (a, b) {
+        return a.url - b.url})
         },
         next: {
-          $set: action.payload.next
+          $set: action.payload.data.next
         },
         previous: {
-          $set: action.payload.previous
+          $set: action.payload.data.previous
+        },
+        loading: {
+          $set: action.payload.loading
         }
       });
 
@@ -79,30 +83,73 @@ export const getData = (state = initialState, action) => {
       });
 
     case ActionTypes.FETCH_SWAPI_FILMS:
+
       return update(state, {
         FilmsData: {
-          $set: action.payload.results
+          $set: action.payload.data.results.sort(function (a, b) {
+        return a.episode_id - b.episode_id})
         },
         next: {
-          $set: action.payload.next
+          $set: action.payload.data.next
         },
         previous: {
-          $set: action.payload.previous
+          $set: action.payload.data.previous
+        },
+        loading: {
+          $set: action.payload.loading
         }
       });
 
     case ActionTypes.FETCH_SWAPI_STARSHIPS:
       return update(state, {
         StarshipsData: {
-          $set: action.payload.results
+          $set: action.payload.data.results.sort(function (a, b) {
+        return a.url - b.url})
         },
         next: {
-          $set: action.payload.next
+          $set: action.payload.data.next
         },
         previous: {
-          $set: action.payload.previous
+          $set: action.payload.data.previous
+        },
+        loading: {
+          $set: action.payload.loading
         }
       });
+
+      case ActionTypes.FETCH_SWAPI_VEHICLES:
+        return update(state, {
+          VehiclesData: {
+            $set: action.payload.data.results.sort(function (a, b) {
+          return a.url - b.url})
+          },
+          next: {
+            $set: action.payload.data.next
+          },
+          previous: {
+            $set: action.payload.data.previous
+          },
+          loading: {
+            $set: action.payload.loading
+          }
+        });
+
+        case ActionTypes.FETCH_SWAPI_SPECIES:
+          return update(state, {
+            SpecesData: {
+              $set: action.payload.data.results.sort(function (a, b) {
+            return a.url - b.url})
+            },
+            next: {
+              $set: action.payload.data.next
+            },
+            previous: {
+              $set: action.payload.data.previous
+            },
+            loading: {
+              $set: action.payload.loading
+            }
+          });
 
     default:
       return state;
@@ -133,6 +180,6 @@ export const fetchReviewsData = (state = initialState.reviews, action) => {
   }
 };
 
-const rootReducer = combineReducers({data: getData, details: details, reviews: fetchReviewsData});
+const rootReducer = combineReducers({data: Data, details: details, reviews: fetchReviewsData});
 
 export default rootReducer;

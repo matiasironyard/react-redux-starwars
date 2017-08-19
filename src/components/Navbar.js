@@ -84,14 +84,25 @@ class NavBar extends Component {
             </PaginationItem>
             <PaginationItem>
               <PaginationLink onClick={() => reset('all')}>
-                <i className="fa fa-refresh" aria-hidden="true"></i>
+                {this.props.loading === true ? (
+                  <div>
+                    <i className="fa fa-refresh fa-spin fa-fw" style={{color: "#007BFF"}}></i>
+                    <span className="sr-only">Loading...</span>
+                  </div>
+                ):(
+                  <i className="fa fa-refresh" aria-hidden="true"></i>
+                )}
               </PaginationLink>
             </PaginationItem>
           </Pagination>
         ):(
           <div>
             <button type="button" className="btn btn-outline-dark pull-right" onClick={this.props.back}>Back</button>
-            <button type="button" className="btn btn-outline-dark pull-right" onClick={() => reset('all')}>  <i className="fa fa-refresh" aria-hidden="true"></i></button>
+            {this.props.loading === true ? (
+              <button type="button" className="btn btn-outline-dark pull-right" onClick={() => reset('all')}><i className="fa fa-refresh fa-spin fa-fw" style={{color: "#007BFF"}}></i></button>
+            ):(
+              <button type="button" className="btn btn-outline-dark pull-right" onClick={() => reset('all')}>  <i className="fa fa-refresh" aria-hidden="true"></i></button>
+            )}
           </div>
         )}
       </div>

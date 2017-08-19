@@ -52,8 +52,9 @@ class FilterBar extends Component {
               </DropdownToggle>
               <DropdownMenu >
                 {people.length >=1 ? (
+                  people.sort(),
                   people.map((people) => {
-                    let index = people.split('/').slice(-2)[0];
+                    let index = people.split('/').slice(-2)[0]
                     let key = Math.random();
                     return <DropdownItem key={key} tag={Link} to={`/details/${ "endpoint"}/${"people"}/${index}`}>
                                   <span>{index}</span>
@@ -95,6 +96,7 @@ class FilterBar extends Component {
               </DropdownToggle>
               <DropdownMenu >
                 {planets ? (
+                  planets.sort(),
                   planets.map((planets) => {
                     let index = planets.split('/').slice(-2)[0];
                     let key = Math.random();
@@ -117,6 +119,7 @@ class FilterBar extends Component {
               </DropdownToggle>
               <DropdownMenu>
                 {films ? (
+                  films.sort(),
                   films.map((films) => {
                     let index = films.split('/').slice(-2)[0];
                     let key = Math.random();
@@ -164,7 +167,8 @@ class FilterBar extends Component {
                 <i className="fa fa-space-shuttle" aria-hidden="true"></i>
               </DropdownToggle>
               <DropdownMenu>
-                {starships ? (
+                {starships && starships.length > 1? (
+                  starships.sort(),
                   starships.map((starships) => {
                     let index = starships.split('/').slice(-2)[0];
                     let key = Math.random();
@@ -187,6 +191,7 @@ class FilterBar extends Component {
               </DropdownToggle>
               <DropdownMenu>
                 {species ? (
+                  species.sort(),
                   species.map((species) => {
                     let index = species.split('/').slice(-2)[0]
                     let key = Math.random()
@@ -208,14 +213,15 @@ class FilterBar extends Component {
                 <i className="fa fa-fighter-jet" aria-hidden="true"></i>
               </DropdownToggle>
               <DropdownMenu>
-                {vehicles ? (
-                vehicles.map((vehicles) => {
-                 let index = vehicles.split('/').slice(-2)[0];
-                 let key = Math.random();
-                 return <DropdownItem key={key} tag={Link} to={`/details/${ "endpoint"}/${"vehicles"}/${index}`}>
-                               <span>{index}</span>
-                           </DropdownItem>
-                         })
+                {vehicles && vehicles.length > 1? (
+                  vehicles.sort(),
+                  vehicles.map((vehicles) => {
+                     let index = vehicles.split('/').slice(-2)[0];
+                     let key = Math.random();
+                     return <DropdownItem key={key} tag={Link} to={`/details/${ "endpoint"}/${"vehicles"}/${index}`}>
+                                   <span>{index}</span>
+                               </DropdownItem>
+                  })
                 ):(<DropdownItem>None</DropdownItem>)}
               </DropdownMenu>
             </UncontrolledNavDropdown>

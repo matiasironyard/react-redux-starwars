@@ -33,7 +33,7 @@ class People extends Component {
   render() {
     return (
       <div className="col app-body">
-        <NavBar next={this.props.next} previous={this.props.previous} home={'https://swapi.co/api/people/?page=1'} fetch={this.props.fetchPeople} stateReset={this.props.stateReset} counter = {this.props.people.length}/>
+        <NavBar next={this.props.next} previous={this.props.previous} home={'https://swapi.co/api/people/?page=1'} fetch={this.props.fetchPeople} stateReset={this.props.stateReset} counter = {this.props.people.length} loading={this.props.loading}/>
         {/*State is now available via props thanks to Redux! <<<<<<<<<<<<<<<<*/}
         <PeopleList people={this.props.people} filter={this.props.filterWorlds} stateReset={this.props.stateReset} filterFilms={this.props.filterFilms} filterStarships={this.props.filterStarships} filterSpecies={this.props.filterSpecies} filterVehicles={this.props.filterVehicles} setDetails={this.props.setDetails} fetchPeople={this.props.fetchPeople} fetchDetails={this.props.fetchDetails} next={this.props.next} previous={this.props.previous}/>
       </div>
@@ -90,7 +90,7 @@ function mapStateToProps(state) {
   } else {
     data = state.data.PeopleData;
   }
-  return {people: data, next: state.data.next, previous: state.data.previous};
+  return {people: data.sort(), next: state.data.next, previous: state.data.previous, loading: state.data.loading};
 }
 
 // Here we map component's action <<<<<<<<<<<<<<<<<<<<<<<<<<
