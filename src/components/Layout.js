@@ -32,7 +32,10 @@ export default class BaseLayout extends Component {
             <ul className="navbar-nav">
               <li className="nav-item active">
                 <NavLink className="navbar-brand" tag={Link} to="/">
-                  <img src={logo} style={{width: "70", height: "30"}} alt=""/>
+                  <img src={logo} style={{
+                    width: "70",
+                    height: "30"
+                  }} alt=""/>
                 </NavLink>
               </li>
               <li className="nav-item active">
